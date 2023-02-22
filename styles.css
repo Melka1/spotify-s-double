@@ -1,6 +1,10 @@
 @font-face {
-  font-family: "custom";
+  font-family: "custom-bold";
   src: url("./fonts/Circular/CircularStd-Black.otf");
+}
+@font-face {
+  font-family: "custom-light";
+  src: url("./fonts/Circular/CircularStd-Light.otf");
 }
 * {
   box-sizing: border-box;
@@ -9,10 +13,13 @@
 }
 
 body {
+  position: relative;
   width: 100vw;
   height: 100vh;
   font-size: 14px;
   font-family: "custom", sans-serif;
+  display: flex;
+  flex-direction: row;
 }
 body aside {
   background-color: black;
@@ -21,7 +28,6 @@ body aside {
   flex-direction: column;
   padding: 25px;
   width: 290px;
-  resize: horizontal;
   height: 100%;
 }
 body aside .title {
@@ -92,6 +98,77 @@ body aside .lang:hover {
 body aside .lang:hover p span {
   font-size: 1.1rem;
 }
+body main {
+  font-size: 16px;
+  width: -webkit-fill-available;
+}
+body main .top--bar {
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 5px 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+body main .top--bar .page--control {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+body main .top--bar .page--control div {
+  background: rgba(0, 0, 0, 0.7);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body main .top--bar .page--control div img {
+  height: 16px;
+  color: white;
+}
+body main .top--bar .page--control .prev img {
+  transform: rotate(180deg);
+}
+body main .top--bar .user--related {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+  color: lightgray;
+}
+body main .top--bar .user--related div {
+  border: none;
+  padding: 17px 25px;
+  border-radius: 30px;
+}
+body main .top--bar .user--related .log--in {
+  background-color: white;
+  color: black;
+}
+body main .top--bar .user--related .log--in p {
+  padding: 0 5px;
+}
+body footer .footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 65px;
+  width: 100vw;
+  background: linear-gradient(90deg, #ed22dd, #9e9ef1);
+  display: flex;
+  padding: 10px 20px;
+  color: white;
+  font-family: "custom-light", sans-serif;
+  justify-content: space-between;
+}
+body footer .footer .desc--title {
+  font-size: 0.8rem;
+}
+body footer .footer .desc--info {
+  font-size: 1.1rem;
+}
+
 .gray {
   color: lightgray !important;
 }/*# sourceMappingURL=styles.css.map */

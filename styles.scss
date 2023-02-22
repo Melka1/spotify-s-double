@@ -1,6 +1,10 @@
 @font-face {
-    font-family: "custom";
+    font-family: "custom-bold";
     src: url("./fonts/Circular/CircularStd-Black.otf");
+}
+@font-face {
+    font-family: "custom-light";
+    src: url("./fonts/Circular/CircularStd-Light.otf");
 }
 
 * {
@@ -10,10 +14,13 @@
 }
 
 body {
+    position: relative;
     width: 100vw;
     height: 100vh;
     font-size: 14px;
     font-family: "custom", sans-serif;
+    display: flex;
+    flex-direction: row;
     aside {
         background-color: black;
         color: white;
@@ -21,7 +28,7 @@ body {
         flex-direction: column;
         padding: 25px;
         width: 290px;
-        resize: horizontal;
+        // resize: horizontal;
         height: 100%;
         // border: 1px solid;
         .title {
@@ -95,7 +102,79 @@ body {
         }
     }
     main {
-        
+        // width: calc(100vw-290px);
+        font-size: 16px;
+        width: -webkit-fill-available;
+        .top--bar {
+            background-color: rgba(0,0,0,0.9);
+            padding: 5px 30px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            .page--control {
+                padding: 10px;
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+                div{
+                    background: rgba(0,0,0,0.7);
+                    // border: 1px solid;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    img {
+                        height: 16px;
+                        color: white;
+                    }
+                }
+                .prev img {
+                    transform: rotate(180deg);
+                }   
+            }
+            .user--related {
+                display: flex;
+                gap: 10px;
+                margin-left: auto;
+                color: lightgray;
+                div {
+                    border: none;
+                    padding: 17px 25px;
+                    border-radius: 30px;
+                }
+                .log--in {
+                    background-color: white;
+                    color: black;
+                    p {
+                        padding: 0 5px;
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 65px;
+            width: 100vw;
+            background: linear-gradient(90deg, #ed22dd, #9e9ef1);
+            display: flex;
+            padding: 10px 20px;
+            color: white;
+            font-family: "custom-light",sans-serif;
+            justify-content: space-between;
+            .desc--title {
+                font-size: 0.8rem;
+            }
+            .desc--info {
+                font-size: 1.1rem;
+            }
+            
+        }
     }
 }
 .gray {
