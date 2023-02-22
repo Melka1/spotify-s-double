@@ -18,7 +18,9 @@ body {
   height: 100vh;
   font-size: 14px;
   font-family: "custom", sans-serif;
-  display: flex;
+  display: grid;
+  grid-template-columns: 295px 1fr;
+  grid-template-rows: 1fr 75px;
   flex-direction: row;
 }
 body aside {
@@ -27,8 +29,8 @@ body aside {
   display: flex;
   flex-direction: column;
   padding: 25px;
-  width: 290px;
-  height: 100%;
+  grid-column: 1/2;
+  grid-row: 1/2;
 }
 body aside .title {
   display: flex;
@@ -80,7 +82,7 @@ body aside a:hover {
 body aside .lang {
   display: flex;
   flex-direction: row;
-  margin-bottom: 75px;
+  margin-bottom: 15px;
   padding: 5px 15px;
   align-items: center;
   border: 1px solid;
@@ -100,7 +102,8 @@ body aside .lang:hover p span {
 }
 body main {
   font-size: 16px;
-  width: -webkit-fill-available;
+  grid-column: 2/-1;
+  grid-row: 1/2;
 }
 body main .top--bar {
   background-color: rgba(0, 0, 0, 0.9);
@@ -149,12 +152,11 @@ body main .top--bar .user--related .log--in {
 body main .top--bar .user--related .log--in p {
   padding: 0 5px;
 }
+body footer {
+  grid-column: 1/-1;
+}
 body footer .footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 75px;
-  width: 100vw;
+  height: 100%;
   background: linear-gradient(90deg, #ed22dd, #9e9ef1);
   display: flex;
   padding: 8px 20px;

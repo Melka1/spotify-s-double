@@ -19,7 +19,9 @@ body {
     height: 100vh;
     font-size: 14px;
     font-family: "custom", sans-serif;
-    display: flex;
+    display: grid;
+    grid-template-columns: 295px 1fr;
+    grid-template-rows: 1fr 75px;
     flex-direction: row;
     aside {
         background-color: black;
@@ -27,10 +29,8 @@ body {
         display: flex;
         flex-direction: column;
         padding: 25px;
-        width: 290px;
-        // resize: horizontal;
-        height: 100%;
-        // border: 1px solid;
+        grid-column: 1/2;
+        grid-row: 1/2;
         .title {
             display: flex;
             flex-direction: row;
@@ -82,8 +82,7 @@ body {
         .lang {
             display: flex;
             flex-direction: row;
-            // gap: 10px;
-            margin-bottom: 75px;
+            margin-bottom: 15px;
             padding: 5px 15px;
             align-items: center;
             border: 1px solid;
@@ -102,9 +101,9 @@ body {
         }
     }
     main {
-        // width: calc(100vw-290px);
         font-size: 16px;
-        width: -webkit-fill-available;
+        grid-column: 2/-1;
+        grid-row: 1/2;
         .top--bar {
             background-color: rgba(0,0,0,0.9);
             padding: 5px 30px;
@@ -155,12 +154,9 @@ body {
         }
     }
     footer {
+        grid-column: 1/-1;
         .footer {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 75px;
-            width: 100vw;
+            height: 100%;
             background: linear-gradient(90deg, #ed22dd, #9e9ef1);
             display: flex;
             padding: 8px 20px;
@@ -176,7 +172,6 @@ body {
             }
             .signup--free {
                 padding: 15px 30px;
-                // border: 1px solid black;
                 font-size: 1rem;
                 border-radius: 30px;
                 font-weight: bold;
