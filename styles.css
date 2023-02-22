@@ -117,8 +117,8 @@ body main .top--bar .page--control {
 }
 body main .top--bar .page--control div {
   background: rgba(0, 0, 0, 0.7);
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -153,11 +153,12 @@ body footer .footer {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 65px;
+  height: 75px;
   width: 100vw;
   background: linear-gradient(90deg, #ed22dd, #9e9ef1);
   display: flex;
-  padding: 10px 20px;
+  padding: 8px 20px;
+  padding-top: 10px;
   color: white;
   font-family: "custom-light", sans-serif;
   justify-content: space-between;
@@ -168,7 +169,24 @@ body footer .footer .desc--title {
 body footer .footer .desc--info {
   font-size: 1.1rem;
 }
+body footer .footer .signup--free {
+  padding: 15px 30px;
+  font-size: 1rem;
+  border-radius: 30px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  background: white;
+  color: black;
+}
 
 .gray {
   color: lightgray !important;
+}
+
+.signup--free:hover, li:hover, .title:hover, .user--related div:hover, .lang:hover, .page--control div:hover {
+  cursor: pointer;
+}
+
+.signup--free:hover span {
+  font-size: 1.1rem;
 }/*# sourceMappingURL=styles.css.map */
