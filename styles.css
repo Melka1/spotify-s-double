@@ -32,6 +32,7 @@ body aside {
   padding: 25px;
   grid-column: 1/2;
   grid-row: 1/2;
+  position: relative;
 }
 body aside .title {
   display: flex;
@@ -47,15 +48,31 @@ body aside .title p {
   font-weight: 700;
   font-size: 1.75rem;
 }
+body aside .navigation ul .home span, body aside .navigation ul .home p {
+  color: white;
+}
 body aside .navigation ul > li {
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 5px;
   padding-left: 0;
+  font-family: "custom-bold";
 }
 body aside .navigation ul > li span {
   font-size: 30px;
+  color: gray;
+  transition: color 0.3s ease;
+}
+body aside .navigation ul > li p {
+  color: gray;
+  transition: color 0.6s ease;
+}
+body aside .navigation ul > li:hover span {
+  color: white;
+}
+body aside .navigation ul > li:hover p {
+  color: white;
 }
 body aside .navigation .like {
   font-size: 24px;
@@ -100,6 +117,20 @@ body aside .lang:hover {
 }
 body aside .lang:hover p span {
   font-size: 1rem;
+}
+body aside .partition {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background-color: transparent;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  width: 2px;
+}
+body aside .partition:hover {
+  cursor: e-resize;
+  background-color: gray;
 }
 body main {
   background-color: rgb(33, 32, 32);
@@ -218,7 +249,7 @@ body main .lists .list--container .list {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   margin-top: 20px;
-  gap: 30px;
+  gap: 20px;
   justify-content: space-between;
 }
 body main .lists .list--container .list > div {
@@ -324,7 +355,7 @@ body footer .footer .signup--free {
 }
 
 .gray {
-  color: lightgray !important;
+  color: gray !important;
 }
 
 .signup--free:hover, li:hover, .title:hover, .user--related div:hover, .lang:hover, .page--control div:hover {
