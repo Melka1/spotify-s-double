@@ -116,6 +116,7 @@ body main .top--bar {
   flex-direction: row;
   align-items: center;
   position: fixed;
+  z-index: 1;
 }
 body main .top--bar .page--control {
   padding: 10px;
@@ -135,6 +136,9 @@ body main .top--bar .page--control div {
 body main .top--bar .page--control div img {
   height: 16px;
   color: white;
+}
+body main .top--bar .page--control div:hover {
+  cursor: not-allowed;
 }
 body main .top--bar .page--control .prev img {
   transform: rotate(180deg);
@@ -202,6 +206,35 @@ body main .lists .list--container .list > div {
   background-color: rgba(18, 17, 17, 0.9);
   border-radius: 5px;
 }
+body main .lists .list--container .list > div .cover {
+  position: relative;
+}
+body main .lists .list--container .list > div .cover .play {
+  box-sizing: content-box;
+  display: none;
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: bottom 0.3s, opacity 0.2s ease-in !important;
+  background-color: rgb(13, 211, 13);
+}
+body main .lists .list--container .list > div .cover .play img {
+  width: 40px;
+  height: 40px;
+}
+body main .lists .list--container .list > div .cover .play:hover {
+  border: 1px solid rgb(13, 211, 13);
+  right: 9px;
+  bottom: 9px;
+  cursor: initial;
+}
 body main .lists .list--container .list > div img {
   width: 100%;
   border-radius: 3px;
@@ -218,9 +251,22 @@ body main .lists .list--container .list > div .list--desc {
   line-height: 1.5rem;
   color: gray;
 }
-body main .lists .list--container .list div:hover {
+body main .lists .list--container .list > div:hover {
   background-color: rgb(39, 38, 38);
-  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+body main .lists .list--container .list > div:hover .play {
+  display: flex;
+  bottom: 10px;
+  opacity: 1;
+}
+body main .lists .list--container:last-of-type {
+  margin-bottom: 80px;
+}
+body main .lists hr {
+  border: none;
+  border-top: 1px solid gray;
+  margin: 80px 0;
 }
 body main::-webkit-scrollbar {
   z-index: 1;
