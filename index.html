@@ -59,7 +59,7 @@
             <p><span>E</span>nglish</p>
         </div>
     </aside>
-    <main>
+    <main onscroll="handleScroll(event)">
         <section class="top--bar">
             <div class="page--control">
                 <div class="prev">
@@ -79,12 +79,12 @@
             </div>
         </section>
         <section class="lists">
-            <div class="list--container">
+            <div class="list--container" id="0">
                 <div class="list--header">
                     <p class="list--type">Focus</p>
                     <p class="show--all">Show All</p>
                 </div>
-                <div class="list">
+                <div class="list" >
                     <div class="list--part">
                         <div class="cover">
                             <img src="./assets/images/music--cover.jpg" alt="">
@@ -137,7 +137,7 @@
                     </div>
                 </div>
             </div>
-            <div class="list--container">
+            <div class="list--container" id="1">
                 <div class="list--header">
                     <p class="list--type">Spotify Playlists</p>
                     <p class="show--all">Show All</p>

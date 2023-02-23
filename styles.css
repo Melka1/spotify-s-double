@@ -110,7 +110,7 @@ body main {
 }
 body main .top--bar {
   width: -webkit-fill-available;
-  background-color: rgb(16, 16, 16);
+  background-color: rgba(16, 16, 16, 0.2);
   padding: 5px 30px;
   display: flex;
   flex-direction: row;
@@ -200,6 +200,7 @@ body main .lists .list--container .list {
   grid-template-columns: repeat(5, 1fr);
   margin-top: 20px;
   gap: 30px;
+  justify-content: space-between;
 }
 body main .lists .list--container .list > div {
   padding: 15px;
@@ -208,6 +209,9 @@ body main .lists .list--container .list > div {
 }
 body main .lists .list--container .list > div .cover {
   position: relative;
+}
+body main .lists .list--container .list > div .cover > img {
+  min-width: 120px;
 }
 body main .lists .list--container .list > div .cover .play {
   box-sizing: content-box;
@@ -222,7 +226,7 @@ body main .lists .list--container .list > div .cover .play {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: bottom 0.3s, opacity 0.2s ease-in !important;
+  transition: bottom 0.4s, opacity 0.3s ease-in !important;
   background-color: rgb(13, 211, 13);
 }
 body main .lists .list--container .list > div .cover .play img {

@@ -109,7 +109,7 @@ body {
         overflow-y: scroll;
         .top--bar {
             width: -webkit-fill-available;
-            background-color: rgb(16, 16, 16);
+            background-color: rgb(16, 16, 16,0.2);
             padding: 5px 30px;
             display: flex;
             flex-direction: row;
@@ -197,12 +197,16 @@ body {
                     grid-template-columns: repeat(5, 1fr);
                     margin-top: 20px;
                     gap: 30px;
+                    justify-content: space-between;
                     &>div{
                         padding: 15px;
                         background-color: rgba(18, 17, 17, 0.9);
                         border-radius: 5px;
                         .cover {
                             position: relative;
+                            &>img {
+                                min-width: 120px;
+                            }
                             .play {
                                 box-sizing: content-box;
                                 display: none;
@@ -216,7 +220,7 @@ body {
                                 align-items: center;
                                 justify-content: center;
                                 opacity: 0;
-                                transition: bottom 0.3s, opacity 0.2s ease-in !important;
+                                transition: bottom 0.4s, opacity 0.3s ease-in !important;
                                 img {
                                     width: 40px;
                                     height: 40px;
