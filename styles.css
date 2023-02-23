@@ -37,7 +37,7 @@ body aside .title {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   margin-bottom: 20px;
 }
 body aside .title i {
@@ -51,7 +51,7 @@ body aside .navigation ul > li {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px;
+  padding: 5px;
   padding-left: 0;
 }
 body aside .navigation ul > li span {
@@ -99,7 +99,7 @@ body aside .lang:hover {
   border-width: 2px;
 }
 body aside .lang:hover p span {
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 body main {
   background-color: rgb(33, 32, 32);
@@ -110,7 +110,7 @@ body main {
 }
 body main .top--bar {
   width: -webkit-fill-available;
-  background-color: rgba(16, 16, 16, 0.2);
+  background-color: rgba(16, 16, 16, 0.7);
   padding: 5px 30px;
   display: flex;
   flex-direction: row;
@@ -154,12 +154,31 @@ body main .top--bar .user--related div {
   padding: 17px 25px;
   border-radius: 30px;
 }
+body main .top--bar .user--related .log--in, body main .top--bar .user--related .sign--up {
+  font-family: "custom-bold";
+  font-size: 0.9rem;
+}
+body main .top--bar .user--related .log--in p, body main .top--bar .user--related .sign--up p {
+  height: 1.2rem;
+}
 body main .top--bar .user--related .log--in {
   background-color: white;
   color: black;
 }
 body main .top--bar .user--related .log--in p {
   padding: 0 5px;
+}
+body main .top--bar .user--related .log--in:hover {
+  background-color: lightgray;
+}
+body main .top--bar .user--related .log--in:hover span {
+  font-size: 1rem;
+}
+body main .top--bar .user--related .sign--up:hover {
+  color: white;
+}
+body main .top--bar .user--related .sign--up:hover span {
+  font-size: 1rem;
 }
 body main .lists {
   margin-top: 70px;

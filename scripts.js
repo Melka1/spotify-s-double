@@ -53,8 +53,8 @@ window.addEventListener("resize", function(event){
 function handleScroll(event){
     let posY = $("main").scrollTop()
     console.log($("main").scrollTop())
-    if(posY<300){
-        $("body main .top--bar").css("background-color",`rgba(16, 16, 16, ${0.2+posY*0.005})`)
+    if(posY<600){
+        $("body main .top--bar").css("background-color",`rgba(16, 16, 16, ${0.7+posY*0.0015})`)
     }
 
 }
