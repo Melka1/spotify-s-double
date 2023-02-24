@@ -71,3 +71,7 @@ function handleDrag(event){
 }
 
 checkWidth()
+
+$("form").click(function(e){
+    e.preventDefault();
+})

@@ -185,6 +185,9 @@ body main .top--bar .user--related div {
   padding: 17px 25px;
   border-radius: 30px;
 }
+body main .top--bar .user--related a {
+  text-decoration: none;
+}
 body main .top--bar .user--related .log--in, body main .top--bar .user--related .sign--up {
   font-family: "custom-bold";
   font-size: 0.9rem;
