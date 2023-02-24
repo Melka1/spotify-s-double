@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/6eb687b169.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <link rel="stylesheet" href="login.css">
+    <title>Spotify's Double</title>
+</head>
+<body>
+    <header>
+        <i  class="fa-brands fa-spotify"></i>
+        <p>Spotify</p>
+    </header>
+    <main>
+        <p>To continue, log in to Spotify.</p>
+        <div class="login fb">
+            <i class="fa-brands fa-facebook"></i>
+            <p>CONTINUE WITH FACEBOOK</p>
+        </div>
+        <div class="login apple">
+            <i class="fa-brands fa-apple"></i>
+            <p>CONTINUE WITH APPLE</p>
+        </div>
+        <div class="login google">
+            <img src="./assets/images/icons8-google-48.png" alt="">
+            <p>CONTINUE WITH GOOGLE</p>
+        </div>
+        <div class="partitioner">
+            <div class="side"></div>
+            <div class="or">OR</div>
+            <div class="side"></div>
+        </div>
+        <form action="#">
+            <label for="email">Email adderss or username</label>
+            <input type="text" id="email" placeholder="Email address or username">
+            <label for="password">Password</label>
+            <input type="password" name="pass" id="password" placeholder="Password">
+            <a href="_black">Forgot your password?</a>
+            <div class="control">
+                <input type="checkbox" name="remember" id="remember">
+                <label for="remember">Remember me</label>
+                <button>LOG IN</button>
+            </div>
+            <hr>
+        </form>
+        <p class="do--not">Don't have an account?</p>
+        <div class="login signup">
+            <p>SIGN UP FOR SPOTIFY</p>
+        </div>
+    </main>
+    <script src="./scripts.js"></script>
+</body>
+</html>
+
