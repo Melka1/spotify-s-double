@@ -151,9 +151,16 @@ body main form a, body main form .control label {
 }
 body main form a {
   margin-bottom: 15px;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-bottom: 2px solid transparent;
 }
 body main form a:hover {
   color: green;
+}
+body main form a:active {
+  border-bottom: 2px solid green;
+  text-decoration: none;
 }
 body main form input[type=checkbox] {
   position: relative;

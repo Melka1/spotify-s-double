@@ -147,9 +147,16 @@ body {
             }
             a {
                 margin-bottom: 15px;
+                width: fit-content;
+                border-bottom: 2px solid transparent;
                 &:hover {
                     color: green;
                 }
+                &:active {
+                    border-bottom: 2px solid green;
+                    text-decoration: none;
+                }
+
             }
             input[type="checkbox"] {
                 position: relative;
