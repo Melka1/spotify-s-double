@@ -99,33 +99,33 @@ body main .login:active::after {
   top: -7px;
   content: "";
 }
-body main .fb, body main .apple {
-  color: white;
-}
 body main .fb {
+  color: white;
   background: #405A93;
-}
-body main .apple {
-  background: rgba(0, 0, 0, 0.9);
 }
 body main .google {
   color: gray;
-  border: 2px solid gray;
+  border: 2px solid darkgray;
 }
 body main .partitioner {
   width: 100%;
-  max-width: 450px;
+  max-width: 350px;
   display: grid;
   gap: 10px;
   margin-top: 15px;
   grid-template-columns: 1fr 30px 1fr;
   text-align: center;
+  align-items: center;
 }
 body main .partitioner .side {
   border-top: 2px solid lightgray;
+  height: 2px;
 }
 body main .partitioner .or {
-  font-size: 0.8rem;
+  font-size: 1.1rem;
+  margin-top: -3px;
+  font-family: "custom-light";
+  color: gray;
 }
 body main .do--not {
   font-size: 1.2rem;
@@ -334,8 +334,20 @@ body main form .policies .container .checkmark::before {
 body main form .policies .container input:checked ~ .checkmark::after {
   display: block;
 }
-body main form .policies .container input:checked ~ .checkmark::before {
+body main form .policies .container input:focus ~ .checkmark::before {
   border-color: black;
+}
+body main form .terms p {
+  font-size: 0.7rem;
+  font-family: "custom-light";
+  text-align: center;
+  margin-bottom: 10px;
+}
+body main form .terms p a {
+  color: green;
+}
+body main form .terms p a:hover {
+  color: #1ed760;
 }
 body main form input::-moz-placeholder {
   font-size: 0.9rem;
@@ -344,23 +356,6 @@ body main form input::-moz-placeholder {
 body main form input, body main form .control label, body main form input::placeholder {
   font-size: 0.9rem;
   color: rgb(80, 78, 78);
-}
-body main form a, body main form .control label {
-  font-family: "custom-light", sans-serif;
-  color: black;
-}
-body main form a {
-  margin-bottom: 15px;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-bottom: 2px solid transparent;
-}
-body main form a:hover {
-  color: green;
-}
-body main form a:active {
-  border-bottom: 2px solid green;
-  text-decoration: none;
 }
 body main form input[type=checkbox] {
   position: relative;
@@ -380,17 +375,47 @@ body main form input[type=checkbox]:focus::after {
   top: -0.35rem;
   content: "";
 }
-body main form hr {
-  color: lightgray;
-  margin: 20px 0;
+body main form .btn--signup {
+  background-color: #1ed760;
+  border: none;
+  padding: 20px 50px;
+  font-size: 1rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-self: center;
+  border-radius: 30px;
+  color: black;
+  font-family: "custom-medium", sans-serif;
+  margin-top: 10px;
+  height: 56px;
+  position: relative;
 }
-body main > hr {
-  border-top: 1px solid #e9e2e2;
+body main form .btn--signup:hover {
+  transform: scale(1.05);
 }
-body main .signup {
-  border: 1px solid rgb(175, 171, 171);
-  color: gray;
+body main form .btn--signup:hover span {
+  font-size: 1.1rem;
+  margin-bottom: 0.1rem;
 }
-body main .signup:hover {
-  border-color: black;
+body main form .btn--signup:focus::after {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  border: 2px solid black;
+  border-radius: 40px;
+  content: "";
+}
+body main form .have--acc {
+  font-family: "custom-light", sans-serif;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 100px;
+}
+body main form .have--acc a {
+  color: green;
+}
+body main form .have--acc a:hover {
+  color: #1ed760;
 }/*# sourceMappingURL=signup.css.map */

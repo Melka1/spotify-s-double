@@ -225,4 +225,9 @@ body main .signup {
 }
 body main .signup:hover {
   border-color: black;
+}
+body main a {
+  min-width: 450px;
+  text-decoration: none;
+  align-self: center;
 }/*# sourceMappingURL=login.css.map */

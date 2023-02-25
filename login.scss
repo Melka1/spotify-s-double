@@ -224,5 +224,10 @@ body {
                 border-color: black;
             }
         }
+        a {
+            min-width: 450px;
+            text-decoration: none;
+            align-self: center;
+        }
     }
 }
