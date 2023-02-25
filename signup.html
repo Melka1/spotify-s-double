@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/6eb687b169.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <link rel="stylesheet" href="signup.css">
+    <title>Spotify's Double</title>
+</head>
+<body>
+    <header>
+        <i  class="fa-brands fa-spotify"></i>
+        <p>Spotify</p>
+    </header>
+    <main>
+        <p>Sign Up for free to start listening.</p>
+        <div class="login fb">
+            <i class="fa-brands fa-facebook"></i>
+            <p><span>C</span>ontinue with <span>F</span>acebook</p>
+        </div>
+        <div class="login google">
+            <img src="./assets/images/icons8-google-48.png" alt="">
+            <p><span>C</span>ontinue with <span>G</span>oogle</p>
+        </div>
+        <div class="partitioner">
+            <div class="side"></div>
+            <div class="or">OR</div>
+            <div class="side"></div>
+        </div>
+        <form action="#">
+            <p class="title">Sign up with your email address</p>
+            <label for="email">What's your Email?</label>
+            <input type="text" id="email" placeholder="Enter your email.">
+            <label for="con--email">Confirm your Email</label>
+            <input type="text" id="con--email" placeholder="Enter your email again.">
+            <label for="password">Create a password</label>
+            <input type="password" name="pass" id="password" placeholder="Create a password.">
+            <label for="nick--name">What should we call you?</label>
+            <input type="text" id="nick--name" placeholder="Enter a profile name.">
+            <p class="note">This appears on your profile.</p>
+            <label for="date--birth">What's your date of birth?</label>
+            <div class="date-of-birth">
+                <div class="date">
+                    <p>Day</p>
+                    <input type="text" placeholder="DD" maxlength="2">
+                </div>
+                <div class="month">
+                    <p>Month</p>
+                    <div class="choose--month">
+                        <p>Month</p>
+                        <span class="material-symbols-outlined">
+                            expand_more
+                        </span>
+                        <div class="drop--down" style="display: none;">
+                            <p class="months january">january</p>
+                            <p class="months february">February</p>
+                            <p class="months march">March</p>
+                            <p class="months april">April</p>
+                            <p class="months may">May</p>
+                            <p class="months june">June</p>
+                            <p class="months july">July</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="year">
+                    <p>Year</p>
+                    <input type="text" placeholder="YYYY" maxlength="4">
+                </div>
+
+            </div>
+            <label for="gender--type" class="gender--label">What's your Gender?</label>
+            <div id="gender--type">
+                <label class="container">Male
+                    <input type="radio" name="gender" id="male">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Female
+                    <input type="radio" name="gender" id="female">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Prefer not to say
+                    <input type="radio" name="gender" id="no-to">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="policies">
+                <label class="container">I would prefer not to receive marketing messages from Spotify
+                    <input type="checkbox" id="policy">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Share my registration data with Spotify's content providers for marketing purposes.
+                    <input type="checkbox" id="policy">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </form>
+        <p class="do--not">Don't have an account?</p>
+        <div class="login signup">
+            <p>SIGN UP FOR SPOTIFY</p>
+        </div>
+    </main>
+    <script src="./scripts.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,396 @@
+@font-face {
+  font-family: "custom-black";
+  src: url("./fonts/Circular/CircularStd-Black.otf");
+}
+@font-face {
+  font-family: "custom-light";
+  src: url("./fonts/Circular/CircularStd-Light.otf");
+}
+@font-face {
+  font-family: "custom-medium";
+  src: url("./fonts/Circular/CircularStd-Medium.otf");
+}
+@font-face {
+  font-family: "custom-bold";
+  src: url("./fonts/Circular/CircularStd-Bold.otf");
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "custom-black", sans-serif;
+  font-size: 16px;
+  width: 100vw;
+}
+body header {
+  width: 100%;
+  padding: 40px 20px;
+  justify-content: center;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+body header * {
+  display: inline;
+}
+body header i {
+  font-size: 2.7rem;
+}
+body header p {
+  font-size: 1.7rem;
+}
+body main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  padding-top: 40px;
+}
+body main > p {
+  font-size: 1.7rem;
+  margin-bottom: 30px;
+}
+body main .note {
+  font-size: 0.9rem;
+  font-family: "custom-light", sans-serif;
+}
+body main .login {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: 1px solid lightgray;
+  border-radius: 30px;
+  padding: 10px;
+  max-width: 350px;
+  margin: 10px;
+  height: 48px;
+}
+body main .login p {
+  font-size: 0.9rem;
+}
+body main .login i {
+  font-size: 1.5rem;
+}
+body main .login img {
+  height: 1.5rem;
+}
+body main .login:hover {
+  transform: scale(1.05);
+}
+body main .login:hover span {
+  font-size: 1rem;
+}
+body main .login:active::after {
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  border-radius: 40px;
+  background: transparent;
+  border: 2px solid black;
+  position: absolute;
+  left: -7px;
+  top: -7px;
+  content: "";
+}
+body main .fb, body main .apple {
+  color: white;
+}
+body main .fb {
+  background: #405A93;
+}
+body main .apple {
+  background: rgba(0, 0, 0, 0.9);
+}
+body main .google {
+  color: gray;
+  border: 2px solid gray;
+}
+body main .partitioner {
+  width: 100%;
+  max-width: 450px;
+  display: grid;
+  gap: 10px;
+  margin-top: 15px;
+  grid-template-columns: 1fr 30px 1fr;
+  text-align: center;
+}
+body main .partitioner .side {
+  border-top: 2px solid lightgray;
+}
+body main .partitioner .or {
+  font-size: 0.8rem;
+}
+body main .do--not {
+  font-size: 1.2rem;
+  font-family: "custom-bold";
+  margin-top: 10px;
+}
+body main form {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+body main form .title {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 25px;
+}
+body main form .note {
+  margin-bottom: 30px;
+}
+body main form > label {
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+  font-family: "custom-medium";
+}
+body main form input {
+  padding: 15px 10px;
+  margin-bottom: 30px;
+  border: 1px solid gray;
+  border-radius: 3px;
+  transition: 0.2s ease;
+}
+body main form input:hover {
+  border-color: black;
+}
+body main form .date-of-birth {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 5fr 3fr;
+  gap: 5%;
+  font-family: "custom-light";
+}
+body main form .date-of-birth > div {
+  width: 100%;
+}
+body main form .date-of-birth > div > p {
+  font-size: 0.8rem;
+  margin: 10px 0;
+  color: black;
+}
+body main form .date-of-birth input {
+  width: 100%;
+  margin-bottom: 0;
+  border-radius: 5px;
+  font-family: "custom-light";
+}
+body main form .date-of-birth input::-moz-placeholder {
+  font-family: "custom-light";
+}
+body main form .date-of-birth input::placeholder {
+  font-family: "custom-light";
+}
+body main form .date-of-birth .month {
+  display: flex;
+  flex-direction: column;
+}
+body main form .date-of-birth .month .choose--month {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  color: rgb(80, 78, 78);
+  border: 1px solid;
+  height: 100%;
+}
+body main form .date-of-birth .month .choose--month:hover {
+  border-color: black;
+}
+body main form .gender--label {
+  margin-top: 30px;
+}
+body main form #gender--type .container {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-family: "custom-light";
+  margin-right: 20px;
+  font-size: 0.9rem;
+}
+body main form #gender--type .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+body main form #gender--type .container .checkmark {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 1rem;
+  width: 1rem;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 1px solid gray;
+}
+body main form #gender--type .container:hover input ~ .checkmark {
+  border-color: #169b45;
+}
+body main form #gender--type .container input:checked ~ .checkmark {
+  background-color: #169b45;
+  border: none;
+}
+body main form #gender--type .container .checkmark::after {
+  display: none;
+  position: absolute;
+  content: "";
+  top: 4px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+body main form #gender--type .container .checkmark::before {
+  position: absolute;
+  content: "";
+  top: -7px;
+  left: -7px;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  transition: border-color 0.2s ease-in 0s;
+}
+body main form #gender--type .container input:checked ~ .checkmark::after {
+  display: block;
+}
+body main form #gender--type .container input:focus ~ .checkmark::before {
+  border-color: black;
+}
+body main form .policies {
+  margin-top: 30px;
+}
+body main form .policies .container {
+  display: block;
+  margin-bottom: 30px;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-family: "custom-light";
+  margin-right: 20px;
+  font-size: 0.9rem;
+}
+body main form .policies .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+body main form .policies .container .checkmark {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 1rem;
+  width: 1rem;
+  background-color: #ffffff;
+  border: 1px solid gray;
+}
+body main form .policies .container:hover input ~ .checkmark {
+  border-color: #169b45;
+}
+body main form .policies .container input:checked ~ .checkmark {
+  background-color: #169b45;
+  border: none;
+}
+body main form .policies .container .checkmark::after {
+  display: none;
+  position: absolute;
+  content: "";
+  top: 3px;
+  left: 5px;
+  width: 3px;
+  height: 6px;
+  border-width: 0px 2px 2px 0px;
+  border-color: white;
+  border-style: solid;
+  transform: rotate(45deg);
+}
+body main form .policies .container .checkmark::before {
+  position: absolute;
+  content: "";
+  top: -7px;
+  left: -7px;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 3px;
+  border: 3px solid transparent;
+  transition: border-color 0.2s ease-in 0s;
+}
+body main form .policies .container input:checked ~ .checkmark::after {
+  display: block;
+}
+body main form .policies .container input:checked ~ .checkmark::before {
+  border-color: black;
+}
+body main form input::-moz-placeholder {
+  font-size: 0.9rem;
+  color: rgb(80, 78, 78);
+}
+body main form input, body main form .control label, body main form input::placeholder {
+  font-size: 0.9rem;
+  color: rgb(80, 78, 78);
+}
+body main form a, body main form .control label {
+  font-family: "custom-light", sans-serif;
+  color: black;
+}
+body main form a {
+  margin-bottom: 15px;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-bottom: 2px solid transparent;
+}
+body main form a:hover {
+  color: green;
+}
+body main form a:active {
+  border-bottom: 2px solid green;
+  text-decoration: none;
+}
+body main form input[type=checkbox] {
+  position: relative;
+  accent-color: #1ed760;
+  height: 1rem;
+  width: 1rem;
+  margin-bottom: 0;
+}
+body main form input[type=checkbox]:focus::after {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 5px;
+  background: transparent;
+  border: 2px solid black;
+  position: absolute;
+  left: -0.35rem;
+  top: -0.35rem;
+  content: "";
+}
+body main form hr {
+  color: lightgray;
+  margin: 20px 0;
+}
+body main > hr {
+  border-top: 1px solid #e9e2e2;
+}
+body main .signup {
+  border: 1px solid rgb(175, 171, 171);
+  color: gray;
+}
+body main .signup:hover {
+  border-color: black;
+}/*# sourceMappingURL=signup.css.map */
