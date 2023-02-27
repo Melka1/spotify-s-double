@@ -149,6 +149,7 @@ body {
             align-items: center;
             position: fixed;
             z-index: 1;
+            justify-content: space-between;
             .page--control {
                 padding: 10px;
                 display: flex;
@@ -162,16 +163,16 @@ body {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    object {
+                    svg {
                         height: 16px;
-                        .svg {
-                            fill: white;
-                            z-index: 0;
+                        z-index: 0;
+                        path {
+                            fill: $gray-color;
                         }
                     }
                     
                 }
-                .prev object {
+                .prev svg {
                     transform: rotate(180deg);
                 }   
             }

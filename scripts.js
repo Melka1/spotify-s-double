@@ -3,11 +3,13 @@ let showAll = false;
 let pages = ["home"];
 let now = 0;
 let last = 0
-checkNavState()
+
 checkWidth()
 
 function checkWidth(){
     let width = $("main").width();
+    $(".user--button").css("display", "block")
+    $(".partitionX").css("display", "block")
     let partition1 = $("body main .lists #0 .list .list--part")
     let partition2 = $("body main .lists #1 .list .list--part")
     showAll?$("body main .lists .list--container .list .list--part").css("display", "blok"):
@@ -65,6 +67,8 @@ function checkWidth(){
             partition1.css("display", "block")
             partition2.css("display", "block")
         }
+        $(".user--button").css("display", "none")
+        $(".partitionX").css("display", "none")    
     } 
 }
 
@@ -132,14 +136,23 @@ function handleNavigation(page){
 
 function checkNavState(){
     if(now == 0){
-        $("#prev:hover").css("cursor", "not-allowed")
+        $("#prev").hover(function(){
+            $(this).css("cursor", "not-allowed")
+        })
     } else {
-        $("#prev:hover").css("cursor", "pointer")
+        $("#prev").hover(function(){
+            $(this).css("cursor", "pointer")
+        })
     }
 
     if(pages.length-1<now+1){
-        $("#next:hover").css("cursor", "not-allowed")
+        $("#next").hover(function(){
+            $(this).css("cursor", "not-allowed")
+        })
     } else {
-        $("#next:hover").css("cursor", "pointer")
+        $("#next").hover(function(){
+            $(this).css("cursor", "pointer")
+        })
     }
 }
+checkNavState()

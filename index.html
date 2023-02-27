@@ -65,10 +65,10 @@
         <section class="top--bar">
             <div class="page--control">
                 <div onclick="handleNavigation(-1)" class="prev" id="prev">
-                    <object data="./assets/images/arrow_forward_ios_FILL0_wght400_GRAD0_opsz48.svg" type="image/svg+xml"></object>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m304 974-56-57 343-343-343-343 56-57 400 400-400 400Z" fill="white"/></svg>
                 </div>
                 <div onclick="handleNavigation(1)" class="next" id="next">
-                    <object data="./assets/images/arrow_forward_ios_FILL0_wght400_GRAD0_opsz48.svg" type="image/svg+xml"></object>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m304 974-56-57 343-343-343-343 56-57 400 400-400 400Z" fill="white"/></svg>
                 </div>  
             </div>
             <div class="user--button">
@@ -93,7 +93,7 @@
         <section class="lists">
             <div class="list--container" id="0">
                 <div class="list--header">
-                    <p class="list--type">Focus</p>
+                    <p class="list--type" onclick="handleShowAll('0')">Focus</p>
                     <p class="show--all" onclick="handleShowAll('0')">Show All</p>
                 </div>
                 <div class="list" >
@@ -202,7 +202,7 @@
             </div>
             <div class="list--container" id="1">
                 <div class="list--header">
-                    <p class="list--type">Spotify Playlists</p>
+                    <p class="list--type" onclick="handleShowAll('1')">Spotify Playlists</p>
                     <p class="show--all" onclick="handleShowAll('1')">Show All</p>
                 </div>
                 <div class="list">

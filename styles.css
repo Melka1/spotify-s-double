@@ -157,6 +157,7 @@ body main .top--bar {
   align-items: center;
   position: fixed;
   z-index: 1;
+  justify-content: space-between;
 }
 body main .top--bar .page--control {
   padding: 10px;
@@ -173,14 +174,14 @@ body main .top--bar .page--control div {
   align-items: center;
   justify-content: center;
 }
-body main .top--bar .page--control div object {
+body main .top--bar .page--control div svg {
   height: 16px;
-}
-body main .top--bar .page--control div object .svg {
-  fill: white;
   z-index: 0;
 }
-body main .top--bar .page--control .prev object {
+body main .top--bar .page--control div svg path {
+  fill: #a7a7a7;
+}
+body main .top--bar .page--control .prev svg {
   transform: rotate(180deg);
 }
 body main .top--bar .user--button {
