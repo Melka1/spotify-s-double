@@ -22,6 +22,7 @@
                     <span class="material-symbols-outlined">
                         home
                     </span>
+                    <!-- <object data="./assets/images/home_FILL1_wght400_GRAD0_opsz48.svg" type=""></object> -->
                     <p>Home</p>
                 </li>
                 <li class="gray">
@@ -63,15 +64,21 @@
     <main onscroll="handleScroll(event)">
         <section class="top--bar">
             <div class="page--control">
-                <div class="prev">
-                    <img src="./assets/images/arrow_forward_ios_FILL0_wght400_GRAD0_opsz48.svg" alt="">
+                <div onclick="handleNavigation(-1)" class="prev" id="prev">
+                    <object data="./assets/images/arrow_forward_ios_FILL0_wght400_GRAD0_opsz48.svg" type="image/svg+xml"></object>
                 </div>
-                <div class="next">
-                    <img src="./assets/images/arrow_forward_ios_FILL0_wght400_GRAD0_opsz48.svg" alt="">
+                <div onclick="handleNavigation(1)" class="next" id="next">
+                    <object data="./assets/images/arrow_forward_ios_FILL0_wght400_GRAD0_opsz48.svg" type="image/svg+xml"></object>
                 </div>  
             </div>
+            <div class="user--button">
+                <button class="preference"><p><span>P</span>remium</p></button>
+                <button class="support"><p><span>S</span>uppor<span>t</span></p></button>
+                <button class="download"><p><span>D</span>own<span>l</span>oa<span>d</span></p></button>
+            </div>
+            <div class="partitionX"></div>
             <div class="user--related">
-                <a href="./signup.html">
+                <a href="./signup.html" class="gray">
                    <div class="sign--up">
                         <p><span>S</span>ign Up</p>
                     </div> 
@@ -87,9 +94,59 @@
             <div class="list--container" id="0">
                 <div class="list--header">
                     <p class="list--type">Focus</p>
-                    <p class="show--all">Show All</p>
+                    <p class="show--all" onclick="handleShowAll('0')">Show All</p>
                 </div>
                 <div class="list" >
+                    <div class="list--part">
+                        <div class="cover">
+                            <img src="./assets/images/music--cover.jpg" alt="">
+                            <div class="play">
+                                <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                            </div>
+                        </div>
+                        <p class="list--name">Peaceful Piano0</p>
+                        <p class="list--desc">Replax and Indulge with beautiful piano pieces</p>
+                    </div>
+                    <div class="list--part">
+                        <div class="cover">
+                            <img src="./assets/images/music--cover.jpg" alt="">
+                            <div class="play">
+                                <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                            </div>
+                        </div>
+                        <p class="list--name">Deep Focus</p>
+                        <p class="list--desc">Keep calm and focus with ambient and pos...</p>
+                    </div>
+                    <div class="list--part">
+                        <div class="cover">
+                            <img src="./assets/images/music--cover.jpg" alt="">
+                            <div class="play">
+                                <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                            </div>
+                        </div>
+                        <p class="list--name">Instrumental Study</p>
+                        <p class="list--desc">Replax and Indulge with beautiful piano pieces</p>
+                    </div>
+                    <div class="list--part">
+                        <div class="cover">
+                            <img src="./assets/images/music--cover.jpg" alt="">
+                            <div class="play">
+                                <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                            </div>
+                        </div>
+                        <p class="list--name">Deep Focus</p>
+                        <p class="list--desc">Keep calm and focus with ambient and pos...</p>
+                    </div>
+                    <div class="list--part">
+                        <div class="cover">
+                            <img src="./assets/images/music--cover.jpg" alt="">
+                            <div class="play">
+                                <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                            </div>
+                        </div>
+                        <p class="list--name">Instrumental Study</p>
+                        <p class="list--desc">Focus with soft study music in the...</p>
+                    </div>
                     <div class="list--part">
                         <div class="cover">
                             <img src="./assets/images/music--cover.jpg" alt="">
@@ -140,14 +197,65 @@
                         <p class="list--name">Instrumental Study</p>
                         <p class="list--desc">Focus with soft study music in the...</p>
                     </div>
+                    
                 </div>
             </div>
             <div class="list--container" id="1">
                 <div class="list--header">
                     <p class="list--type">Spotify Playlists</p>
-                    <p class="show--all">Show All</p>
+                    <p class="show--all" onclick="handleShowAll('1')">Show All</p>
                 </div>
                 <div class="list">
+                    <div class="list--part">
+                        <div class="cover">
+                            <img src="./assets/images/music--cover.jpg" alt="">
+                            <div class="play">
+                                <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                            </div>
+                        </div>
+                        <p class="list--name">Peaceful Piano1</p>
+                        <p class="list--desc">Replax and Indulge with beautiful piano pieces</p>
+                    </div>
+                    <div class="list--part">
+                        <div class="cover">
+                            <img src="./assets/images/music--cover.jpg" alt="">
+                            <div class="play">
+                                <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                            </div>
+                        </div>
+                        <p class="list--name">Deep Focus</p>
+                        <p class="list--desc">Keep calm and focus with ambient and pos...</p>
+                    </div>
+                    <div class="list--part">
+                        <div class="cover">
+                            <img src="./assets/images/music--cover.jpg" alt="">
+                            <div class="play">
+                                <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                            </div>
+                        </div>
+                        <p class="list--name">Peaceful Piano</p>
+                        <p class="list--desc">Replax and Indulge with beautiful piano pieces</p>
+                    </div>
+                    <div class="list--part">
+                        <div class="cover">
+                            <img src="./assets/images/music--cover.jpg" alt="">
+                            <div class="play">
+                                <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                            </div>
+                        </div>
+                        <p class="list--name">Deep Focus</p>
+                        <p class="list--desc">Keep calm and focus with ambient and pos...</p>
+                    </div>
+                    <div class="list--part">
+                        <div class="cover">
+                            <img src="./assets/images/music--cover.jpg" alt="">
+                            <div class="play">
+                                <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                            </div>
+                        </div>
+                        <p class="list--name">Instrumental Study</p>
+                        <p class="list--desc">Focus with soft study music in the...</p>
+                    </div>
                     <div class="list--part">
                         <div class="cover">
                             <img src="./assets/images/music--cover.jpg" alt="">

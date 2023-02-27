@@ -1,10 +1,18 @@
 @font-face {
-  font-family: "custom-bold";
+  font-family: "custom-black";
   src: url("./fonts/Circular/CircularStd-Black.otf");
 }
 @font-face {
   font-family: "custom-light";
   src: url("./fonts/Circular/CircularStd-Light.otf");
+}
+@font-face {
+  font-family: "custom-medium";
+  src: url("./fonts/Circular/CircularStd-Medium.otf");
+}
+@font-face {
+  font-family: "custom-bold";
+  src: url("./fonts/Circular/CircularStd-Bold.otf");
 }
 * {
   box-sizing: border-box;
@@ -19,7 +27,7 @@ body {
   font-size: 14px;
   font-family: "custom", sans-serif;
   display: grid;
-  grid-template-columns: 295px 1fr;
+  grid-template-columns: 280px 1fr;
   grid-template-rows: 1fr 75px;
   flex-direction: row;
   overflow: hidden;
@@ -61,11 +69,11 @@ body aside .navigation ul > li {
 }
 body aside .navigation ul > li span {
   font-size: 30px;
-  color: gray;
+  color: #a7a7a7;
   transition: color 0.3s ease;
 }
 body aside .navigation ul > li p {
-  color: gray;
+  color: #a7a7a7;
   transition: color 0.6s ease;
 }
 body aside .navigation ul > li:hover span {
@@ -103,7 +111,7 @@ body aside .lang {
   margin-bottom: 15px;
   padding: 5px 15px;
   align-items: center;
-  border: 1px solid;
+  border: 1px solid gray;
   width: -moz-fit-content;
   width: fit-content;
   border-radius: 20px;
@@ -129,8 +137,9 @@ body aside .partition {
   width: 2px;
 }
 body aside .partition:hover {
-  cursor: e-resize;
+  cursor: col-resize;
   background-color: gray;
+  z-index: 1;
 }
 body main {
   background-color: rgb(33, 32, 32);
@@ -164,21 +173,50 @@ body main .top--bar .page--control div {
   align-items: center;
   justify-content: center;
 }
-body main .top--bar .page--control div img {
+body main .top--bar .page--control div object {
   height: 16px;
+}
+body main .top--bar .page--control div object .svg {
+  fill: white;
+  z-index: 0;
+}
+body main .top--bar .page--control .prev object {
+  transform: rotate(180deg);
+}
+body main .top--bar .user--button {
+  margin-left: auto;
+}
+body main .top--bar .user--button button {
+  background: none;
+  border: none;
+  margin: 0 5px;
+  padding: 5px 0;
+}
+body main .top--bar .user--button button:hover {
+  transform: scale(1.05);
+}
+body main .top--bar .user--button button:hover p {
   color: white;
 }
-body main .top--bar .page--control div:hover {
-  cursor: not-allowed;
+body main .top--bar .user--button button:hover p span {
+  font-size: 105%;
 }
-body main .top--bar .page--control .prev img {
-  transform: rotate(180deg);
+body main .top--bar .user--button p {
+  font-family: "custom-bold";
+  font-size: 1.05rem;
+  color: #a7a7a7;
+  letter-spacing: 1px;
+}
+body main .top--bar .partitionX {
+  padding: 1rem 0;
+  border-left: 1px solid white;
+  margin: 0 15px;
 }
 body main .top--bar .user--related {
   display: flex;
   gap: 10px;
-  margin-left: auto;
   color: lightgray;
+  align-items: center;
 }
 body main .top--bar .user--related div {
   border: none;
@@ -207,6 +245,9 @@ body main .top--bar .user--related .log--in:hover {
 }
 body main .top--bar .user--related .log--in:hover span {
   font-size: 1rem;
+}
+body main .top--bar .user--related .sign--up {
+  color: #a7a7a7;
 }
 body main .top--bar .user--related .sign--up:hover {
   color: white;
@@ -358,10 +399,10 @@ body footer .footer .signup--free {
 }
 
 .gray {
-  color: gray !important;
+  color: #a7a7a7 !important;
 }
 
-.signup--free:hover, li:hover, .title:hover, .user--related div:hover, .lang:hover, .page--control div:hover {
+.signup--free:hover, li:hover, .title:hover, .user--related div:hover, .lang:hover {
   cursor: pointer;
 }
 
