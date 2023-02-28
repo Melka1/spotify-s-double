@@ -462,6 +462,10 @@ body footer .footer .signup--free {
   color: white;
   margin-bottom: 30px;
 }
+.play--login--container .play--login .desc a {
+  text-decoration: none;
+  color: black;
+}
 .play--login--container .play--login .desc .button {
   padding: 15px 35px;
   font-size: 1rem;
@@ -481,6 +485,9 @@ body footer .footer .signup--free {
   font-family: "custom-bold";
   border: 1px solid gray;
 }
+.play--login--container .play--login .desc .download:hover {
+  border-color: white;
+}
 .play--login--container .play--login .desc .sign--up--free {
   background-color: rgb(13, 211, 13);
 }
@@ -489,7 +496,6 @@ body footer .footer .signup--free {
   color: #a7a7a7;
 }
 .play--login--container .play--login .desc .login--link a {
-  text-decoration: none;
   color: white;
 }
 .play--login--container .play--login .desc .login--link a:hover {

@@ -169,7 +169,7 @@ function handlePlay(conInd, listInd){
                         <img src="${imgSrc}" alt="">
                         <div class="desc">
                             <p class="title--login">Start listening with a free Spotify account</p>
-                            <div class="sign--up--free button"><span>S</span>ign up <span>f</span>ree</div>
+                            <a href="signup.html"><div class="sign--up--free button"><span>S</span>ign up <span>f</span>ree</div></a>
                             <div class="download button"><span>D</span>own<span>l</span>oa<span>d</span> app</div>
                             <p class="login--link">Already have an account? <a href="login.html">Log in</a></p>
                         </div>

@@ -460,6 +460,10 @@ body {
                 color: white;
                 margin-bottom: 30px;
             }
+            a {
+                text-decoration: none;
+                color: black;
+            }
             .button {
                 padding: 15px 35px;
                 font-size: 1rem;
@@ -478,6 +482,9 @@ body {
                 color: white;
                 font-family: "custom-bold";
                 border: 1px solid gray;
+                &:hover {
+                    border-color: white;
+                }
             }
             .sign--up--free {
                 background-color: $green-color;
@@ -486,7 +493,6 @@ body {
                 margin-top: 1.25rem;
                 color: $gray-color;
                 a {
-                    text-decoration: none;
                     color: white;
                     &:hover {
                         text-decoration: underline;;
