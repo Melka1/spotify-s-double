@@ -2,7 +2,8 @@
 let showAll = false;
 let pages = ["home"];
 let now = 0;
-let last = 0
+let last = 0;
+let loggedIn = false;
 
 checkWidth()
 
@@ -156,3 +157,24 @@ function checkNavState(){
     }
 }
 checkNavState()
+
+function handlePlay(conInd, listInd){
+    let imgSrc = $(`.list--container:nth-of-type(${conInd+1}) .list--part:nth-of-type(${listInd+1}) .cover img`).attr("src")
+    console.log(imgSrc)
+
+    $("body").append(`<div class="bg--cover"></div>`)
+    $("body").append(`
+                <div class="play--login--container">
+                    <div class="play--login">
+                        <img src="${imgSrc}" alt="">
+                        <div class="desc">
+                            <p class="title--login">Start listening with a free Spotify account</p>
+                            <div class="sign--up--free button">Sign up free</div>
+                            <div class="download button">Download app</div>
+                            <p class="login--link">Already have an account? <a href="login.html">Log in</a></p>
+                        </div>
+                    </div>
+                    <p class="close">Close</p>
+                </div>
+                `)
+}
