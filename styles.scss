@@ -434,7 +434,7 @@ body {
     position: absolute;
     left: 0;
     top: 0;
-    gap: 10px;
+    gap: 20px;
     .play--login {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -461,10 +461,18 @@ body {
                 margin-bottom: 30px;
             }
             .button {
-                padding: 15px 25px;
+                padding: 15px 35px;
                 font-size: 1rem;
                 border-radius: 40px;
-                margin-bottom: 15px;
+                margin-bottom: 1rem;
+                &:hover {
+                    cursor: default;
+                    transform: scale(1.05);
+                    margin-bottom: 0.9rem;
+                    span {
+                        font-size: 1.1rem;
+                    }
+                }
             }
             .download {
                 color: white;
@@ -480,6 +488,9 @@ body {
                 a {
                     text-decoration: none;
                     color: white;
+                    &:hover {
+                        text-decoration: underline;;
+                    }
                 }
             }
         }
@@ -488,5 +499,13 @@ body {
         color: $gray-color;
         font-size: 1rem;
         font-family: "custom-medium";
+        &:hover {
+            color: white;
+            margin-top: -0.1rem;
+            cursor: default;
+            span {
+                font-size: 1.1rem;
+            }
+        }
     }
 }

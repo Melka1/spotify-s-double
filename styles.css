@@ -433,7 +433,7 @@ body footer .footer .signup--free {
   position: absolute;
   left: 0;
   top: 0;
-  gap: 10px;
+  gap: 20px;
 }
 .play--login--container .play--login {
   display: grid;
@@ -463,10 +463,18 @@ body footer .footer .signup--free {
   margin-bottom: 30px;
 }
 .play--login--container .play--login .desc .button {
-  padding: 15px 25px;
+  padding: 15px 35px;
   font-size: 1rem;
   border-radius: 40px;
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
+}
+.play--login--container .play--login .desc .button:hover {
+  cursor: default;
+  transform: scale(1.05);
+  margin-bottom: 0.9rem;
+}
+.play--login--container .play--login .desc .button:hover span {
+  font-size: 1.1rem;
 }
 .play--login--container .play--login .desc .download {
   color: white;
@@ -484,8 +492,19 @@ body footer .footer .signup--free {
   text-decoration: none;
   color: white;
 }
+.play--login--container .play--login .desc .login--link a:hover {
+  text-decoration: underline;
+}
 .play--login--container .close {
   color: #a7a7a7;
   font-size: 1rem;
   font-family: "custom-medium";
+}
+.play--login--container .close:hover {
+  color: white;
+  margin-top: -0.1rem;
+  cursor: default;
+}
+.play--login--container .close:hover span {
+  font-size: 1.1rem;
 }/*# sourceMappingURL=styles.css.map */
