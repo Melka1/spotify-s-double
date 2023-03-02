@@ -1,0 +1,260 @@
+@import "./varibles";
+$gray-color: #a7a7a7;
+$green-color: rgb(13, 211, 13);
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "custom-medium";
+}
+
+body {
+    font-size: 16px;
+    width: 100vw;
+    header {
+        display: flex;
+        flex-direction: row;
+        padding: 16px 80px;
+        background-color: black;
+        color: white;
+        justify-content: space-between;
+        .logo {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            i {
+                font-size: 3rem;
+            }
+            img {
+                width: 3.5rem;
+            }
+            p {
+                font-size: 1.7rem;
+            }
+        }
+        .controls {
+            display: flex;
+            flex-direction: row;
+            .action {
+                li a {
+                    color: white;
+                }
+            }
+            .accounts {
+                li a {
+                    color: $gray-color;
+                }
+            }
+            ul {
+                display: flex;
+                flex-direction: row;
+                gap: 2rem;
+                li {
+                    margin: 0;
+                    list-style: none;
+                    display: flex;
+                    align-items: center;
+                    a {
+                        text-decoration: none;
+                        height: fit-content;
+                        &:hover {
+                            color: $green-color;
+                        }
+                    } 
+                }
+
+            }
+        }
+        .partitionX {
+            border-left: 1px solid white;
+            margin: 0.8rem 2rem;
+        }
+    }
+    section {
+        padding: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        *{
+            margin: 15px 0;
+        }
+    }
+    .download {
+        background: rgb(25, 230, 140);
+        img {
+            width: 130px;
+            margin-bottom: 0;
+        }
+        .title {
+            font-family: "custom-black";
+            font-size: 3rem;
+        }
+        .desc {
+            font-family: "custom-light";
+        }
+        a {
+            padding: 15px 30px;
+            border-radius: 25px;
+            border: none;
+            text-decoration: none;
+            background-color: white;
+            color: black;
+            font-size: 14px;
+            &:hover {
+                // transform: scale(1.05);
+                span {
+                    font-size: 16px;
+                }
+                margin-top: 14px;
+                margin-bottom: 14px;
+            }
+        }
+    }
+    .sites{
+        *{
+            margin: 15px 0;
+        }
+        h3 {
+            font-size: 2rem;
+        }
+        p {
+            font-family: "custom-light"; 
+        }
+        img {
+            height: 38px;
+        }
+        .links {
+            display: flex;
+            flex-direction: row;
+            gap: 1.5rem;
+        }
+    }
+    .account--choice {
+        background: #212227;
+        color: white;
+        img {
+            height: 200px;
+        }
+        h3 {
+            font-size: 2rem;
+        }
+        a {
+            font-family: "custom-light";
+            text-transform: uppercase;
+            color: $green-color;
+            &:hover {
+                color: rgb(102, 239, 102);
+            }
+        }
+        .chose {
+            color: white;
+            text-decoration: none;
+            &:hover {
+                cursor: text;
+                color: white;
+            }
+        }
+        .devices {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .divider {
+            width: 6px;
+            height: 6px;
+            background-color: $green-color;
+            border-radius: 50%;
+            margin: 0 15px;
+        }
+    }
+    footer {
+        padding: 80px 50px 50px 50px;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        color: white;
+        .upper {
+            justify-content: center;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 40px;
+            .logo {
+                display: inherit;
+                align-items: center;
+                gap: 10px;
+                img {
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+            .spotify--info {
+                display: inherit;
+                padding-top: 20px;
+                gap: 50px;
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    h2 {
+                        text-transform: uppercase;
+                        color: $gray-color;
+                        font-size: 0.8rem;
+                        padding-bottom: 10px;
+                        letter-spacing: 1px;
+                    }
+                    a {
+                        color: white;
+                        text-decoration: none;
+                        padding: 10px 0;
+                        font-family: "custom-light";
+                        &:hover {
+                            color: $green-color;
+                        }
+                    }
+                }
+            }
+            .social--media {
+                margin-left: 300px;
+                display: flex;
+                flex-direction: row;
+                gap: 15px;
+                a {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    background-color: #524e4e;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    text-decoration: none;
+                    img {
+                        height: 1.8rem;
+                    }
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                .tweeter:hover {
+                    img {
+                        content: url("./assets/images/icons8-twitter\ -\ hover.svg");
+                    }
+                }
+                .instagram:hover {
+                    img {
+                        content: url("./assets/images/icons8-instagram\ -\ hover.svg");
+                    }
+                }
+                .facebook p {
+                    font-size: 1.8rem;
+                    &:hover {
+                        color: $green-color;
+                    }
+                }
+            }
+        }
+
+    }
+}

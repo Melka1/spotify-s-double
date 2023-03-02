@@ -1,0 +1,260 @@
+@font-face {
+  font-family: "custom-black";
+  src: url("./fonts/Circular/CircularStd-Black.otf");
+}
+@font-face {
+  font-family: "custom-light";
+  src: url("./fonts/Circular/CircularStd-Light.otf");
+}
+@font-face {
+  font-family: "custom-medium";
+  src: url("./fonts/Circular/CircularStd-Medium.otf");
+}
+@font-face {
+  font-family: "custom-bold";
+  src: url("./fonts/Circular/CircularStd-Bold.otf");
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "custom-medium";
+}
+
+body {
+  font-size: 16px;
+  width: 100vw;
+}
+body header {
+  display: flex;
+  flex-direction: row;
+  padding: 16px 80px;
+  background-color: black;
+  color: white;
+  justify-content: space-between;
+}
+body header .logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+body header .logo i {
+  font-size: 3rem;
+}
+body header .logo img {
+  width: 3.5rem;
+}
+body header .logo p {
+  font-size: 1.7rem;
+}
+body header .controls {
+  display: flex;
+  flex-direction: row;
+}
+body header .controls .action li a {
+  color: white;
+}
+body header .controls .accounts li a {
+  color: #a7a7a7;
+}
+body header .controls ul {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+body header .controls ul li {
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+body header .controls ul li a {
+  text-decoration: none;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+body header .controls ul li a:hover {
+  color: rgb(13, 211, 13);
+}
+body header .partitionX {
+  border-left: 1px solid white;
+  margin: 0.8rem 2rem;
+}
+body section {
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body section * {
+  margin: 15px 0;
+}
+body .download {
+  background: rgb(25, 230, 140);
+}
+body .download img {
+  width: 130px;
+  margin-bottom: 0;
+}
+body .download .title {
+  font-family: "custom-black";
+  font-size: 3rem;
+}
+body .download .desc {
+  font-family: "custom-light";
+}
+body .download a {
+  padding: 15px 30px;
+  border-radius: 25px;
+  border: none;
+  text-decoration: none;
+  background-color: white;
+  color: black;
+  font-size: 14px;
+}
+body .download a:hover {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+body .download a:hover span {
+  font-size: 16px;
+}
+body .sites * {
+  margin: 15px 0;
+}
+body .sites h3 {
+  font-size: 2rem;
+}
+body .sites p {
+  font-family: "custom-light";
+}
+body .sites img {
+  height: 38px;
+}
+body .sites .links {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+body .account--choice {
+  background: #212227;
+  color: white;
+}
+body .account--choice img {
+  height: 200px;
+}
+body .account--choice h3 {
+  font-size: 2rem;
+}
+body .account--choice a {
+  font-family: "custom-light";
+  text-transform: uppercase;
+  color: rgb(13, 211, 13);
+}
+body .account--choice a:hover {
+  color: rgb(102, 239, 102);
+}
+body .account--choice .chose {
+  color: white;
+  text-decoration: none;
+}
+body .account--choice .chose:hover {
+  cursor: text;
+  color: white;
+}
+body .account--choice .devices {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+body .account--choice .divider {
+  width: 6px;
+  height: 6px;
+  background-color: rgb(13, 211, 13);
+  border-radius: 50%;
+  margin: 0 15px;
+}
+body footer {
+  padding: 80px 50px 50px 50px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+body footer .upper {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+}
+body footer .upper .logo {
+  display: inherit;
+  align-items: center;
+  gap: 10px;
+}
+body footer .upper .logo img {
+  width: 50px;
+  height: 50px;
+}
+body footer .upper .spotify--info {
+  display: inherit;
+  padding-top: 20px;
+  gap: 50px;
+}
+body footer .upper .spotify--info div {
+  display: flex;
+  flex-direction: column;
+}
+body footer .upper .spotify--info div h2 {
+  text-transform: uppercase;
+  color: #a7a7a7;
+  font-size: 0.8rem;
+  padding-bottom: 10px;
+  letter-spacing: 1px;
+}
+body footer .upper .spotify--info div a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 0;
+  font-family: "custom-light";
+}
+body footer .upper .spotify--info div a:hover {
+  color: rgb(13, 211, 13);
+}
+body footer .upper .social--media {
+  margin-left: 300px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+body footer .upper .social--media a {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #524e4e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+}
+body footer .upper .social--media a img {
+  height: 1.8rem;
+}
+body footer .upper .social--media a:hover {
+  cursor: pointer;
+}
+body footer .upper .social--media .tweeter:hover img {
+  content: url("./assets/images/icons8-twitter - hover.svg");
+}
+body footer .upper .social--media .instagram:hover img {
+  content: url("./assets/images/icons8-instagram - hover.svg");
+}
+body footer .upper .social--media .facebook p {
+  font-size: 1.8rem;
+}
+body footer .upper .social--media .facebook p:hover {
+  color: rgb(13, 211, 13);
+}/*# sourceMappingURL=download.css.map */
