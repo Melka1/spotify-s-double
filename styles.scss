@@ -647,6 +647,11 @@ body {
             margin: 0 35px;
             .number {
                 justify-content: center;
+                align-items: center;
+                i {
+                    color: white;
+                    display: none;
+                }
             }
             .time {
                 justify-content: center;
@@ -701,7 +706,14 @@ body {
                 .duration i {
                     display: block;
                 } 
-
+                .number {
+                    i{
+                        display: block;
+                    }
+                    p {
+                        display: none;
+                    }
+                }
                 
             }
         }

@@ -645,6 +645,11 @@ body footer .footer a {
 }
 .player .music--list > div .number {
   justify-content: center;
+  align-items: center;
+}
+.player .music--list > div .number i {
+  color: white;
+  display: none;
 }
 .player .music--list > div .time {
   justify-content: center;
@@ -695,6 +700,12 @@ body footer .footer a {
 }
 .player .music--list .song:hover .duration i {
   display: block;
+}
+.player .music--list .song:hover .number i {
+  display: block;
+}
+.player .music--list .song:hover .number p {
+  display: none;
 }
 
 .stick--top {
