@@ -125,9 +125,9 @@ body {
             top: 0;
             height: 100%;
             background-color: transparent;
-            border-right: 5px solid transparent;
-            border-left: 5px solid transparent;
-            width: 2px;
+            border-right: 1px solid transparent;
+            border-left: 1px solid transparent;
+            width: 1px;
             &:hover {
                 cursor:col-resize;
                 background-color: gray;
@@ -151,6 +151,7 @@ body {
             position: fixed;
             z-index: 1;
             justify-content: space-between;
+            height: 70px;
             .page--control {
                 padding: 10px;
                 display: flex;
@@ -242,7 +243,6 @@ body {
                 .sign--up {
                     color: $gray-color;
                     &:hover {
-                        // font-size: 1rem;
                         color: white;
                         span {
                             font-size: 1rem;
@@ -364,6 +364,10 @@ body {
         }
         &::-webkit-scrollbar {
             z-index: 1;
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: none;
         }
            
     }
@@ -393,6 +397,9 @@ body {
                 background: white;
                 color: black;
             }
+            a {
+                text-decoration: none;
+            }
         }
     }
 }
@@ -403,9 +410,7 @@ body {
 .signup--free:hover, li:hover,.title:hover, .user--related div:hover, .lang:hover {
     cursor: pointer;
 }
-// .page--control div:hover {
-//     cursor: not-allowed;
-// }
+
 .signup--free:hover {
     span {
         font-size: 1.1rem;
@@ -488,6 +493,7 @@ body {
             }
             .sign--up--free {
                 background-color: $green-color;
+                // text-decoration: none;
             }
             .login--link {
                 margin-top: 1.25rem;
@@ -514,4 +520,246 @@ body {
             }
         }
     }
+}
+
+.player {
+    font-family: "custom-medium";
+    header {
+        width: 100%;
+        color: white;
+        height: 350px;
+        display: flex;
+        flex-direction: row;
+        padding: 90px 35px 25px 35px;
+        gap: 30px;
+        background: linear-gradient(45deg, rgba(43, 42, 42, 0.5), rgba(113, 97, 97, 0.5));
+        .right {
+            padding-top: 30px;
+            width: 100%;
+            .type {
+                font-size: 0.9rem;
+                font-weight: 700;
+                font-family: "custom-light";
+                letter-spacing: 1px;
+            }
+            h1 {
+                font-size: 6rem;
+            }
+            .sub-topic {
+                font-size: 0.8rem;
+                color: $gray-color;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            &>div {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                width: 100%;
+                letter-spacing: 1px;
+                font-size: 0.8rem;
+                span {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    img {
+                        height: 35px;
+
+                    }
+                    a {
+                        color: white;
+                        text-decoration: none;
+                        font-size: 0.9rem;
+                        font-family: "custom-medium";
+                        &:hover {
+                            text-decoration: underline;;
+                        }
+
+                    }
+                }
+                .divider {
+                    width: 4px;
+                    height: 4px;
+                    background-color: white;
+                    border-radius: 50%;
+                    margin: 0 8px;
+                }
+                .songs {
+                    span {
+                        display: inline;
+                    }
+                }
+            }
+        }
+    }
+    .player--control {
+        display: flex;
+        flex-direction: row;
+        padding: 25px 35px;
+        gap: 15px;
+        div {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        .play {
+            background-color: $green-color;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            padding-left: 4px;
+            &:hover {
+                width: 64px;
+                height: 64px;
+                margin: -2px;
+            }
+        }
+        .fav, .more {
+            color: $gray-color;
+            font-size: 2rem;
+            font-weight: 100;
+            &:hover {
+                color: white;
+            }
+        }
+    }
+    .music--list {
+        font-family: "custom-light";
+        // padding: 0 35px;
+        color:$gray-color;
+        &>.title { 
+            border-bottom: 1px solid rgba(236, 229, 229, 0.453);;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            font-family: "custom-medium";
+            img {
+                height: 1.4rem;
+            }
+        }
+        &>div {
+            grid-template-columns: 50px 1fr 200px 200px 150px;
+            padding: 7px 0;
+            padding-right: 40px;
+            display: grid;
+            margin: 0 35px;
+            .number {
+                justify-content: center;
+            }
+            .time {
+                justify-content: center;
+            }
+            .title {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                align-items: initial;
+                img {
+                    width: 40px;
+                    height: 40px;
+                }
+                .name {
+                    font-family: "custom-light";
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    font-size: 0.9rem;
+                    .song--title {
+                        font-size: 1rem;
+                        color: white;
+                    }
+                    p:hover {
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .album {
+                letter-spacing: 1px;
+                &:hover {
+                text-decoration: underline;
+                cursor: pointer;
+                }
+            }
+            &>* {
+                display: flex;
+                align-items: center;
+                font-size: 0.8rem;
+            }
+
+        }
+        .song {
+            &:hover {
+                background-color: rgba(167, 167, 167, 0.3);
+                border-radius: 10px;
+                .title, .album {
+                    color: white;
+                }
+                .duration i {
+                    display: block;
+                } 
+
+                
+            }
+        }
+    }
+}
+
+.stick--top {
+    position: fixed;
+    top: 70px;
+    z-index: 3;
+    background-color: rgb(16, 16, 16,1);
+    margin: 0 !important;
+    padding: 7px 75px 7px 35px !important;
+}
+.music--header {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+    align-items: center;
+    font-family: "custom-bold";
+    margin-left: 5px;
+    .nav--play {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $green-color;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        padding-left: 4px;
+        &:hover {
+            width: 54px;
+            height: 54px;
+            margin: -2px;
+        }
+    }
+    .music--title {
+        color: white;
+        font-size: 1.5rem;
+    }
+}
+.duration {
+    justify-content: center;
+    i {
+        display: none;
+        font-size: 1.1rem;
+        &:hover {
+            color: white;
+        }
+    }
+    i:first-of-type {
+        margin-right: 30px;
+    }
+    i:nth-of-type(2){
+        margin: 0 15px;
+    }
+    
 }

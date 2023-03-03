@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/6eb687b169.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <title>Spotify's Double</title>
+</head>
+<body>
+    <aside>
+        <div class="title">
+            <i  class="fa-brands fa-spotify"></i>
+            <p>Spotify</p>
+        </div>
+        <div class="navigation">
+            <ul>
+                <li class="home">
+                    <span class="material-symbols-outlined">
+                        home
+                    </span>
+                    <!-- <object data="./assets/images/home_FILL1_wght400_GRAD0_opsz48.svg" type=""></object> -->
+                    <p>Home</p>
+                </li>
+                <li class="gray">
+                    <span class="material-symbols-outlined">
+                        search
+                    </span>
+                    <p>Search</p>
+                </li>
+                <li class="gray">
+                    <span class="material-symbols-outlined">
+                        library_add
+                    </span>
+                    <p>Your Library</p>
+                </li>
+                <hr>
+                <li class="gray">
+                    <span class="material-symbols-outlined">
+                        add_box
+                    </span>
+                    <p>Create Playlist</p>
+                </li>
+                <li class="gray">
+                    <span class="material-symbols-outlined like">
+                        favorite
+                    </span>
+                    <p>Liked Songs</p>
+                </li>
+            </ul>
+        </div>
+        <a href="#" class="cookies">Cookies</a>
+        <div class="lang">
+            <span class="material-symbols-outlined">
+                language
+            </span>
+            <p><span>E</span>nglish</p>
+        </div>
+        <div ondrag="handleDrag(event)" class="partition"></div>
+    </aside>
+    <main onscroll="handleScroll(event)">
+        <section class="top--bar">
+            <div class="page--control">
+                <div onclick="handleNavigation(-1)" class="prev" id="prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m304 974-56-57 343-343-343-343 56-57 400 400-400 400Z" fill="white"/></svg>
+                </div>
+                <div onclick="handleNavigation(1)" class="next" id="next">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m304 974-56-57 343-343-343-343 56-57 400 400-400 400Z" fill="white"/></svg>
+                </div>  
+            </div>
+            <div class="user--button">
+                <button class="preference"><p><span>P</span>remium</p></button>
+                <button class="support"><p><span>S</span>uppor<span>t</span></p></button>
+                <button class="download"><p><span>D</span>own<span>l</span>oa<span>d</span></p></button>
+            </div>
+            <div class="partitionX"></div>
+            <div class="user--related">
+                <a href="./signup.html" class="gray">
+                   <div class="sign--up">
+                        <p><span>S</span>ign Up</p>
+                    </div> 
+                </a>
+                <a href="./login.html">
+                <div class="log--in">
+                    <p><span>L</span>og in</p>
+                </div>
+                </a>
+            </div>
+        </section>
+        <section class="player">
+            <header>
+                <img src="./assets/images/focus101.jpg" alt="">
+                <div class="right">
+                    <p class="type">Playlist</p>
+                    <h1>Deep Focus</h1>
+                    <p class="sub-topic">Keep calm and focus with ambient and post-rock music.</p>
+                    <div>
+                        <span>
+                            <img src="./assets/images/icons8-spotify copy.svg" alt="">
+                            <a href="./index.html">Spotify</a>
+                        </span>
+                        <div class="divider"></div>
+                        <p class="likes">3,874,953 likes</p>
+                        <div class="divider"></div>
+                        <p class="songs">230 songs, <span>about 9hr 30min</span></p>
+                    </div>
+                </div>
+            </header>
+            <div class="player--control">
+                <div class="play"><i class="fa-sharp fa-solid fa-play"></i></div>
+                <div class="fav"><i class="fa-regular fa-heart"></i></div>
+                <div class="more"><i class="fa-solid fa-ellipsis"></i></div>
+            </div>
+            <div class="music--list">
+                <div class="title">
+                    <p class="number">#</p>
+                    <p>Title</p>
+                    <p>Album</p>
+                    <p>Date Added</p>
+                    <p class="time"><img src="./assets/images/icons8-clock.svg" alt=""></p>
+                </div>
+                <div class="song">
+                    <p class="number">1</p>
+                    <div class="title">
+                        <img src="./assets/images/music--cover.jpg" width="40px" height="40px" alt="">
+                        <div class="name">
+                            <p class="song--title">So Far So Good</p>
+                            <p class="song--desc">Sun of They</p>
+                        </div>
+                    </div>
+                    <p class="album">Silent Hills</p>
+                    <p class="date--added">6 Days ago</p>
+                    <div class="duration">
+                        <i class="fa-regular fa-heart"></i>
+                        <p class="time">2:23</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                </div>
+                <div class="song">
+                    <p class="number">2</p>
+                    <div class="title">
+                        <img src="./assets/images/jazz-drums.jpg" width="40px" height="40px" alt="">
+                        <div class="name">
+                            <p class="song--title">Apricity</p>
+                            <p class="song--desc">Imala Zir</p>
+                        </div>
+                    </div>
+                    <p class="album">Apricity</p>
+                    <p class="date--added">6 Days ago</p>
+                    <div class="duration">
+                        <i class="fa-regular fa-heart"></i>
+                        <p class="time">2:23</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                </div>
+                <div class="song">
+                    <p class="number">3</p>
+                    <div class="title">
+                        <img src="./assets/images/peaceful--piano.jpg" alt="">
+                        <div class="name">
+                            <p class="song--title">Solatium</p>
+                            <p class="song--desc">Imber Sun</p>
+                        </div>
+                    </div>
+                    <p class="album">Solatium</p>
+                    <p class="date--added">6 Days ago</p>
+                    <div class="duration">
+                        <i class="fa-regular fa-heart"></i>
+                        <p class="time">2:23</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                </div>
+                <div class="song">
+                    <p class="number">4</p>
+                    <div class="title">
+                        <img src="./assets/images/noimage.jpg" alt="">
+                        <div class="name">
+                            <p class="song--title">efflorescence</p>
+                            <p class="song--desc">Far & Beyond</p>
+                        </div>
+                    </div>
+                    <p class="album">efflorescence</p>
+                    <p class="date--added">6 Days ago</p>
+                    <div class="duration">
+                        <i class="fa-regular fa-heart"></i>
+                        <p class="time">2:23</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                </div>
+                <div class="song">
+                    <p class="number">5</p>
+                    <div class="title">
+                        <img src="./assets/images/deep-focus.jpg" alt="">
+                        <div class="name">
+                            <p class="song--title">Gather My Thoughts</p>
+                            <p class="song--desc">Josef Briem</p>
+                        </div>
+                    </div>
+                    <p class="album">Gather My Thoughts</p>
+                    <p class="date--added">6 Days ago</p>
+                    <div class="duration">
+                        <i class="fa-regular fa-heart"></i>
+                        <p class="time">2:23</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                </div>
+                <div class="song">
+                    <p class="number">6</p>
+                    <div class="title">
+                        <img src="./assets/images/music--cover.jpg" width="40px" height="40px" alt="">
+                        <div class="name">
+                            <p class="song--title">So Far So Good</p>
+                            <p class="song--desc">Sun of They</p>
+                        </div>
+                    </div>
+                    <p class="album">Silent Hills</p>
+                    <p class="date--added">6 Days ago</p>
+                    <div class="duration">
+                        <i class="fa-regular fa-heart"></i>
+                        <p class="time">2:23</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                </div>
+                <div class="song">
+                    <p class="number">7</p>
+                    <div class="title">
+                        <img src="./assets/images/jazz-drums.jpg" width="40px" height="40px" alt="">
+                        <div class="name">
+                            <p class="song--title">Apricity</p>
+                            <p class="song--desc">Imala Zir</p>
+                        </div>
+                    </div>
+                    <p class="album">Apricity</p>
+                    <p class="date--added">6 Days ago</p>
+                    <div class="duration">
+                        <i class="fa-regular fa-heart"></i>
+                        <p class="time">2:23</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                </div>
+                <div class="song">
+                    <p class="number">8</p>
+                    <div class="title">
+                        <img src="./assets/images/peaceful--piano.jpg" alt="">
+                        <div class="name">
+                            <p class="song--title">Solatium</p>
+                            <p class="song--desc">Imber Sun</p>
+                        </div>
+                    </div>
+                    <p class="album">Solatium</p>
+                    <p class="date--added">6 Days ago</p>
+                    <div class="duration">
+                        <i class="fa-regular fa-heart"></i>
+                        <p class="time">2:23</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                </div>
+                <div class="song">
+                    <p class="number">9</p>
+                    <div class="title">
+                        <img src="./assets/images/noimage.jpg" alt="">
+                        <div class="name">
+                            <p class="song--title">efflorescence</p>
+                            <p class="song--desc">Far & Beyond</p>
+                        </div>
+                    </div>
+                    <p class="album">efflorescence</p>
+                    <p class="date--added">6 Days ago</p>
+                    <div class="duration">
+                        <i class="fa-regular fa-heart"></i>
+                        <p class="time">2:23</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                </div>
+                <div class="song">
+                    <p class="number">10</p>
+                    <div class="title">
+                        <img src="./assets/images/deep-focus.jpg" alt="">
+                        <div class="name">
+                            <p class="song--title">Gather My Thoughts</p>
+                            <p class="song--desc">Josef Briem</p>
+                        </div>
+                    </div>
+                    <p class="album">Gather My Thoughts</p>
+                    <p class="date--added">6 Days ago</p>
+                    <div class="duration">
+                        <i class="fa-regular fa-heart"></i>
+                        <p class="time">2:23</p>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="desc">
+                <p class="desc--title">PREVIEW OF SPOTIFY</p>
+                <p class="desc--info">Sign Up to get unlimited songs and podcasts with occational ads. No Crefit card Needed.</p>
+            </div>
+            <a href="./signup.html"><div class="signup--free"><span>S</span>ign up <span>f</span>ree</div></a>
+        </div>
+    </footer>
+    <script src="./scripts.js"></script>
+</body>
+</html>

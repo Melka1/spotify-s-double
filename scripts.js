@@ -4,6 +4,8 @@ let pages = ["home"];
 let now = 0;
 let last = 0;
 let loggedIn = false;
+let titleTop = $(".player .music--list>.title").offset().top;
+let viewPlay = false
 
 checkWidth()
 
@@ -77,11 +79,41 @@ window.addEventListener("resize", checkWidth)
 
 function handleScroll(event){
     let posY = $("main").scrollTop()
-    // console.log($("main").scrollTop())
     if(posY<600){
         $("body main .top--bar").css("background-color",`rgba(16, 16, 16, ${0.7+posY*0.0015})`)
     }
-
+    let width = $(".music--list").width()
+    let height = $(".player .music--list>.title").height()
+    console.log(titleTop, posY)
+    if(titleTop-posY>80){
+        console.log("here")
+        $(".player .music--list>.title").removeClass("stick--top")
+        $(".player .music--list").css("margin-top", "0")
+        $(".player .music--list>.title").css("width", "initial")
+        $(".top--bar .music--header").css("opacity", 0)
+        setTimeout(()=>{
+            $(".top--bar .music--header").remove()
+            viewPlay = false
+        }, 300)
+    } else {
+        $(".player .music--list>.title").addClass("stick--top")
+        $(".player .music--list>.title").css("width", width)
+        $(".player .music--list").css("margin-top", height+25)
+        if(!viewPlay){
+            $(".top--bar .page--control").after(
+                `
+                <div class="music--header">
+                    <div class="nav--play">
+                        <i class="fa-sharp fa-solid fa-play"></i>
+                        </div>
+                    <p class="music--title">Deep Focus</p>
+                </div>
+                `
+                ).fadeIn(200)
+        }
+        $(".top--bar .music--header").css("opacity", 1)
+        viewPlay = true
+    }
 }
 
 function handleDrag(event){
@@ -183,3 +215,4 @@ function closePlayLogin() {
     $("body .bg--cover").remove()
     $("body .play--login--container").remove() 
 }
+
