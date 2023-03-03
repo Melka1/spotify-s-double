@@ -4,8 +4,9 @@ let pages = ["home"];
 let now = 0;
 let last = 0;
 let loggedIn = false;
-let titleTop = $(".player .music--list>.title").offset().top;
+let titleTop;
 let viewPlay = false
+let playlistName;
 
 checkWidth()
 
@@ -106,7 +107,7 @@ function handleScroll(event){
                     <div class="nav--play">
                         <i class="fa-sharp fa-solid fa-play"></i>
                         </div>
-                    <p class="music--title">Deep Focus</p>
+                    <p class="music--title">${playlistName}</p>
                 </div>
                 `
                 ).fadeIn(200)
@@ -188,6 +189,7 @@ function checkNavState(){
         })
     }
 }
+
 checkNavState()
 
 function handlePlay(conInd, listInd){
@@ -214,5 +216,452 @@ function handlePlay(conInd, listInd){
 function closePlayLogin() {
     $("body .bg--cover").remove()
     $("body .play--login--container").remove() 
+}
+
+function chosePlaylist(conInd, listInd) {
+    let imgSrc = $(`.list--container:nth-of-type(${conInd+1}) .list--part:nth-of-type(${listInd+1}) .cover img`).attr("src")
+    console.log(imgSrc)
+    playlistName = $(`.list--container:nth-of-type(${conInd+1}) .list--part:nth-of-type(${listInd+1}) .list--name`).text();
+    let playListDesc = $(`.list--container:nth-of-type(${conInd+1}) .list--part:nth-of-type(${listInd+1}) .list--desc`).text();
+    
+    $("main .lists").remove();
+    $("main").append(`
+    <section class="player">
+    <header>
+        <img src="${imgSrc}" alt="">
+        <div class="right">
+            <p class="type">Playlist</p>
+            <h1>${playlistName}</h1>
+            <p class="sub-topic">${playListDesc}</p>
+            <div>
+                <span>
+                    <img src="./assets/images/icons8-spotify copy.svg" alt="">
+                    <a href="./index.html">Spotify</a>
+                </span>
+                <div class="divider"></div>
+                <p class="likes">3,874,953 likes</p>
+                <div class="divider"></div>
+                <p class="songs">230 songs, <span>about 9hr 30min</span></p>
+            </div>
+        </div>
+    </header>
+    <div class="player--control">
+        <div class="play"><i class="fa-sharp fa-solid fa-play"></i></div>
+        <div class="fav"><i class="fa-regular fa-heart"></i></div>
+        <div class="more"><i class="fa-solid fa-ellipsis"></i></div>
+    </div>
+    <div class="music--list">
+        <div class="title">
+            <p class="number">#</p>
+            <p>Title</p>
+            <p>Album</p>
+            <p>Date Added</p>
+            <p class="time"><img src="./assets/images/icons8-clock.svg" alt=""></p>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>1</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/music--cover.jpg" width="40px" height="40px" alt="">
+                <div class="name">
+                    <p class="song--title">So Far So Good</p>
+                    <p class="song--desc">Sun of They</p>
+                </div>
+            </div>
+            <p class="album">Silent Hills</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>2</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/jazz-drums.jpg" width="40px" height="40px" alt="">
+                <div class="name">
+                    <p class="song--title">Apricity</p>
+                    <p class="song--desc">Imala Zir</p>
+                </div>
+            </div>
+            <p class="album">Apricity</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>3</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/peaceful--piano.jpg" alt="">
+                <div class="name">
+                    <p class="song--title">Solatium</p>
+                    <p class="song--desc">Imber Sun</p>
+                </div>
+            </div>
+            <p class="album">Solatium</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>4</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/noimage.jpg" alt="">
+                <div class="name">
+                    <p class="song--title">efflorescence</p>
+                    <p class="song--desc">Far & Beyond</p>
+                </div>
+            </div>
+            <p class="album">efflorescence</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>5</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/deep-focus.jpg" alt="">
+                <div class="name">
+                    <p class="song--title">Gather My Thoughts</p>
+                    <p class="song--desc">Josef Briem</p>
+                </div>
+            </div>
+            <p class="album">Gather My Thoughts</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>6</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/music--cover.jpg" width="40px" height="40px" alt="">
+                <div class="name">
+                    <p class="song--title">So Far So Good</p>
+                    <p class="song--desc">Sun of They</p>
+                </div>
+            </div>
+            <p class="album">Silent Hills</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>7</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/jazz-drums.jpg" width="40px" height="40px" alt="">
+                <div class="name">
+                    <p class="song--title">Apricity</p>
+                    <p class="song--desc">Imala Zir</p>
+                </div>
+            </div>
+            <p class="album">Apricity</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>8</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/peaceful--piano.jpg" alt="">
+                <div class="name">
+                    <p class="song--title">Solatium</p>
+                    <p class="song--desc">Imber Sun</p>
+                </div>
+            </div>
+            <p class="album">Solatium</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>9</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/noimage.jpg" alt="">
+                <div class="name">
+                    <p class="song--title">efflorescence</p>
+                    <p class="song--desc">Far & Beyond</p>
+                </div>
+            </div>
+            <p class="album">efflorescence</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>10</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/deep-focus.jpg" alt="">
+                <div class="name">
+                    <p class="song--title">Gather My Thoughts</p>
+                    <p class="song--desc">Josef Briem</p>
+                </div>
+            </div>
+            <p class="album">Gather My Thoughts</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>1</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/music--cover.jpg" width="40px" height="40px" alt="">
+                <div class="name">
+                    <p class="song--title">So Far So Good</p>
+                    <p class="song--desc">Sun of They</p>
+                </div>
+            </div>
+            <p class="album">Silent Hills</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>2</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/jazz-drums.jpg" width="40px" height="40px" alt="">
+                <div class="name">
+                    <p class="song--title">Apricity</p>
+                    <p class="song--desc">Imala Zir</p>
+                </div>
+            </div>
+            <p class="album">Apricity</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>3</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/peaceful--piano.jpg" alt="">
+                <div class="name">
+                    <p class="song--title">Solatium</p>
+                    <p class="song--desc">Imber Sun</p>
+                </div>
+            </div>
+            <p class="album">Solatium</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>4</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/noimage.jpg" alt="">
+                <div class="name">
+                    <p class="song--title">efflorescence</p>
+                    <p class="song--desc">Far & Beyond</p>
+                </div>
+            </div>
+            <p class="album">efflorescence</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>5</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/deep-focus.jpg" alt="">
+                <div class="name">
+                    <p class="song--title">Gather My Thoughts</p>
+                    <p class="song--desc">Josef Briem</p>
+                </div>
+            </div>
+            <p class="album">Gather My Thoughts</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>6</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/music--cover.jpg" width="40px" height="40px" alt="">
+                <div class="name">
+                    <p class="song--title">So Far So Good</p>
+                    <p class="song--desc">Sun of They</p>
+                </div>
+            </div>
+            <p class="album">Silent Hills</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>7</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/jazz-drums.jpg" width="40px" height="40px" alt="">
+                <div class="name">
+                    <p class="song--title">Apricity</p>
+                    <p class="song--desc">Imala Zir</p>
+                </div>
+            </div>
+            <p class="album">Apricity</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>8</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/peaceful--piano.jpg" alt="">
+                <div class="name">
+                    <p class="song--title">Solatium</p>
+                    <p class="song--desc">Imber Sun</p>
+                </div>
+            </div>
+            <p class="album">Solatium</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>9</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/noimage.jpg" alt="">
+                <div class="name">
+                    <p class="song--title">efflorescence</p>
+                    <p class="song--desc">Far & Beyond</p>
+                </div>
+            </div>
+            <p class="album">efflorescence</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        <div class="song">
+            <span class="number">
+                <p>10</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="./assets/images/deep-focus.jpg" alt="">
+                <div class="name">
+                    <p class="song--title">Gather My Thoughts</p>
+                    <p class="song--desc">Josef Briem</p>
+                </div>
+            </div>
+            <p class="album">Gather My Thoughts</p>
+            <p class="date--added">6 Days ago</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">2:23</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+    </div>
+</section>
+    `)
+
+    titleTop = $(".player .music--list>.title").offset().top;
 }
 

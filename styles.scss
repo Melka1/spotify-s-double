@@ -627,7 +627,6 @@ body {
     }
     .music--list {
         font-family: "custom-light";
-        // padding: 0 35px;
         color:$gray-color;
         &>.title { 
             border-bottom: 1px solid rgba(236, 229, 229, 0.453);;
@@ -640,10 +639,10 @@ body {
             }
         }
         &>div {
+            display: grid;
             grid-template-columns: 50px 1fr 200px 200px 150px;
             padding: 7px 0;
             padding-right: 40px;
-            display: grid;
             margin: 0 35px;
             .number {
                 justify-content: center;
@@ -675,6 +674,7 @@ body {
                         font-size: 1rem;
                         color: white;
                     }
+                    
                     p:hover {
                         text-decoration: underline;
                         cursor: pointer;
@@ -685,8 +685,8 @@ body {
             .album {
                 letter-spacing: 1px;
                 &:hover {
-                text-decoration: underline;
-                cursor: pointer;
+                    text-decoration: underline;
+                    cursor: pointer;
                 }
             }
             &>* {
