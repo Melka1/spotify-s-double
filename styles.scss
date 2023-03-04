@@ -7,7 +7,7 @@ $green-color: rgb(13, 211, 13);
     margin: 0;
 }
 
-body {
+body {//z-index: 0;
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -18,7 +18,7 @@ body {
     grid-template-rows: 1fr 75px;
     flex-direction: row;
     overflow: hidden;
-    aside {
+    aside {//z-index:0
         background-color: black;
         color: white;
         display: flex;
@@ -135,13 +135,14 @@ body {
             }
         }
     }
-    main {
+    main {//z-index:-1
         background-color: rgb(33, 32, 32);
         font-size: 16px;
         grid-column: 2/-1;
         grid-row: 1/2;
         overflow-y: scroll;
-        .top--bar {
+        z-index: 3;
+        .top--bar {//z-index==3
             width: -webkit-fill-available;
             background-color: rgb(16, 16, 16,0.7);
             padding: 5px 30px;
@@ -149,7 +150,7 @@ body {
             flex-direction: row;
             align-items: center;
             position: fixed;
-            z-index: 1;
+            z-index: 4;
             justify-content: space-between;
             height: 70px;
             .page--control {
@@ -167,7 +168,7 @@ body {
                     justify-content: center;
                     svg {
                         height: 16px;
-                        z-index: 0;
+                        // z-index: 0;
                         path {
                             fill: $gray-color;
                         }
@@ -363,16 +364,16 @@ body {
             }
         }
         &::-webkit-scrollbar {
-            z-index: 1;
             position: absolute;
             right: 0;
             top: 0;
             display: none;
         }
-           
     }
-    footer {
+
+    footer {//z-index:0
         grid-column: 1/-1;
+         z-index: 4;
         .footer {
             height: 100%;
             background: linear-gradient(90deg, #ed22dd, #9e9ef1);
@@ -417,7 +418,7 @@ body {
     }
 }
 
-.bg--cover {
+.bg--cover {//z-index:3
     position: absolute;
     width: 100vw;
     height: 100vh;
@@ -428,7 +429,7 @@ body {
     z-index: 3;
 }
 
-.play--login--container {
+.play--login--container {//z-index:4
     z-index: 4;
     width: 100vw;
     height: 100vh;
@@ -533,9 +534,13 @@ body {
         padding: 90px 35px 25px 35px;
         gap: 30px;
         background: linear-gradient(45deg, rgba(43, 42, 42, 0.5), rgba(113, 97, 97, 0.5));
+        &>img {
+            z-index: 0;
+        }
         .right {
             padding-top: 30px;
             width: 100%;
+            z-index: 4;
             .type {
                 font-size: 0.9rem;
                 font-weight: 700;
@@ -564,7 +569,6 @@ body {
                     align-items: center;
                     img {
                         height: 35px;
-
                     }
                     a {
                         color: white;
@@ -574,7 +578,6 @@ body {
                         &:hover {
                             text-decoration: underline;;
                         }
-
                     }
                 }
                 .divider {
@@ -597,13 +600,13 @@ body {
         flex-direction: row;
         padding: 25px 35px;
         gap: 15px;
+        z-index: 4;
         div {
             width: 60px;
             height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            
         }
         .play {
             background-color: $green-color;
@@ -697,6 +700,7 @@ body {
 
         }
         .song {
+            z-index: 4;
             &:hover {
                 background-color: rgba(167, 167, 167, 0.3);
                 border-radius: 10px;
@@ -723,7 +727,6 @@ body {
 .stick--top {
     position: fixed;
     top: 70px;
-    z-index: 3;
     background-color: rgb(16, 16, 16,1);
     margin: 0 !important;
     padding: 7px 75px 7px 35px !important;
@@ -774,4 +777,13 @@ body {
         margin: 0 15px;
     }
     
+}
+
+.float--img {//z-index:-1
+    position: fixed;
+    // background-position: center;
+    top: 0;
+    width: 70%;
+    z-index: -1;
+    display: none;;
 }
