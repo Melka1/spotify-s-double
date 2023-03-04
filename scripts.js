@@ -8,7 +8,137 @@ let titleTop;
 let viewPlay = false
 let playlistName;
 
-checkWidth()
+
+let musicLibrary = [
+    {
+        name:"Focus",
+        list:[
+        {   
+            type:"Focus",
+            header:"Deep Focus",
+            description:"Replax and Indulge with beautiful piano pieces",
+            url:"./assets/images/noimage.jpg"
+        },
+        {
+            type:"Focus",
+            header:"Peaceful Piano0",
+            description:"Keep calm and focus with ambient and pos...",
+            url:"./assets/images/peaceful--piano.jpg"
+        },
+        {
+            type:"Focus",
+            header:"Instrumental Study",
+            description:"Focus with soft study music in the...",
+            url:"./assets/images/focus101.jpg"
+        },
+        {   
+            type:"Focus",
+            header:"Deep Focus",
+            description:"Replax and Indulge with beautiful piano pieces",
+            url:"./assets/images/noimage.jpg"
+        },
+        {   
+            type:"Focus",
+            header:"Deep Focus",
+            description:"Replax and Indulge with beautiful piano pieces",
+            url:"./assets/images/peaceful--piano.jpg"
+        },
+        {
+            type:"Focus",
+            header:"Instrumental Study",
+            description:"Focus with soft study music in the...",
+            url:"./assets/images/jazz-drums.jpg"
+        },
+        {   
+            type:"Focus",
+            header:"Deep Focus",
+            description:"Replax and Indulge with beautiful piano pieces",
+            url:"./assets/images/music--cover.jpg"
+        },
+        {
+            type:"Focus",
+            header:"Peaceful Piano0",
+            description:"Keep calm and focus with ambient and pos...",
+            url:"./assets/images/deep-focus.jpg"
+        },
+        {
+            type:"Focus",
+            header:"Instrumental Study",
+            description:"Focus with soft study music in the...",
+            url:"./assets/images/jazz-drums.jpg"
+        },
+        {   
+            type:"Focus",
+            header:"Deep Focus",
+            description:"Replax and Indulge with beautiful piano pieces",
+            url:"./assets/images/music--cover.jpg"
+        }
+    ]},
+    {   
+        name:"Spotify Playlists",
+        list:[
+        {
+            type:"Focus",
+            header:"Instrumental Study",
+            description:"Focus with soft study music in the...",
+            url:"./assets/images/jazz-drums.jpg"
+        },
+        {   
+            type:"Focus",
+            header:"Deep Focus",
+            description:"Replax and Indulge with beautiful piano pieces",
+            url:"./assets/images/music--cover.jpg"
+        },
+        {
+            type:"Focus",
+            header:"Peaceful Piano0",
+            description:"Keep calm and focus with ambient and pos...",
+            url:"./assets/images/deep-focus.jpg"
+        },
+        {
+            type:"Focus",
+            header:"Instrumental Study",
+            description:"Focus with soft study music in the...",
+            url:"./assets/images/jazz-drums.jpg"
+        },
+        {   
+            type:"Focus",
+            header:"Deep Focus",
+            description:"Replax and Indulge with beautiful piano pieces",
+            url:"./assets/images/music--cover.jpg"
+        },
+        {   
+            type:"Focus",
+            header:"Deep Focus",
+            description:"Replax and Indulge with beautiful piano pieces",
+            url:"./assets/images/noimage.jpg"
+        },
+        {
+            type:"Focus",
+            header:"Peaceful Piano0",
+            description:"Keep calm and focus with ambient and pos...",
+            url:"./assets/images/peaceful--piano.jpg"
+        },
+        {
+            type:"Focus",
+            header:"Instrumental Study",
+            description:"Focus with soft study music in the...",
+            url:"./assets/images/focus101.jpg"
+        },
+        {   
+            type:"Focus",
+            header:"Deep Focus",
+            description:"Replax and Indulge with beautiful piano pieces",
+            url:"./assets/images/noimage.jpg"
+        },
+        {   
+            type:"Focus",
+            header:"Deep Focus",
+            description:"Replax and Indulge with beautiful piano pieces",
+            url:"./assets/images/peaceful--piano.jpg"
+        }
+    ]}
+]
 
 function checkWidth(){
     let width = $("main").width();
@@ -663,5 +793,54 @@ function chosePlaylist(conInd, listInd) {
     `)
 
     titleTop = $(".player .music--list>.title").offset().top;
+    //$(".right .type").text($(".right h1").height())
+    if($(".right h1").height() > 150){
+        changeBackground()
+    }
 }
 
+function changeBackground(){
+    $("main header>img").addClass("float--img");
+    $(".player header").css("background","transparent");
+}
+
+function listDisplay(){
+    let container = musicLibrary.map((item, index)=>{
+        return `
+        <div class="list--container" id="${index}">
+            <div class="list--header">
+                <p class="list--type" onclick="handleShowAll('${index}')">${item.name}</p>
+                <p class="show--all" onclick="handleShowAll('${index}')">Show All</p>
+            </div>
+            <div class="list">
+                ${
+                    item.list.map((itm, ind)=>{
+                        return `
+                        <div onclick="chosePlaylist(${index},${ind})" class="list--part">
+                            <div class="cover">
+                                <img src="${itm.url}" alt="">
+                                <div onclick="handlePlay(${index},${ind}" class="play">
+                                    <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                                </div>
+                            </div>
+                            <p class="list--name">${itm.header}</p>
+                            <p class="list--desc">${itm.description}</p>
+                        </div>
+                        `
+                    }).join("")
+                }
+            </div>
+        </div>
+        `
+    })
+
+    $("main").append(`
+        <section class="lists">
+            ${container.join("")}
+        </section>
+    `)
+
+    checkWidth()
+}
+
+listDisplay()
