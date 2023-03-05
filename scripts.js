@@ -8,6 +8,8 @@ let loggedIn = false;
 let titleTop;
 let viewPlay = false
 let playlistName = ""
+let conIndex;
+let listIndex;
 
 let musicLibrary = [
     {
@@ -397,7 +399,7 @@ function handleScroll(event){
             $(".top--bar .page--control").after(
                 `
                 <div class="music--header">
-                    <div class="nav--play">
+                    <div onclick="handlePlay(${conIndex}, ${listIndex})" class="nav--play">
                         <i class="fa-sharp fa-solid fa-play"></i>
                         </div>
                     <p class="music--title">${playlistName}</p>
@@ -424,6 +426,7 @@ $("form").click(function(e){
 })
 
 function handleShowAll(id){
+    $("main").scrollTop(0)
     showAll = true
     if(!pages[now+1]||pages[now+1].name != "show"){
         pages.push({name:"show",func:()=>handleShowAll(id)})
@@ -443,7 +446,7 @@ function handleShowAll(id){
             <div onclick="chosePlaylist(${id},${ind})" class="list--part">
                 <div class="cover">
                     <img src="${itm.url}" alt="">
-                    <div onclick="handlePlay(${id},${ind}" class="play">
+                    <div onclick="handlePlay(${id},${ind})" class="play">
                         <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
                     </div>
                 </div>
@@ -460,6 +463,7 @@ function handleShowAll(id){
 }
 
 function handleNavigation(page){
+    $("main").scrollTop(0)
     now+=page;
     if(now < 0 || now > pages.length-1){
         now -= page;
@@ -501,14 +505,23 @@ function checkNavState(){
 checkNavState()
 
 function handlePlay(conInd, listInd){
-    let imgSrc = $(`.list--container:nth-of-type(${conInd+1}) .list--part:nth-of-type(${listInd+1}) .cover img`).attr("src")
-    console.log(imgSrc)
+    let src;
+    if(arguments.length == 1){
+        src = playlistLibrary[arguments[0]].url
+    } else {
+        src = musicLibrary[arguments[0]].list[arguments[1]].url
+    }
+
+    conIndex = conInd
+    listIndex = listInd
+
+    $("main").scrollTop(0)
 
     $("body").append(`<div class="bg--cover"></div>`)
     $("body").append(`
                 <div class="play--login--container">
                     <div class="play--login">
-                        <img src="${imgSrc}" alt="">
+                        <img src="${src}" alt="">
                         <div class="desc">
                             <p class="title--login">Start listening with a free Spotify account</p>
                             <a href="signup.html"><div class="sign--up--free button"><span>S</span>ign up <span>f</span>ree</div></a>
@@ -518,7 +531,7 @@ function handlePlay(conInd, listInd){
                     </div>
                     <p onclick="closePlayLogin()" class="close"><span>Cl</span>ose</p>
                 </div>
-                `)
+    `)
 }
 
 function closePlayLogin() {
@@ -526,7 +539,9 @@ function closePlayLogin() {
     $("body .play--login--container").remove() 
 }
 
-function chosePlaylist(conInd, listInd) {
+function chosePlaylist(conInd, listInd){
+    $("main").scrollTop(0)
+
     if(!pages[now+1]||pages[now+1].name != "playlist"){
         pages.push({name:"playlist",func:()=>chosePlaylist(conInd, listInd)})
         now++;
@@ -558,7 +573,7 @@ function chosePlaylist(conInd, listInd) {
             </div>
         </header>
         <div class="player--control">
-            <div class="play"><i class="fa-sharp fa-solid fa-play"></i></div>
+            <div onclick="handlePlay(${conInd}, ${listInd})" class="play"><i class="fa-sharp fa-solid fa-play"></i></div>
             <div class="fav"><i class="fa-regular fa-heart"></i></div>
             <div class="more"><i class="fa-solid fa-ellipsis"></i></div>
         </div>
@@ -573,8 +588,8 @@ function chosePlaylist(conInd, listInd) {
             
             ${playlistLibrary.map((itm, id)=>{
                 return `
-                <div class="song">
-                    <span class="number">
+                <div ondblclick="handlePlay(${id})" class="song">
+                    <span onclick="handlePlay(${id})" class="number">
                         <p>${id+1}</p>
                         <i class="fa-sharp fa-solid fa-play"></i>
                     </span>
@@ -629,7 +644,7 @@ function listDisplay(){
                         <div onclick="chosePlaylist(${index},${ind})" class="list--part">
                             <div class="cover">
                                 <img src="${itm.url}" alt="">
-                                <div onclick="handlePlay(${index},${ind}" class="play">
+                                <div onclick="handlePlay(${index},${ind})" class="play">
                                     <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
                                 </div>
                             </div>
