@@ -1,14 +1,7 @@
 
-let showAll = false;
-let pages = [{name:"home",func: ()=>listDisplay()}]
-let now = 0;
-let last = 0;
-let loggedIn = false;
-let titleTop;
-let viewPlay = false
-let playlistName = ""
-let conIndex;
-let listIndex;
+$("form").click(function(e){
+    e.preventDefault();
+})
 
 let musicLibrary = [
     {
@@ -139,170 +132,182 @@ let musicLibrary = [
             url:"./assets/images/peaceful--piano.jpg"
         }
     ]}
-]
+                        ]
 
 let playlistLibrary = [
-    {
-        url:"./assets/images/music--cover.jpg",
-        song_name:"So Far So Good",
-        song_desc:"Sun of They",
-        album:"Silent Hills",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-    {
-        url:"./assets/images/jazz-drums.jpg",
-        song_name:"Apricity",
-        song_desc:"Imala Zir",
-        album:"Apricity",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-    {
-        url:"./assets/images/peaceful--piano.jpg",
-        song_name:"Solatium",
-        song_desc:"Imber Sun",
-        album:"Solatium",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-    {
-        url:"./assets/images/noimage.jpg",
-        song_name:"efflorescence",
-        song_desc:"Far & Beyond",
-        album:"efflorescence",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-    {
-        url:"./assets/images/deep-focus.jpg",
-        song_name:"Gather My Thoughts",
-        song_desc:"Josef Briem",
-        album:"Gather My Thoughts",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-    {
-        url:"./assets/images/music--cover.jpg",
-        song_name:"So Far So Good",
-        song_desc:"Sun of They",
-        album:"Silent Hills",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-    {
-        url:"./assets/images/jazz-drums.jpg",
-        song_name:"Apricity",
-        song_desc:"Imala Zir",
-        album:"Apricity",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-    {
-        url:"./assets/images/peaceful--piano.jpg",
-        song_name:"Solatium",
-        song_desc:"Imber Sun",
-        album:"Solatium",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-    {
-        url:"./assets/images/noimage.jpg",
-        song_name:"efflorescence",
-        song_desc:"Far & Beyond",
-        album:"efflorescence",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-    {
-        url:"./assets/images/deep-focus.jpg",
-        song_name:"Gather My Thoughts",
-        song_desc:"Josef Briem",
-        album:"Gather My Thoughts",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-    {
-        url:"./assets/images/music--cover.jpg",
-        song_name:"So Far So Good",
-        song_desc:"Sun of They",
-        album:"Silent Hills",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-    {
-        url:"./assets/images/jazz-drums.jpg",
-        song_name:"Apricity",
-        song_desc:"Imala Zir",
-        album:"Apricity",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-    {
-        url:"./assets/images/peaceful--piano.jpg",
-        song_name:"Solatium",
-        song_desc:"Imber Sun",
-        album:"Solatium",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-    {
-        url:"./assets/images/noimage.jpg",
-        song_name:"efflorescence",
-        song_desc:"Far & Beyond",
-        album:"efflorescence",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-    {
-        url:"./assets/images/deep-focus.jpg",
-        song_name:"Gather My Thoughts",
-        song_desc:"Josef Briem",
-        album:"Gather My Thoughts",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-    {
-        url:"./assets/images/music--cover.jpg",
-        song_name:"So Far So Good",
-        song_desc:"Sun of They",
-        album:"Silent Hills",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-    {
-        url:"./assets/images/jazz-drums.jpg",
-        song_name:"Apricity",
-        song_desc:"Imala Zir",
-        album:"Apricity",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-    {
-        url:"./assets/images/peaceful--piano.jpg",
-        song_name:"Solatium",
-        song_desc:"Imber Sun",
-        album:"Solatium",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-    {
-        url:"./assets/images/noimage.jpg",
-        song_name:"efflorescence",
-        song_desc:"Far & Beyond",
-        album:"efflorescence",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-    {
-        url:"./assets/images/deep-focus.jpg",
-        song_name:"Gather My Thoughts",
-        song_desc:"Josef Briem",
-        album:"Gather My Thoughts",
-        date_added:"6 Days ago",
-        duration:"2:23"
-    },
-]
+        {
+            url:"./assets/images/music--cover.jpg",
+            song_name:"So Far So Good",
+            song_desc:"Sun of They",
+            album:"Silent Hills",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        },
+        {
+            url:"./assets/images/jazz-drums.jpg",
+            song_name:"Apricity",
+            song_desc:"Imala Zir",
+            album:"Apricity",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        },
+        {
+            url:"./assets/images/peaceful--piano.jpg",
+            song_name:"Solatium",
+            song_desc:"Imber Sun",
+            album:"Solatium",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        },
+        {
+            url:"./assets/images/noimage.jpg",
+            song_name:"efflorescence",
+            song_desc:"Far & Beyond",
+            album:"efflorescence",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        },
+        {
+            url:"./assets/images/deep-focus.jpg",
+            song_name:"Gather My Thoughts",
+            song_desc:"Josef Briem",
+            album:"Gather My Thoughts",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        },
+        {
+            url:"./assets/images/music--cover.jpg",
+            song_name:"So Far So Good",
+            song_desc:"Sun of They",
+            album:"Silent Hills",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        },
+        {
+            url:"./assets/images/jazz-drums.jpg",
+            song_name:"Apricity",
+            song_desc:"Imala Zir",
+            album:"Apricity",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        },
+        {
+            url:"./assets/images/peaceful--piano.jpg",
+            song_name:"Solatium",
+            song_desc:"Imber Sun",
+            album:"Solatium",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        },
+        {
+            url:"./assets/images/noimage.jpg",
+            song_name:"efflorescence",
+            song_desc:"Far & Beyond",
+            album:"efflorescence",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        },
+        {
+            url:"./assets/images/deep-focus.jpg",
+            song_name:"Gather My Thoughts",
+            song_desc:"Josef Briem",
+            album:"Gather My Thoughts",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        },
+        {
+            url:"./assets/images/music--cover.jpg",
+            song_name:"So Far So Good",
+            song_desc:"Sun of They",
+            album:"Silent Hills",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        },
+        {
+            url:"./assets/images/jazz-drums.jpg",
+            song_name:"Apricity",
+            song_desc:"Imala Zir",
+            album:"Apricity",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        },
+        {
+            url:"./assets/images/peaceful--piano.jpg",
+            song_name:"Solatium",
+            song_desc:"Imber Sun",
+            album:"Solatium",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        },
+        {
+            url:"./assets/images/noimage.jpg",
+            song_name:"efflorescence",
+            song_desc:"Far & Beyond",
+            album:"efflorescence",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        },
+        {
+            url:"./assets/images/deep-focus.jpg",
+            song_name:"Gather My Thoughts",
+            song_desc:"Josef Briem",
+            album:"Gather My Thoughts",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        },
+        {
+            url:"./assets/images/music--cover.jpg",
+            song_name:"So Far So Good",
+            song_desc:"Sun of They",
+            album:"Silent Hills",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        },
+        {
+            url:"./assets/images/jazz-drums.jpg",
+            song_name:"Apricity",
+            song_desc:"Imala Zir",
+            album:"Apricity",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        },
+        {
+            url:"./assets/images/peaceful--piano.jpg",
+            song_name:"Solatium",
+            song_desc:"Imber Sun",
+            album:"Solatium",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        },
+        {
+            url:"./assets/images/noimage.jpg",
+            song_name:"efflorescence",
+            song_desc:"Far & Beyond",
+            album:"efflorescence",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        },
+        {
+            url:"./assets/images/deep-focus.jpg",
+            song_name:"Gather My Thoughts",
+            song_desc:"Josef Briem",
+            album:"Gather My Thoughts",
+            date_added:"6 Days ago",
+            duration:"2:23"
+        }
+                            ]
+
+let showAll = false;
+let pages = [{name:"home", func: ()=>listDisplay()}]
+let now = 0;
+let last = 0;
+let loggedIn = false;
+let showPlaylist = false;
+let titleTop;
+let viewPlay = true
+let playlistName = ""
+let conIndex;
+let listIndex;
 
 function checkWidth(){
     let width = $("main").width();
@@ -370,8 +375,6 @@ function checkWidth(){
     } 
 }
 
-window.addEventListener("resize", checkWidth)
-
 function handleScroll(event){
     let posY = $("main").scrollTop()
     if(posY<600){
@@ -380,7 +383,7 @@ function handleScroll(event){
     let width = $(".music--list").width()
     let height = $(".player .music--list>.title").height()
     console.log(titleTop, posY)
-    if(titleTop-posY>80){
+    if(titleTop-posY>80&&viewPlay==false){
         console.log("here")
         $(".player .music--list>.title").removeClass("stick--top")
         $(".player .music--list").css("margin-top", "0")
@@ -408,6 +411,7 @@ function handleScroll(event){
         }
         $(".top--bar .music--header").css("opacity", 1)
         viewPlay = true
+        
     }
 }
 
@@ -419,10 +423,6 @@ function handleDrag(event){
     last = event.pageX
     checkWidth();
 }
-
-$("form").click(function(e){
-    e.preventDefault();
-})
 
 function handleShowAll(id){
     $("main").scrollTop(0)
@@ -439,7 +439,7 @@ function handleShowAll(id){
         <div class="list--container" id="${id}">
         <div class="list">
         ${
-        musicLibrary[id].list.map((itm,ind)=>{
+            library.musicLibrary[id].list.map((itm,ind)=>{
             return `
             <div onclick="chosePlaylist(${id},${ind})" class="list--part">
                 <div class="cover">
@@ -500,8 +500,6 @@ function checkNavState(){
         })
     }
 }
-
-checkNavState()
 
 function handlePlay(conInd, listInd){
     let src;
@@ -618,6 +616,7 @@ function chosePlaylist(conInd, listInd){
         changeBackground()
     }
 
+    viewPlay = false
     checkNavState()
 }
 
@@ -627,6 +626,7 @@ function changeBackground(){
 }
 
 function listDisplay(){
+    viewPlay = true
     $("main .lists").remove()
     $("main .player").remove()
     let container = musicLibrary.map((item, index)=>{
@@ -664,7 +664,10 @@ function listDisplay(){
         </section>
     `)
 
+    $(".top--bar .music--header").remove()
     checkWidth()
 }
 
 listDisplay()
+window.addEventListener("resize", checkWidth)
+checkNavState()

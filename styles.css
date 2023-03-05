@@ -420,6 +420,10 @@ body footer .footer a {
   cursor: pointer;
 }
 
+.signup--free:hover {
+  margin-top: -1px;
+  margin-right: -1px;
+}
 .signup--free:hover span {
   font-size: 1.1rem;
 }
