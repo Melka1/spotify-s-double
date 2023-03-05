@@ -187,25 +187,31 @@ body main .top--bar .page--control .prev svg {
 }
 body main .top--bar .user--button {
   margin-left: auto;
+  display: flex;
+  align-items: center;
 }
 body main .top--bar .user--button button {
+  width: 80px;
+  height: 30px;
   background: none;
   border: none;
   margin: 0 5px;
   padding: 5px 0;
 }
 body main .top--bar .user--button button:hover {
-  transform: scale(1.05);
+  margin: 0 3px;
+  width: 84px;
+  height: 34px;
 }
 body main .top--bar .user--button button:hover p {
   color: white;
 }
 body main .top--bar .user--button button:hover p span {
-  font-size: 105%;
+  font-size: 18px;
 }
 body main .top--bar .user--button p {
   font-family: "custom-bold";
-  font-size: 1.05rem;
+  font-size: 16px;
   color: #a7a7a7;
   letter-spacing: 1px;
 }
@@ -222,40 +228,39 @@ body main .top--bar .user--related {
 }
 body main .top--bar .user--related div {
   border: none;
-  padding: 17px 25px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 30px;
-}
-body main .top--bar .user--related a {
-  text-decoration: none;
-}
-body main .top--bar .user--related .log--in, body main .top--bar .user--related .sign--up {
   font-family: "custom-bold";
   font-size: 0.9rem;
 }
-body main .top--bar .user--related .log--in p, body main .top--bar .user--related .sign--up p {
-  height: 1.2rem;
+body main .top--bar .user--related div:hover span {
+  font-size: 1rem;
+}
+body main .top--bar .user--related a {
+  text-decoration: none;
+  width: 104px;
+  height: 52px;
+}
+body main .top--bar .user--related a:hover {
+  margin: -2px;
+  width: 108px;
+  height: 56px;
 }
 body main .top--bar .user--related .log--in {
   background-color: white;
   color: black;
 }
-body main .top--bar .user--related .log--in p {
-  padding: 0 5px;
-}
 body main .top--bar .user--related .log--in:hover {
   background-color: lightgray;
-}
-body main .top--bar .user--related .log--in:hover span {
-  font-size: 1rem;
 }
 body main .top--bar .user--related .sign--up {
   color: #a7a7a7;
 }
 body main .top--bar .user--related .sign--up:hover {
   color: white;
-}
-body main .top--bar .user--related .sign--up:hover span {
-  font-size: 1rem;
 }
 body main .lists {
   margin-top: 70px;

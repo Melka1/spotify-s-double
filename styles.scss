@@ -181,24 +181,31 @@ body {//z-index: 0;
             }
             .user--button {
                 margin-left: auto;
+                display:flex;
+                align-items: center;
                 button {
+                    width: 80px;
+                    height: 30px;
                     background: none;
                     border: none;
                     margin: 0 5px;
                     padding: 5px 0;
                     &:hover {
-                        transform: scale(1.05);
+                        margin: 0 3px;
+                        width: 84px;
+                        height: 34px;
                         p{
+
                             color: white;
                             span {
-                                font-size: 105%;
+                                font-size: 18px;
                             }
                         }
                     }
                 }
                 p {
                     font-family: "custom-bold";
-                    font-size: 1.05rem;
+                    font-size: 16px;
                     color: $gray-color;
                     letter-spacing: 1px;
                 }
@@ -215,39 +222,42 @@ body {//z-index: 0;
                 align-items: center;
                 div {
                     border: none;
-                    padding: 17px 25px;
+                    // padding: 17px 25px;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     border-radius: 30px;
-                }
-                a {
-                    text-decoration: none;
-                }
-                .log--in, .sign--up {
                     font-family: "custom-bold";
                     font-size: 0.9rem;
-                    p {
-                        height: 1.2rem;
-                    }
-                }
-                .log--in {
-                    background-color: white;
-                    color: black;
-                    p {
-                        padding: 0 5px;
-                    }
                     &:hover {
-                        background-color: lightgray ;
                         span {
                             font-size: 1rem;
                         }
+                    }
+                }
+                a {
+                    text-decoration: none;
+                    width: 104px;
+                    height: 52px;
+                    &:hover {
+                        margin: -2px;
+                        width: 108px;
+                        height: 56px;
+                    }
+                }
+                
+                .log--in {
+                    background-color: white;
+                    color: black;
+                    &:hover {
+                        background-color: lightgray ;
                     }
                 }
                 .sign--up {
                     color: $gray-color;
                     &:hover {
                         color: white;
-                        span {
-                            font-size: 1rem;
-                        }
                     }
                 }
             }

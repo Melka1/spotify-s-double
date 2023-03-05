@@ -1,6 +1,5 @@
 
 let showAll = false;
-// let pages = ["home"];
 let pages = [{name:"home",func: ()=>listDisplay()}]
 let now = 0;
 let last = 0;
@@ -434,7 +433,6 @@ function handleShowAll(id){
     } else {
         pages[now+1] = {name:"show",func:()=>handleShowAll(id)}
     }
-    checkWidth();
     
     $("main .lists").children().remove();
     $("main .lists").append(`
@@ -459,6 +457,7 @@ function handleShowAll(id){
     } </div></div>`)
 
     console.log(pages, now, pages[now])
+    checkWidth();
     checkNavState()
 }
 
