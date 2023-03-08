@@ -6,6 +6,7 @@ window.addEventListener("resize", checkWidth)
 
 var client_id = '87ad29c3f0f74cc1b391baaeef63e811';
 var client_secret = '2cbf3df5e0914f8baecede4294eb6d81';
+let accessToken;
 let datum;
 
 let playlist = []
@@ -40,168 +41,7 @@ var authOption1= (tok) => ({
         }
 })
 
-let playlistLibrary = [
-        {
-            url:"./assets/images/music--cover.jpg",
-            song_name:"So Far So Good",
-            song_desc:"Sun of They",
-            album:"Silent Hills",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        },
-        {
-            url:"./assets/images/jazz-drums.jpg",
-            song_name:"Apricity",
-            song_desc:"Imala Zir",
-            album:"Apricity",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        },
-        {
-            url:"./assets/images/peaceful--piano.jpg",
-            song_name:"Solatium",
-            song_desc:"Imber Sun",
-            album:"Solatium",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        },
-        {
-            url:"./assets/images/noimage.jpg",
-            song_name:"efflorescence",
-            song_desc:"Far & Beyond",
-            album:"efflorescence",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        },
-        {
-            url:"./assets/images/deep-focus.jpg",
-            song_name:"Gather My Thoughts",
-            song_desc:"Josef Briem",
-            album:"Gather My Thoughts",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        },
-        {
-            url:"./assets/images/music--cover.jpg",
-            song_name:"So Far So Good",
-            song_desc:"Sun of They",
-            album:"Silent Hills",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        },
-        {
-            url:"./assets/images/jazz-drums.jpg",
-            song_name:"Apricity",
-            song_desc:"Imala Zir",
-            album:"Apricity",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        },
-        {
-            url:"./assets/images/peaceful--piano.jpg",
-            song_name:"Solatium",
-            song_desc:"Imber Sun",
-            album:"Solatium",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        },
-        {
-            url:"./assets/images/noimage.jpg",
-            song_name:"efflorescence",
-            song_desc:"Far & Beyond",
-            album:"efflorescence",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        },
-        {
-            url:"./assets/images/deep-focus.jpg",
-            song_name:"Gather My Thoughts",
-            song_desc:"Josef Briem",
-            album:"Gather My Thoughts",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        },
-        {
-            url:"./assets/images/music--cover.jpg",
-            song_name:"So Far So Good",
-            song_desc:"Sun of They",
-            album:"Silent Hills",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        },
-        {
-            url:"./assets/images/jazz-drums.jpg",
-            song_name:"Apricity",
-            song_desc:"Imala Zir",
-            album:"Apricity",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        },
-        {
-            url:"./assets/images/peaceful--piano.jpg",
-            song_name:"Solatium",
-            song_desc:"Imber Sun",
-            album:"Solatium",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        },
-        {
-            url:"./assets/images/noimage.jpg",
-            song_name:"efflorescence",
-            song_desc:"Far & Beyond",
-            album:"efflorescence",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        },
-        {
-            url:"./assets/images/deep-focus.jpg",
-            song_name:"Gather My Thoughts",
-            song_desc:"Josef Briem",
-            album:"Gather My Thoughts",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        },
-        {
-            url:"./assets/images/music--cover.jpg",
-            song_name:"So Far So Good",
-            song_desc:"Sun of They",
-            album:"Silent Hills",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        },
-        {
-            url:"./assets/images/jazz-drums.jpg",
-            song_name:"Apricity",
-            song_desc:"Imala Zir",
-            album:"Apricity",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        },
-        {
-            url:"./assets/images/peaceful--piano.jpg",
-            song_name:"Solatium",
-            song_desc:"Imber Sun",
-            album:"Solatium",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        },
-        {
-            url:"./assets/images/noimage.jpg",
-            song_name:"efflorescence",
-            song_desc:"Far & Beyond",
-            album:"efflorescence",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        },
-        {
-            url:"./assets/images/deep-focus.jpg",
-            song_name:"Gather My Thoughts",
-            song_desc:"Josef Briem",
-            album:"Gather My Thoughts",
-            date_added:"6 Days ago",
-            duration:"2:23"
-        }
-                            ]
+let playlistLibrary = []
 
 let showAll = false;
 let pages = [{name:"home", func: ()=>listDisplay(playlist)}]
@@ -484,17 +324,22 @@ function chosePlaylist(conInd, listInd){
         pages[now+1] = {name:"playlist",func:()=>chosePlaylist(conInd, listInd)}
     }
 
-    playlistName = musicLibrary[conInd].list[listInd].header
+    playlistName = playlist[conInd].lists[listInd].name
+    let playlistId = playlist[conInd].lists[listInd].id
     $("main .lists").remove();
+
+    getMusicList(playlistId, authOption1(datum))
+
+    
 
     $("main").append(`
     <section class="player">
         <header>
-            <img src="${musicLibrary[conInd].list[listInd].url}" alt="">
+            <img src="${playlist[conInd].lists[listInd].images[0].url}" alt="">
             <div class="right">
-                <p class="type">Playlist</p>
-                <h1>${musicLibrary[conInd].list[listInd].header}</h1>
-                <p class="sub-topic">${musicLibrary[conInd].list[listInd].description}</p>
+                <p class="type">${playlist[conInd].lists[listInd].type}</p>
+                <h1>${playlistName}</h1>
+                <p class="sub-topic">${playlist[conInd].lists[listInd].description}</p>
                 <div>
                     <span>
                         <img src="./assets/images/icons8-spotify copy.svg" alt="">
@@ -520,31 +365,6 @@ function chosePlaylist(conInd, listInd){
                 <p>Date Added</p>
                 <p class="time"><img src="./assets/images/icons8-clock.svg" alt=""></p>
             </div>
-            
-            ${playlistLibrary.map((itm, id)=>{
-                return `
-                <div ondblclick="handlePlay(${id})" class="song">
-                    <span onclick="handlePlay(${id})" class="number">
-                        <p>${id+1}</p>
-                        <i class="fa-sharp fa-solid fa-play"></i>
-                    </span>
-                    <div class="title">
-                        <img src="${itm.url}" alt="">
-                        <div class="name">
-                            <p class="song--title">${itm.song_name}</p>
-                            <p class="song--desc">${itm.song_desc}</p>
-                        </div>
-                    </div>
-                    <p class="album">${itm.album}</p>
-                    <p class="date--added">${itm.date_added}</p>
-                    <div class="duration">
-                        <i class="fa-regular fa-heart"></i>
-                        <p class="time">${itm.duration}</p>
-                        <i class="fa-solid fa-ellipsis"></i>
-                    </div>
-                </div>
-                `
-            }).join("")}
         </div>
     </section>
     `)
@@ -637,3 +457,51 @@ function showToken(){
 }
 
 getToken()
+//?fields=items(added_at%2C%20track(name%2C%20id%2C%20duration_ms%2C%20album(images%2C%20name)%2C%20artists(name)))
+async function getMusicList(id, params){
+    await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks?limit=50`, params)
+            .then(res => res.json())
+            .then(data=>{
+                // console.log(data.playlists.items)
+                playlistLibrary= data.items
+                console.log(playlistLibrary)
+                appendLists()
+        }).catch(err => console.log(err))
+    return playlistLibrary
+}
+
+function appendLists(){
+    let musicList = playlistLibrary.map((itm, id)=>{
+        return `
+        <div ondblclick="handlePlay(${id})" class="song">
+            <span onclick="handlePlay(${id})" class="number">
+                <p>${id+1}</p>
+                <i class="fa-sharp fa-solid fa-play"></i>
+            </span>
+            <div class="title">
+                <img src="${itm.track.album.images[2].url}" alt="">
+                <div class="name">
+                    <p class="song--title">${itm.track.album.name}</p>
+                    <p class="song--desc">${itm.track.name}</p>
+                </div>
+            </div>
+            <p class="album">${itm.track.album.name}</p>
+            <p class="date--added">${itm.added_at}</p>
+            <div class="duration">
+                <i class="fa-regular fa-heart"></i>
+                <p class="time">${msToMinSec(itm.track.duration_ms)}</p>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+        `
+    }).join("")
+
+    $("main .player .music--list").append(musicList)
+}
+
+function msToMinSec(ms){
+    let sec = Math.floor(ms / 1000)
+    let min = Math.floor(sec / 60)
+    sec = sec % 60
+    return `${min}:${sec<10?`0${sec}`:sec}`
+}
