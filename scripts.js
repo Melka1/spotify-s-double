@@ -481,12 +481,12 @@ function appendLists(){
             <div class="title">
                 <img src="${itm.track.album.images[2].url}" alt="">
                 <div class="name">
-                    <p class="song--title">${itm.track.album.name}</p>
-                    <p class="song--desc">${itm.track.name}</p>
+                    <p class="song--title">${itm.track.name}</p>
+                    <p class="song--desc">${itm.track.artists[0].name}</p>
                 </div>
             </div>
             <p class="album">${itm.track.album.name}</p>
-            <p class="date--added">${itm.added_at}</p>
+            <p class="date--added">${dateDifference(itm.added_at)+" Days"}</p>
             <div class="duration">
                 <i class="fa-regular fa-heart"></i>
                 <p class="time">${msToMinSec(itm.track.duration_ms)}</p>
@@ -504,4 +504,12 @@ function msToMinSec(ms){
     let min = Math.floor(sec / 60)
     sec = sec % 60
     return `${min}:${sec<10?`0${sec}`:sec}`
+}
+
+function dateDifference(day){
+    let date = new Date(now).getTime()
+    let addedAt = new Date(day).getTime()
+    let differ = addedAt-date
+    let days = Math.floor(differ/(1000*3600*24*3600))
+    return days
 }
