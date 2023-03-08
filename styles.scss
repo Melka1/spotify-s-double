@@ -16,7 +16,6 @@ body {//z-index: 0;
     display: grid;
     grid-template-columns: 280px 1fr;
     grid-template-rows: 1fr 75px;
-    flex-direction: row;
     overflow: hidden;
     aside {//z-index:0
         background-color: black;
@@ -40,6 +39,10 @@ body {//z-index: 0;
             font-weight: 700;
             font-size: 1.75rem;
            }
+        }
+        #title {
+            color: white;
+            text-decoration: none;
         }
         .navigation {
             ul {
@@ -87,7 +90,7 @@ body {//z-index: 0;
                 visibility: hidden;
             }
         }
-        a {
+        .cookies {
             margin-top: auto;
             font-size: 0.7rem;
             text-decoration: none;
@@ -150,7 +153,7 @@ body {//z-index: 0;
             flex-direction: row;
             align-items: center;
             position: fixed;
-            z-index: 5;
+            z-index: 7;
             justify-content: space-between;
             height: 70px;
             .page--control {
@@ -322,6 +325,7 @@ body {//z-index: 0;
                                 align-items: center;
                                 justify-content: center;
                                 opacity: 0;
+                                z-index: 6;
                                 transition: bottom 0.4s, opacity 0.3s ease-in !important;
                                 img {
                                     width: 40px;

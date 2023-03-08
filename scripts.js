@@ -1,138 +1,44 @@
-
 $("form").click(function(e){
     e.preventDefault();
 })
 
-let musicLibrary = [
-    {
-        name:"Focus",
-        list:[
-        {   
-            type:"Focus",
-            header:"Deep Focus",
-            description:"Replax and Indulge with beautiful piano pieces",
-            url:"./assets/images/noimage.jpg"
-        },
-        {
-            type:"Focus",
-            header:"Peaceful Piano0",
-            description:"Keep calm and focus with ambient and pos...",
-            url:"./assets/images/peaceful--piano.jpg"
-        },
-        {
-            type:"Focus",
-            header:"Instrumental Study",
-            description:"Focus with soft study music in the...",
-            url:"./assets/images/focus101.jpg"
-        },
-        {   
-            type:"Focus",
-            header:"Deep Focus",
-            description:"Replax and Indulge with beautiful piano pieces",
-            url:"./assets/images/noimage.jpg"
-        },
-        {   
-            type:"Focus",
-            header:"Deep Focus",
-            description:"Replax and Indulge with beautiful piano pieces",
-            url:"./assets/images/peaceful--piano.jpg"
-        },
-        {
-            type:"Focus",
-            header:"Instrumental Study",
-            description:"Focus with soft study music in the...",
-            url:"./assets/images/jazz-drums.jpg"
-        },
-        {   
-            type:"Focus",
-            header:"Deep Focus",
-            description:"Replax and Indulge with beautiful piano pieces",
-            url:"./assets/images/music--cover.jpg"
-        },
-        {
-            type:"Focus",
-            header:"Peaceful Piano0",
-            description:"Keep calm and focus with ambient and pos...",
-            url:"./assets/images/deep-focus.jpg"
-        },
-        {
-            type:"Focus",
-            header:"Instrumental Study",
-            description:"Focus with soft study music in the...",
-            url:"./assets/images/jazz-drums.jpg"
-        },
-        {   
-            type:"Focus",
-            header:"Deep Focus",
-            description:"Replax and Indulge with beautiful piano pieces",
-            url:"./assets/images/music--cover.jpg"
+window.addEventListener("resize", checkWidth)
+
+var client_id = '87ad29c3f0f74cc1b391baaeef63e811';
+var client_secret = '2cbf3df5e0914f8baecede4294eb6d81';
+let datum;
+
+let playlist = []
+
+let playlists = [
+    {name:"Focus", title:'focus'},
+    {name:"Spotify Playlists", title:'toplists'}
+]//toplists, sleep
+
+function handleTime(){
+    let now = new Date().getHours()
+    console.log(now)
+    if(now>0 && now<6){
+        playlists.push({name:"Sleep", title:'0JQ5DAqbMKFCuoRTxhYWow'})
+    }
+}
+handleTime()
+
+var authOptions = (id, secret) => ({
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: `grant_type=client_credentials&client_id=` + id + `&client_secret=` + secret
+})
+  
+var authOption1= (tok) => ({
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${tok}`
         }
-    ]},
-    {   
-        name:"Spotify Playlists",
-        list:[
-        {
-            type:"Focus",
-            header:"Instrumental Study",
-            description:"Focus with soft study music in the...",
-            url:"./assets/images/jazz-drums.jpg"
-        },
-        {   
-            type:"Focus",
-            header:"Deep Focus",
-            description:"Replax and Indulge with beautiful piano pieces",
-            url:"./assets/images/music--cover.jpg"
-        },
-        {
-            type:"Focus",
-            header:"Peaceful Piano0",
-            description:"Keep calm and focus with ambient and pos...",
-            url:"./assets/images/deep-focus.jpg"
-        },
-        {
-            type:"Focus",
-            header:"Instrumental Study",
-            description:"Focus with soft study music in the...",
-            url:"./assets/images/jazz-drums.jpg"
-        },
-        {   
-            type:"Focus",
-            header:"Deep Focus",
-            description:"Replax and Indulge with beautiful piano pieces",
-            url:"./assets/images/music--cover.jpg"
-        },
-        {   
-            type:"Focus",
-            header:"Deep Focus",
-            description:"Replax and Indulge with beautiful piano pieces",
-            url:"./assets/images/noimage.jpg"
-        },
-        {
-            type:"Focus",
-            header:"Peaceful Piano0",
-            description:"Keep calm and focus with ambient and pos...",
-            url:"./assets/images/peaceful--piano.jpg"
-        },
-        {
-            type:"Focus",
-            header:"Instrumental Study",
-            description:"Focus with soft study music in the...",
-            url:"./assets/images/focus101.jpg"
-        },
-        {   
-            type:"Focus",
-            header:"Deep Focus",
-            description:"Replax and Indulge with beautiful piano pieces",
-            url:"./assets/images/noimage.jpg"
-        },
-        {   
-            type:"Focus",
-            header:"Deep Focus",
-            description:"Replax and Indulge with beautiful piano pieces",
-            url:"./assets/images/peaceful--piano.jpg"
-        }
-    ]}
-                        ]
+})
 
 let playlistLibrary = [
         {
@@ -298,7 +204,7 @@ let playlistLibrary = [
                             ]
 
 let showAll = false;
-let pages = [{name:"home", func: ()=>listDisplay()}]
+let pages = [{name:"home", func: ()=>listDisplay(playlist)}]
 let now = 0;
 let last = 0;
 let loggedIn = false;
@@ -309,13 +215,16 @@ let playlistName = ""
 let conIndex;
 let listIndex;
 
+function partition(id){
+    let arr = $(`body main .lists #${id} .list .list--part`)
+    return arr
+}
+
 function checkWidth(){
     let width = $("main").width();
     $(".user--button").css("display", "block")
     $(".partitionX").css("display", "block")
-    let partition1 = $("body main .lists #0 .list .list--part")
-    let partition2 = $("body main .lists #1 .list .list--part")
-    showAll?$("body main .lists .list--container .list .list--part").css("display", "blok"):
+    showAll?$("body main .lists .list--container .list .list--part").css("display", "block"):
             $("body main .lists .list--container .list .list--part").css("display", "none")
 
     if(width>1080){
@@ -323,52 +232,82 @@ function checkWidth(){
         if(!showAll){
             let i=0
             while(i<5){
-                partition1[i].style.display = "block"
-                partition2[i].style.display = "block"
+                let j=0
+                while(j<playlists.length){
+                    let arr = partition(j)
+                    arr[i].style.display = "block"
+                    j++;
+                }
                 i++;
             }
         } else {
-            partition1.css("display", "block")
-            partition2.css("display", "block")
+            let j=0
+            while(j<playlists.length){
+                let arr = partition(j)
+                arr.css("display", "block")
+                j++;
+            }
         }
     } else if(width>900){
         $("body main .lists .list--container .list").css("grid-template-columns","repeat(4, 1fr)");
         if(!showAll){
             let i=0
             while(i<4){
-                partition1[i].style.display = "block"
-                partition2[i].style.display = "block"
+                let j=0
+                while(j<playlists.length){
+                    let arr = partition(j)
+                    arr[i].style.display = "block"
+                    j++;
+                }
                 i++;
             }
         } else {
-            partition1.css("display", "block")
-            partition2.css("display", "block")
+            let j=0
+            while(j<playlists.length){
+                let arr = partition(j)
+                arr.css("display", "block")
+                j++;
+            }
         }
     } else if(width>700){
         $("body main .lists .list--container .list").css("grid-template-columns","repeat(3, 1fr)");
         if(!showAll){
             let i=0
             while(i<3){
-                partition1[i].style.display = "block"
-                partition2[i].style.display = "block"
+                let j=0
+                while(j<playlists.length){
+                    partition(j)[i].style.display = "block"
+                    j++
+                }
                 i++;
             }
         } else {
-            partition1.css("display", "block")
-            partition2.css("display", "block")
+            let j=0
+            while(j<playlists.length){
+                let arr = partition(j)
+                arr.css("display", "block")
+                j++;
+            }
         }
     } else {
         $("body main .lists .list--container .list").css("grid-template-columns","repeat(2, 1fr)");
         if(!showAll){
             let i=0
             while(i<2){
-                partition1[i].style.display = "block"
-                partition2[i].style.display = "block"
+                let j=0
+                while(j<playlists.length){
+                    partition(j)[i].style.display = "block"
+                    j++
+                }
                 i++;
             }
         } else {
-            partition1.css("display", "block")
-            partition2.css("display", "block")
+            let j=0
+            while(j<playlists.length){
+                let arr = partition(j)
+                arr.css("display", "block")
+                j++;
+            }
         }
         $(".user--button").css("display", "none")
         $(".partitionX").css("display", "none")    
@@ -382,8 +321,7 @@ function handleScroll(event){
     }
     let width = $(".music--list").width()
     let height = $(".player .music--list>.title").height()
-    console.log(titleTop, posY)
-    if(titleTop-posY>80&&viewPlay==false){
+    if(titleTop-posY>80){
         console.log("here")
         $(".player .music--list>.title").removeClass("stick--top")
         $(".player .music--list").css("margin-top", "0")
@@ -439,16 +377,16 @@ function handleShowAll(id){
         <div class="list--container" id="${id}">
         <div class="list">
         ${
-            library.musicLibrary[id].list.map((itm,ind)=>{
+            playlist[id].lists.map((itm,ind)=>{
             return `
             <div onclick="chosePlaylist(${id},${ind})" class="list--part">
                 <div class="cover">
-                    <img src="${itm.url}" alt="">
+                    <img src="${itm.images[0].url}" alt="">
                     <div onclick="handlePlay(${id},${ind})" class="play">
                         <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
                     </div>
                 </div>
-                <p class="list--name">${itm.header}</p>
+                <p class="list--name">${itm.name}</p>
                 <p class="list--desc">${itm.description}</p>
             </div>
             `
@@ -625,11 +563,11 @@ function changeBackground(){
     $(".player header").css("background","transparent");
 }
 
-function listDisplay(){
+function listDisplay(arr){
     viewPlay = true
     $("main .lists").remove()
     $("main .player").remove()
-    let container = musicLibrary.map((item, index)=>{
+    let container = arr.map((item, index)=>{
         return `
         <div class="list--container" id="${index}">
             <div class="list--header">
@@ -638,16 +576,16 @@ function listDisplay(){
             </div>
             <div class="list">
                 ${
-                    item.list.map((itm, ind)=>{
+                    arr[index].lists.map((itm, ind)=>{
                         return `
                         <div onclick="chosePlaylist(${index},${ind})" class="list--part">
                             <div class="cover">
-                                <img src="${itm.url}" alt="">
+                                <img src="${itm.images[0].url}" alt="">
                                 <div onclick="handlePlay(${index},${ind})" class="play">
                                     <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
                                 </div>
                             </div>
-                            <p class="list--name">${itm.header}</p>
+                            <p class="list--name">${itm.name}</p>
                             <p class="list--desc">${itm.description}</p>
                         </div>
                         `
@@ -668,6 +606,34 @@ function listDisplay(){
     checkWidth()
 }
 
-listDisplay()
-window.addEventListener("resize", checkWidth)
-checkNavState()
+let data = async(id, item) =>{
+         await fetch(`https://api.spotify.com/v1/browse/categories/${item.title}/playlists`, id)
+            .then(res => res.json())
+            .then(data=>{
+                // console.log(data.playlists.items)
+                playlist.push({name:item.name, lists:data.playlists.items})
+                console.log(playlist)
+                listDisplay(playlist)
+                checkNavState()
+        })
+    return playlist
+}    
+
+let getToken = async()=>{
+    await fetch("https://accounts.spotify.com/api/token", authOptions(client_id, client_secret))
+        .then(res => res.json())
+        .then(data=>{
+            datum = data.access_token
+        })
+    console.log(datum)
+    showToken()
+}
+
+function showToken(){
+    let par = authOption1(datum)
+    playlists.forEach((item) => {
+        data(par, item)
+    })
+}
+
+getToken()

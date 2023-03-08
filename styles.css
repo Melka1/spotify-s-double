@@ -29,7 +29,6 @@ body {
   display: grid;
   grid-template-columns: 280px 1fr;
   grid-template-rows: 1fr 75px;
-  flex-direction: row;
   overflow: hidden;
 }
 body aside {
@@ -55,6 +54,10 @@ body aside .title i {
 body aside .title p {
   font-weight: 700;
   font-size: 1.75rem;
+}
+body aside #title {
+  color: white;
+  text-decoration: none;
 }
 body aside .navigation ul .home span, body aside .navigation ul .home p {
   color: white;
@@ -92,7 +95,7 @@ body aside .navigation hr {
   margin: 10px;
   visibility: hidden;
 }
-body aside a {
+body aside .cookies {
   margin-top: auto;
   font-size: 0.7rem;
   text-decoration: none;
@@ -102,7 +105,7 @@ body aside a {
   width: fit-content;
   margin-bottom: 30px;
 }
-body aside a:hover {
+body aside .cookies:hover {
   border-bottom: 1px solid;
 }
 body aside .lang {
@@ -157,7 +160,7 @@ body main .top--bar {
   flex-direction: row;
   align-items: center;
   position: fixed;
-  z-index: 5;
+  z-index: 7;
   justify-content: space-between;
   height: 70px;
 }
@@ -327,6 +330,7 @@ body main .lists .list--container .list > div .cover .play {
   align-items: center;
   justify-content: center;
   opacity: 0;
+  z-index: 6;
   transition: bottom 0.4s, opacity 0.3s ease-in !important;
   background-color: rgb(13, 211, 13);
 }
