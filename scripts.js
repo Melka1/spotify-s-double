@@ -10,6 +10,7 @@ let accessToken;
 let datum;
 
 let playlist = []
+let categories = []
 
 let playlists = [
     {name:"Focus", title:'focus'},
@@ -109,6 +110,7 @@ function checkWidth(){
                 j++;
             }
         }
+        
     } else if(width>700){
         $("body main .lists .list--container .list").css("grid-template-columns","repeat(3, 1fr)");
         if(!showAll){
@@ -348,7 +350,7 @@ function chosePlaylist(conInd, listInd){
                     <div class="divider"></div>
                     <p class="likes">3,874,953 likes</p>
                     <div class="divider"></div>
-                    <p class="songs">230 songs, <span>about 9hr 30min</span></p>
+                    <p class="songs">${playlist[conInd].lists[listInd].tracks.total} songs, <span>about 9hr 30min</span></p>
                 </div>
             </div>
         </header>
@@ -360,9 +362,9 @@ function chosePlaylist(conInd, listInd){
         <div class="music--list">
             <div class="title">
                 <p class="number">#</p>
-                <p>Title</p>
-                <p>Album</p>
-                <p>Date Added</p>
+                <p class="title">Title</p>
+                <p class="album">Album</p>
+                <p class="date--added">Date Added</p>
                 <p class="time"><img src="./assets/images/icons8-clock.svg" alt=""></p>
             </div>
         </div>
@@ -385,8 +387,7 @@ function changeBackground(){
 
 function listDisplay(arr){
     viewPlay = true
-    $("main .lists").remove()
-    $("main .player").remove()
+    $("main .top--bar").next().remove()
     let container = arr.map((item, index)=>{
         return `
         <div class="list--container" id="${index}">
@@ -457,6 +458,7 @@ function showToken(){
 }
 
 getToken()
+
 //?fields=items(added_at%2C%20track(name%2C%20id%2C%20duration_ms%2C%20album(images%2C%20name)%2C%20artists(name)))
 async function getMusicList(id, params){
     await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks?limit=50`, params)
@@ -512,4 +514,52 @@ function dateDifference(day){
     let differ = addedAt-date
     let days = Math.floor(differ/(1000*3600*24*3600))
     return days
+}
+
+async function getCategories(params){
+    await fetch(`https://api.spotify.com/v1/browse/categories?limit=50`, params)
+    .then(res => res.json())
+    .then(data=>{
+        categories = data.categories.items
+        console.log(categories)
+        appendCategories()
+}).catch(err => console.log(err))
+return categories
+}
+
+function appendCategory(){
+    getCategories(authOption1(datum))
+}
+
+function appendCategories(){
+    $("main").scrollTop(0)
+
+    if(!pages[now+1]||pages[now+1].name != "search"){
+        pages.push({name:"search",func:()=>appendCategories()})
+        now++;
+    } else {
+        pages[now+1] = {name:"search",func:()=>appendCategories()}
+    }
+
+    let category = categories.map(item =>{
+        return `
+        <div onclick="chooseCategory(${item.id})" class="category">
+            <img src="${item.icons[0].url}" alt="${item.name + '-category'}">
+            <h2>${item.name}</h2>
+        </div>
+        `
+    }).join("") 
+
+    $("main .top--bar").next().remove()
+
+    $("main").append(`
+    <section class="search--container">
+            <h1>Browse all</h1>
+            <div class="category--list">
+                ${category}
+            </div>
+        </section>
+    `)
+
+    checkNavState()
 }
