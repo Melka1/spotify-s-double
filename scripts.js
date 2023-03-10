@@ -177,7 +177,7 @@ function handleScroll(event){
         $(".player .music--list>.title").addClass("stick--top")
         $(".player .music--list>.title").css("width", width)
         $(".player .music--list").css("margin-top", height+25)
-        if(!viewPlay){
+        if(!viewPlay && pages[now].name =="playlist"){
             $(".top--bar .page--control").after(
                 `
                 <div class="music--header">
@@ -424,10 +424,11 @@ function listDisplay(arr){
     `)
 
     $(".top--bar .music--header").remove()
+    $(".top--bar .search--bar").remove()
     checkWidth()
 }
 
-let data = async(id, item) =>{
+async function data(id, item){
          await fetch(`https://api.spotify.com/v1/browse/categories/${item.title}/playlists`, id)
             .then(res => res.json())
             .then(data=>{
@@ -440,7 +441,7 @@ let data = async(id, item) =>{
     return playlist
 }    
 
-let getToken = async()=>{
+async function getToken(){
     await fetch("https://accounts.spotify.com/api/token", authOptions(client_id, client_secret))
         .then(res => res.json())
         .then(data=>{
@@ -459,12 +460,10 @@ function showToken(){
 
 getToken()
 
-//?fields=items(added_at%2C%20track(name%2C%20id%2C%20duration_ms%2C%20album(images%2C%20name)%2C%20artists(name)))
 async function getMusicList(id, params){
     await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks?limit=50`, params)
             .then(res => res.json())
             .then(data=>{
-                // console.log(data.playlists.items)
                 playlistLibrary= data.items
                 console.log(playlistLibrary)
                 appendLists()
@@ -527,12 +526,17 @@ async function getCategories(params){
 return categories
 }
 
-function appendCategory(){
-    getCategories(authOption1(datum))
-}
-
-function appendCategories(){
+function goToSearch(){
     $("main").scrollTop(0)
+
+    if(pages[now].name != "search"){
+        $("main .top--bar .page--control").after(`
+        <div class="search--bar">
+            <img src="./assets/images/icons8-search (2).svg" alt="">
+            <input type="text" placeholder="What do you want to listen to?">
+        </div>
+        `)
+    }
 
     if(!pages[now+1]||pages[now+1].name != "search"){
         pages.push({name:"search",func:()=>appendCategories()})
@@ -541,6 +545,11 @@ function appendCategories(){
         pages[now+1] = {name:"search",func:()=>appendCategories()}
     }
 
+    getCategories(authOption1(datum))
+}
+
+function appendCategories(){
+    
     let category = categories.map(item =>{
         return `
         <div onclick="chooseCategory(${item.id})" class="category">
@@ -563,3 +572,39 @@ function appendCategories(){
 
     checkNavState()
 }
+
+function goToHome(){
+    pages = [{name:"home", func: ()=>listDisplay(playlist)}]
+    listDisplay(playlist)
+    checkNavState()
+}
+
+function addElipsis(str){
+    let elipsis = []
+    if(str.length > 50){
+        elipsis = [...str].slice(0, 47)
+        elipsis.push(" ...")
+        elipsis = elipsis.join("")
+        str = elipsis
+    }
+    console.log(elipsis)
+    return str
+}
+checkNavState()
+
+function addUserButtons(){
+    $("main .top--bar .page--control").after(`
+        <div class="user--button">
+            <a href=""><button class="preference"><p><span>P</span>remium</p></button></a>
+            <a href=""><button class="support"><p><span>S</span>uppor<span>t</span></p></button></a>
+            <a href="./download.html" target="_blank"><button class="download"><p><span>D</span>own<span>l</span>oa<span>d</span></p></button></a>
+        </div>
+        <div class="partitionX"></div>
+    `)
+}
+
+function controlNavState(){//check active navigation and change color to white
+
+}
+
+// Meet Me @ The Altar along with the Rock songs you need to hear!

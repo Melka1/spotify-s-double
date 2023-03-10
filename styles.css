@@ -776,6 +776,7 @@ body footer .footer a {
   align-items: center;
   font-family: "custom-bold";
   margin-left: 5px;
+  margin-right: auto;
 }
 .music--header .nav--play {
   width: 50px;
@@ -821,4 +822,38 @@ body footer .footer a {
   width: 70%;
   z-index: -1;
   display: none;
+}
+
+.search--bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid white;
+  margin: 0 10px;
+  padding: 7px 15px;
+  gap: 10px;
+  color: black;
+  background-color: white;
+  border-radius: 30px;
+  margin-right: auto;
+}
+.search--bar img {
+  height: 1.4rem;
+}
+.search--bar input {
+  font-size: 1.2rem;
+  border: none;
+  margin-right: 3rem;
+}
+.search--bar input::-moz-placeholder {
+  font-size: 0.9rem;
+  color: #4f4e4e;
+}
+.search--bar input::placeholder {
+  font-size: 0.9rem;
+  color: #4f4e4e;
+}
+.search--bar input:focus {
+  border: none;
+  outline: none;
 }/*# sourceMappingURL=styles.css.map */
