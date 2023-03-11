@@ -875,6 +875,10 @@ body footer .footer a {
   border-radius: 35px;
   background-color: rgb(46, 43, 43);
 }
+.search--display .search--items .items:hover {
+  background-color: rgba(128, 128, 128, 0.211);
+  cursor: pointer;
+}
 .search--display .search--items .active {
   background: white;
   color: black;
@@ -885,12 +889,47 @@ body footer .footer a {
   grid-template-columns: 1fr 1fr;
   gap: 30px;
 }
+.search--display .songs--artist .artist {
+  position: relative;
+}
+.search--display .songs--artist .artist .play {
+  box-sizing: content-box;
+  display: none;
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  z-index: 6;
+  transition: bottom 0.4s, opacity 0.3s ease-in !important;
+  background-color: rgb(13, 211, 13);
+}
+.search--display .songs--artist .artist .play img {
+  width: 40px;
+  height: 40px;
+}
+.search--display .songs--artist .artist .play:hover {
+  border: 1px solid rgb(13, 211, 13);
+  right: 8px;
+  bottom: 39px;
+  cursor: initial;
+}
 .search--display .songs--artist > div {
   font-family: "custom-black";
 }
 .search--display .songs--artist > div h1 {
   font-size: 1.6rem;
   margin-bottom: 20px;
+}
+.search--display .songs--artist > div:hover .play {
+  display: flex;
+  bottom: 40px;
+  opacity: 1;
 }
 .search--display .songs--artist .artist .artist--container {
   background-color: #272626;
@@ -913,7 +952,18 @@ body footer .footer a {
   border-radius: 50%;
 }
 .search--display .songs--artist .artist .artist--container:hover {
-  background-color: rgba(128, 128, 128, 0.311);
+  background-color: rgba(128, 128, 128, 0.211);
+}
+.search--display .songs--artist .songs .image--container {
+  position: relative;
+}
+.search--display .songs--artist .songs .image--container .play {
+  position: absolute;
+  visibility: hidden;
+  left: 0px;
+  top: 7px;
+  width: 35px;
+  height: 35px;
 }
 .search--display .songs--artist .songs .song--list {
   font-family: "custom-medium";
@@ -1000,45 +1050,89 @@ body footer .footer a {
 .search--display .songs--artist .songs .song--list .list--item:hover .actions i:hover {
   color: white;
 }
-.search--display .artists h1 {
+.search--display .songs--artist .songs .song--list .list--item:hover .play {
+  visibility: visible;
+}
+.search--display .row--list h1 {
   font-size: 1.6rem;
   margin: 20px 0;
   font-family: "custom-black";
 }
-.search--display .artists .artists--list {
+.search--display .row--list .artists--list {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   justify-content: space-between;
 }
-.search--display .artists .artists--list div {
+.search--display .row--list .artists--list .list--part {
   background-color: #272626;
   max-width: 215px;
   padding: 20px;
   border-radius: 10px;
 }
-.search--display .artists .artists--list div img {
+.search--display .row--list .artists--list .list--part .profile--img {
   width: 100%;
-  border-radius: 50%;
 }
-.search--display .artists .artists--list div .name {
+.search--display .row--list .artists--list .list--part .profile--container {
+  position: relative;
+}
+.search--display .row--list .artists--list .list--part .profile--container .play {
+  box-sizing: content-box;
+  display: none;
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  z-index: 6;
+  transition: bottom 0.4s, opacity 0.3s ease-in !important;
+  background-color: rgb(13, 211, 13);
+}
+.search--display .row--list .artists--list .list--part .profile--container .play img {
+  width: 40px;
+  height: 40px;
+}
+.search--display .row--list .artists--list .list--part .profile--container .play:hover {
+  border: 1px solid rgb(13, 211, 13);
+  right: 9px;
+  bottom: 9px;
+  cursor: initial;
+}
+.search--display .row--list .artists--list .list--part .profile--container img {
+  width: 100%;
+  border-radius: 10px;
+}
+.search--display .row--list .artists--list .list--part .name {
   font-family: "custom-bold";
   font-size: 1.1rem;
   margin: 15px 0;
 }
-.search--display .artists .artists--list div .type {
+.search--display .row--list .artists--list .list--part .type {
   font-family: "custom-light";
   color: #a7a7a7;
 }
-.search--display .artists .artists--list div:hover {
-  background-color: rgba(128, 128, 128, 0.311);
+.search--display .row--list .artists--list .list--part:hover {
+  background-color: rgba(128, 128, 128, 0.211);
+  cursor: pointer;
+}
+.search--display .row--list .artists--list .list--part:hover .play {
+  display: flex;
+  bottom: 10px;
+  opacity: 1;
 }
 .search--display .tm {
   margin-top: 50px !important;
 }
 .search--display hr {
-  margin-top: 60px;
-  margin-bottom: 100px;
+  margin: 100px 0;
   border: none;
   border-bottom: 1px solid #a7a7a7;
   background-color: transparent;
+}
+.search--display .artists div img {
+  border-radius: 50% !important;
 }/*# sourceMappingURL=styles.css.map */

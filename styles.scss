@@ -1,7 +1,7 @@
 @import './varibles';
 $gray-color: #a7a7a7;
 $green-color: rgb(13, 211, 13);
-$hover-color: rgba(128, 128, 128, 0.311);
+$hover-color: rgba(128, 128, 128, 0.211);
 * {
     box-sizing: border-box;
     padding: 0;
@@ -882,6 +882,10 @@ body {//z-index: 0;
             padding: 7px 15px;
             border-radius: 35px;
             background-color: rgb(46, 43, 43);
+            &:hover {
+                background-color: $hover-color;
+                cursor: pointer;
+            }
         }
         .active {
             background: white;
@@ -893,11 +897,50 @@ body {//z-index: 0;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 30px;
+        .artist {
+            position: relative;
+            .play {
+                box-sizing: content-box;
+                display: none;
+                position: absolute;
+                bottom: 20px;
+                right: 10px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                z-index: 6;
+                transition: bottom 0.4s, opacity 0.3s ease-in !important;
+                img {
+                    width: 40px;
+                    height: 40px;
+                }
+                background-color: rgb(13, 211, 13);
+                &:hover {
+                    border: 1px solid rgb(13, 211, 13);
+                    right: 8px;
+                    bottom: 39px;
+                    cursor: initial;
+                }
+            }
+        }
         &>div {
             font-family: "custom-black";
             h1 {
                 font-size: 1.6rem;
                 margin-bottom: 20px;
+            }
+            
+            &:hover {
+                // background-color: $hover-color;
+                .play {
+                    display: flex;
+                    bottom: 40px;
+                    opacity: 1;
+                }
             }
         }
         .artist {
@@ -926,6 +969,17 @@ body {//z-index: 0;
             }
         }
         .songs {
+            .image--container {
+                position: relative;
+                .play {
+                    position: absolute;
+                    visibility: hidden;
+                    left: 0px;
+                    top: 7px;
+                    width: 35px;
+                    height: 35px;
+                }
+            }
             .song--list {
                 font-family: "custom-medium";
                 gap: 15px;
@@ -1009,13 +1063,16 @@ body {//z-index: 0;
                                 color: white;
                             }
                         }
+                        .play {
+                            visibility: visible;
+                        }
                     }
                 }
             }
 
         }
     }
-    .artists {
+    .row--list {
         h1 {
             font-size: 1.6rem;
             margin: 20px 0;
@@ -1025,14 +1082,47 @@ body {//z-index: 0;
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             justify-content: space-between;
-            div {
+            .list--part {
                 background-color: #272626;
                 max-width: 215px;
                 padding: 20px;
                 border-radius: 10px;
-                img {
+                .profile--img {
                     width: 100%;
-                    border-radius: 50%;
+                }
+                .profile--container {
+                    position: relative;
+                    .play {
+                        box-sizing: content-box;
+                        display: none;
+                        position: absolute;
+                        bottom: 0;
+                        right: 10px;
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        opacity: 0;
+                        z-index: 6;
+                        transition: bottom 0.4s, opacity 0.3s ease-in !important;
+                        img {
+                            width: 40px;
+                            height: 40px;
+                        }
+                        background-color: rgb(13, 211, 13);
+                        &:hover {
+                            border: 1px solid rgb(13, 211, 13);
+                            right: 9px;
+                            bottom: 9px;
+                            cursor: initial;
+                        }
+                    }
+                    img {
+                        width: 100%;
+                        border-radius: 10px;
+                    }
                 }
                 .name {
                     font-family: "custom-bold";
@@ -1043,8 +1133,15 @@ body {//z-index: 0;
                     font-family: "custom-light";
                     color: $gray-color;
                 }
+                
                 &:hover {
-                    background-color: rgba(128, 128, 128, 0.311);
+                    background-color: $hover-color;
+                    cursor: pointer;
+                    .play {
+                        display: flex;
+                        bottom: 10px;
+                        opacity: 1;
+                    }
                 }
             }
             
@@ -1054,10 +1151,12 @@ body {//z-index: 0;
         margin-top: 50px !important;
     }
     hr {
-        margin-top: 60px;
-        margin-bottom: 100px;
+        margin: 100px 0;
         border: none;
         border-bottom: 1px solid $gray-color;
         background-color: transparent;
+    }
+    .artists div img {
+        border-radius: 50% !important;
     }
 }
