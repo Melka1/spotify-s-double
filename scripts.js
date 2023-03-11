@@ -11,6 +11,7 @@ let datum;
 
 let playlist = []
 let categories = []
+let searchList;
 
 let playlists = [
     {name:"Focus", title:'focus'},
@@ -458,7 +459,7 @@ function showToken(){
     })
 }
 
-getToken()
+// getToken()
 
 async function getMusicList(id, params){
     await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks?limit=50`, params)
@@ -538,6 +539,8 @@ function goToSearch(){
         `)
     }
 
+    $("main .top--bar").next().remove()
+
     if(!pages[now+1]||pages[now+1].name != "search"){
         pages.push({name:"search",func:()=>appendCategories()})
         now++;
@@ -559,7 +562,7 @@ function appendCategories(){
         `
     }).join("") 
 
-    $("main .top--bar").next().remove()
+    
 
     $("main").append(`
     <section class="search--container">
@@ -590,7 +593,8 @@ function addElipsis(str){
     console.log(elipsis)
     return str
 }
-checkNavState()
+
+// checkNavState()
 
 function addUserButtons(){
     $("main .top--bar .page--control").after(`
@@ -607,4 +611,25 @@ function controlNavState(){//check active navigation and change color to white
 
 }
 
-// Meet Me @ The Altar along with the Rock songs you need to hear!
+async function searchAll(param, name){
+    await fetch(`https://api.spotify.com/v1/search?q=${name}&type=artist%2Ctrack%2Calbum%2Cplaylist%2Caudiobook%2Cshow%2Cepisode&limit=10`, param)
+        .then(res=>res.json())
+        .then(data=> {
+            searchList = data
+            console.log(searchList)   
+            artists(searchList.artists.items)
+        })
+}
+
+function literalSearch(){
+    searchAll(authOption1(datum), "j")
+}
+
+function artists(arr){
+    let result = [...arr]
+    console.log(result)
+    // result.sort((a, b)=>b.popularity - a.popularity)
+    result.sort((a, b)=>b.followers.total - a.followers.total)
+    result.length = 5
+    console.log(result)
+}

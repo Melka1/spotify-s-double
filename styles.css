@@ -856,4 +856,189 @@ body footer .footer a {
 .search--bar input:focus {
   border: none;
   outline: none;
+}
+
+.search--display {
+  font-family: "custom-light";
+  margin-top: 40px;
+  padding: 35px;
+  color: white;
+}
+.search--display .search--items {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 10px 0;
+}
+.search--display .search--items .items {
+  padding: 7px 15px;
+  border-radius: 35px;
+  background-color: rgb(46, 43, 43);
+}
+.search--display .search--items .active {
+  background: white;
+  color: black;
+}
+.search--display .songs--artist {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+.search--display .songs--artist > div {
+  font-family: "custom-black";
+}
+.search--display .songs--artist > div h1 {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+.search--display .songs--artist .artist .artist--container {
+  background-color: #272626;
+  padding: 20px;
+}
+.search--display .songs--artist .artist .artist--container h1 {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+.search--display .songs--artist .artist .artist--container p {
+  background-color: #181818;
+  padding: 7px 15px;
+  border-radius: 15px;
+  display: inline-block;
+  letter-spacing: 1px;
+  font-family: "custom-medium";
+}
+.search--display .songs--artist .artist .artist--container img {
+  width: 120px;
+  border-radius: 50%;
+}
+.search--display .songs--artist .artist .artist--container:hover {
+  background-color: rgba(128, 128, 128, 0.311);
+}
+.search--display .songs--artist .songs .song--list {
+  font-family: "custom-medium";
+  gap: 15px;
+}
+.search--display .songs--artist .songs .song--list .list--item {
+  padding: 7px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  border-radius: 5px;
+}
+.search--display .songs--artist .songs .song--list .list--item img {
+  width: 50px;
+}
+.search--display .songs--artist .songs .song--list .list--item .track--info {
+  padding: 5px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.search--display .songs--artist .songs .song--list .list--item .track--info .track--name {
+  margin-bottom: auto;
+  font-family: "custom-medium";
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+.search--display .songs--artist .songs .song--list .list--item .track--info .track--name:hover {
+  text-decoration: underline;
+}
+.search--display .songs--artist .songs .song--list .list--item .track--info .track--artist {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.search--display .songs--artist .songs .song--list .list--item .track--info .track--artist .name {
+  font-family: "custom-light";
+  color: #a7a7a7;
+}
+.search--display .songs--artist .songs .song--list .list--item .track--info .track--artist .name span:hover {
+  text-decoration: underline;
+}
+.search--display .songs--artist .songs .song--list .list--item .track--info .track--artist .explicit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  width: 18px;
+  height: 18px;
+  padding-top: 2px;
+  background-color: #a7a7a7;
+  color: black !important;
+  border-radius: 5px;
+  margin-right: 7px;
+}
+.search--display .songs--artist .songs .song--list .list--item .actions {
+  display: flex;
+  flex-direction: row;
+}
+.search--display .songs--artist .songs .song--list .list--item .actions i {
+  visibility: hidden;
+}
+.search--display .songs--artist .songs .song--list .list--item .actions .duration {
+  color: #a7a7a7;
+  width: 30px;
+  margin-left: 30px;
+  margin-right: 25px;
+}
+.search--display .songs--artist .songs .song--list .list--item:hover {
+  background-color: #4f4e4e;
+  cursor: pointer;
+}
+.search--display .songs--artist .songs .song--list .list--item:hover .track--info * {
+  color: white;
+}
+.search--display .songs--artist .songs .song--list .list--item:hover .explicit p {
+  color: black;
+}
+.search--display .songs--artist .songs .song--list .list--item:hover .actions i {
+  visibility: visible;
+  color: #a7a7a7;
+}
+.search--display .songs--artist .songs .song--list .list--item:hover .actions i:hover {
+  color: white;
+}
+.search--display .artists h1 {
+  font-size: 1.6rem;
+  margin: 20px 0;
+  font-family: "custom-black";
+}
+.search--display .artists .artists--list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-content: space-between;
+}
+.search--display .artists .artists--list div {
+  background-color: #272626;
+  max-width: 215px;
+  padding: 20px;
+  border-radius: 10px;
+}
+.search--display .artists .artists--list div img {
+  width: 100%;
+  border-radius: 50%;
+}
+.search--display .artists .artists--list div .name {
+  font-family: "custom-bold";
+  font-size: 1.1rem;
+  margin: 15px 0;
+}
+.search--display .artists .artists--list div .type {
+  font-family: "custom-light";
+  color: #a7a7a7;
+}
+.search--display .artists .artists--list div:hover {
+  background-color: rgba(128, 128, 128, 0.311);
+}
+.search--display .tm {
+  margin-top: 50px !important;
+}
+.search--display hr {
+  margin-top: 60px;
+  margin-bottom: 100px;
+  border: none;
+  border-bottom: 1px solid #a7a7a7;
+  background-color: transparent;
 }/*# sourceMappingURL=styles.css.map */

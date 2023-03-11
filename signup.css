@@ -316,7 +316,7 @@ body main form .policies .container .checkmark::after {
   width: 3px;
   height: 6px;
   border-width: 0px 2px 2px 0px;
-  border-color: white;
+  border-color: rgb(115, 15, 15);
   border-style: solid;
   transform: rotate(45deg);
 }

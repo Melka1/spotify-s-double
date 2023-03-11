@@ -33,11 +33,11 @@
         <form action="#">
             <p class="title">Sign up with your email address</p>
             <label for="email">What's your Email?</label>
-            <input type="text" id="email" placeholder="Enter your email.">
+            <input type="text" id="email" autocomplete="email" placeholder="Enter your email.">
             <label for="con--email">Confirm your Email</label>
-            <input type="text" id="con--email" placeholder="Enter your email again.">
+            <input type="text" id="con--email" autocomplete="email" placeholder="Enter your email again.">
             <label for="password">Create a password</label>
-            <input type="password" name="pass" id="password" placeholder="Create a password.">
+            <input type="password" name="pass" id="password" autocomplete="current-password" placeholder="Create a password.">
             <label for="nick--name">What should we call you?</label>
             <input type="text" id="nick--name" placeholder="Enter a profile name.">
             <p class="note">This appears on your profile.</p>
@@ -71,28 +71,29 @@
                 </div>
 
             </div>
+            
             <label for="gender--type" class="gender--label">What's your Gender?</label>
             <div id="gender--type">
-                <label class="container">Male
+                <label class="container" for="male">Male
                     <input type="radio" name="gender" id="male">
                     <span class="checkmark"></span>
                 </label>
-                <label class="container">Female
+                <label class="container" for="female">Female
                     <input type="radio" name="gender" id="female">
                     <span class="checkmark"></span>
                 </label>
-                <label class="container">Prefer not to say
+                <label class="container" for="no-to">Prefer not to say
                     <input type="radio" name="gender" id="no-to">
                     <span class="checkmark"></span>
                 </label>
             </div>
             <div class="policies">
-                <label class="container">I would prefer not to receive marketing messages from Spotify
-                    <input type="checkbox" id="policy">
+                <label class="container" for="policy1">I would prefer not to receive marketing messages from Spotify
+                    <input type="checkbox" id="policy1">
                     <span class="checkmark"></span>
                 </label>
-                <label class="container">Share my registration data with Spotify's content providers for marketing purposes.
-                    <input type="checkbox" id="policy">
+                <label class="container" for="policy2">Share my registration data with Spotify's content providers for marketing purposes.
+                    <input type="checkbox" id="policy2">
                     <span class="checkmark"></span>
                 </label>
             </div>

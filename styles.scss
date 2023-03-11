@@ -1,6 +1,7 @@
 @import './varibles';
 $gray-color: #a7a7a7;
 $green-color: rgb(13, 211, 13);
+$hover-color: rgba(128, 128, 128, 0.311);
 * {
     box-sizing: border-box;
     padding: 0;
@@ -863,5 +864,200 @@ body {//z-index: 0;
             border: none;
             outline: none;
         }
+    }
+}
+
+.search--display {
+    font-family: "custom-light";
+    margin-top: 40px;
+    padding: 35px;
+    color: white;
+    .search--items {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        padding: 10px 0;
+        .items {
+            // border: 1px solid;
+            padding: 7px 15px;
+            border-radius: 35px;
+            background-color: rgb(46, 43, 43);
+        }
+        .active {
+            background: white;
+            color: black;
+        }
+    }
+    .songs--artist {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        &>div {
+            font-family: "custom-black";
+            h1 {
+                font-size: 1.6rem;
+                margin-bottom: 20px;
+            }
+        }
+        .artist {
+            .artist--container {
+                background-color: #272626;
+                padding: 20px;
+                h1 {
+                    font-size: 2rem;
+                    margin: 20px 0;
+                }
+                p {
+                    background-color: #181818;
+                    padding: 7px 15px;
+                    border-radius: 15px;
+                    display: inline-block;
+                    letter-spacing: 1px;
+                    font-family: "custom-medium";
+                }
+                img {
+                    width: 120px;
+                    border-radius: 50%;
+                }
+                &:hover {
+                    background-color: $hover-color;
+                }
+            }
+        }
+        .songs {
+            .song--list {
+                font-family: "custom-medium";
+                gap: 15px;
+                .list--item {
+                    padding: 7px 10px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 20px;
+                    border-radius: 5px;
+                    img {
+                        width: 50px;
+                    }
+                    .track--info {
+                        padding: 5px;
+                        flex-grow: 1;
+                        display: flex;
+                        flex-direction: column;
+                        .track--name {
+                            margin-bottom: auto;
+                            font-family: "custom-medium";
+                            font-size: 1rem;
+                            letter-spacing: 1px;
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                        .track--artist {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            .name {
+                                font-family: "custom-light";
+                                color: $gray-color;
+                                span:hover {
+                                    text-decoration: underline;
+                                }
+                            }
+                            .explicit {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 10px;
+                                width: 18px;
+                                height: 18px;
+                                padding-top: 2px;
+                                background-color: $gray-color;
+                                color: black !important;
+                                border-radius: 5px;
+                                margin-right: 7px;
+                            }
+                        }
+                    }
+                    .actions {
+                        display: flex;
+                        flex-direction: row;
+                        i {
+                            visibility: hidden;
+                        }
+                        .duration {
+                            color: $gray-color;
+                            width: 30px;
+                            margin-left: 30px;
+                            margin-right: 25px;
+                        }
+                    }
+
+                    &:hover {
+                        background-color: #4f4e4e;
+                        cursor: pointer;
+                        .track--info * {
+                            color: white;
+                        }
+                        .explicit p {
+                            color: black;
+                        }
+                        .actions i {
+                            visibility: visible;
+                            color: $gray-color;
+                            &:hover {
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+    .artists {
+        h1 {
+            font-size: 1.6rem;
+            margin: 20px 0;
+            font-family: "custom-black";
+        }
+        .artists--list {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            justify-content: space-between;
+            div {
+                background-color: #272626;
+                max-width: 215px;
+                padding: 20px;
+                border-radius: 10px;
+                img {
+                    width: 100%;
+                    border-radius: 50%;
+                }
+                .name {
+                    font-family: "custom-bold";
+                    font-size: 1.1rem;
+                    margin: 15px 0;
+                }
+                .type {
+                    font-family: "custom-light";
+                    color: $gray-color;
+                }
+                &:hover {
+                    background-color: rgba(128, 128, 128, 0.311);
+                }
+            }
+            
+        }
+    }
+    .tm {
+        margin-top: 50px !important;
+    }
+    hr {
+        margin-top: 60px;
+        margin-bottom: 100px;
+        border: none;
+        border-bottom: 1px solid $gray-color;
+        background-color: transparent;
     }
 }
