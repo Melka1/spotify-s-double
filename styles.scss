@@ -869,14 +869,20 @@ body {//z-index: 0;
 
 .search--display {
     font-family: "custom-light";
-    margin-top: 40px;
+    // top: 60px;
     padding: 35px;
     color: white;
+    padding-top: 130px;
     .search--items {
+        position: fixed;
         display: flex;
         flex-direction: row;
         gap: 20px;
         padding: 10px 0;
+        top: 70px;
+        background: rgb(33, 32, 32);
+        z-index: 4;
+        width: 100%;
         .items {
             // border: 1px solid;
             padding: 7px 15px;
@@ -895,7 +901,7 @@ body {//z-index: 0;
     .songs--artist {
         width: 100%;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 2fr 3fr;
         gap: 30px;
         .artist {
             position: relative;
@@ -904,7 +910,7 @@ body {//z-index: 0;
                 display: none;
                 position: absolute;
                 bottom: 20px;
-                right: 10px;
+                right: 20px;
                 width: 50px;
                 height: 50px;
                 border-radius: 50%;
@@ -920,10 +926,12 @@ body {//z-index: 0;
                 }
                 background-color: rgb(13, 211, 13);
                 &:hover {
-                    border: 1px solid rgb(13, 211, 13);
-                    right: 8px;
-                    bottom: 39px;
-                    cursor: initial;
+                    // border: 2px solid rgb(13, 211, 13);
+                    width: 54px;
+                    height: 54px;
+                    right: 18px;
+                    bottom: 38px;
+                    
                 }
             }
         }
@@ -935,7 +943,7 @@ body {//z-index: 0;
             }
             
             &:hover {
-                // background-color: $hover-color;
+                cursor: pointer;
                 .play {
                     display: flex;
                     bottom: 40px;
@@ -1065,6 +1073,16 @@ body {//z-index: 0;
                         }
                         .play {
                             visibility: visible;
+                            z-index: 6;
+                        }
+                        .cover {
+                            width: 50px;
+                            height: 50px;
+                            top: 0;
+                            left: 0;
+                            position: absolute;
+                            background-color: rgba(128, 128, 128, 0.75);
+                            z-index: 5;
                         }
                     }
                 }
@@ -1122,6 +1140,7 @@ body {//z-index: 0;
                     img {
                         width: 100%;
                         border-radius: 10px;
+                        aspect-ratio: 1/1;
                     }
                 }
                 .name {

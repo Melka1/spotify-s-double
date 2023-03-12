@@ -860,15 +860,20 @@ body footer .footer a {
 
 .search--display {
   font-family: "custom-light";
-  margin-top: 40px;
   padding: 35px;
   color: white;
+  padding-top: 130px;
 }
 .search--display .search--items {
+  position: fixed;
   display: flex;
   flex-direction: row;
   gap: 20px;
   padding: 10px 0;
+  top: 70px;
+  background: rgb(33, 32, 32);
+  z-index: 4;
+  width: 100%;
 }
 .search--display .search--items .items {
   padding: 7px 15px;
@@ -886,7 +891,7 @@ body footer .footer a {
 .search--display .songs--artist {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 3fr;
   gap: 30px;
 }
 .search--display .songs--artist .artist {
@@ -897,7 +902,7 @@ body footer .footer a {
   display: none;
   position: absolute;
   bottom: 20px;
-  right: 10px;
+  right: 20px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -914,10 +919,10 @@ body footer .footer a {
   height: 40px;
 }
 .search--display .songs--artist .artist .play:hover {
-  border: 1px solid rgb(13, 211, 13);
-  right: 8px;
-  bottom: 39px;
-  cursor: initial;
+  width: 54px;
+  height: 54px;
+  right: 18px;
+  bottom: 38px;
 }
 .search--display .songs--artist > div {
   font-family: "custom-black";
@@ -925,6 +930,9 @@ body footer .footer a {
 .search--display .songs--artist > div h1 {
   font-size: 1.6rem;
   margin-bottom: 20px;
+}
+.search--display .songs--artist > div:hover {
+  cursor: pointer;
 }
 .search--display .songs--artist > div:hover .play {
   display: flex;
@@ -1052,6 +1060,16 @@ body footer .footer a {
 }
 .search--display .songs--artist .songs .song--list .list--item:hover .play {
   visibility: visible;
+  z-index: 6;
+}
+.search--display .songs--artist .songs .song--list .list--item:hover .cover {
+  width: 50px;
+  height: 50px;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: rgba(128, 128, 128, 0.75);
+  z-index: 5;
 }
 .search--display .row--list h1 {
   font-size: 1.6rem;
@@ -1105,6 +1123,7 @@ body footer .footer a {
 .search--display .row--list .artists--list .list--part .profile--container img {
   width: 100%;
   border-radius: 10px;
+  aspect-ratio: 1/1;
 }
 .search--display .row--list .artists--list .list--part .name {
   font-family: "custom-bold";

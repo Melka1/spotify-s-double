@@ -13,6 +13,11 @@ let playlist = []
 let categories = []
 let searchList;
 
+let classes = {
+    artists: ['songs--artist'],
+
+}
+
 let playlists = [
     {name:"Focus", title:'focus'},
     {name:"Spotify Playlists", title:'toplists'}
@@ -436,7 +441,7 @@ async function data(id, item){
                 // console.log(data.playlists.items)
                 playlist.push({name:item.name, lists:data.playlists.items})
                 console.log(playlist)
-                listDisplay(playlist)
+                // listDisplay(playlist)
                 checkNavState()
         })
     return playlist
@@ -459,7 +464,7 @@ function showToken(){
     })
 }
 
-// getToken()
+getToken()
 
 async function getMusicList(id, params){
     await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks?limit=50`, params)
@@ -612,17 +617,19 @@ function controlNavState(){//check active navigation and change color to white
 }
 
 async function searchAll(param, name){
-    await fetch(`https://api.spotify.com/v1/search?q=${name}&type=artist%2Ctrack%2Calbum%2Cplaylist%2Caudiobook%2Cshow%2Cepisode&limit=10`, param)
+    await fetch(`https://api.spotify.com/v1/search?q=${name}&type=artist%2Ctrack%2Calbum%2Cplaylist%2Caudiobook%2Cshow%2Cepisode&limit=5`, param)
         .then(res=>res.json())
         .then(data=> {
             searchList = data
             console.log(searchList)   
-            artists(searchList.artists.items)
+            initialSearch()
+            addArtistSongs(searchList.artists.items[0], searchList.tracks.items)
+            addArtists(searchList.artists.items)
         })
 }
 
 function literalSearch(){
-    searchAll(authOption1(datum), "j")
+    searchAll(authOption1(datum), "ju")
 }
 
 function artists(arr){
@@ -632,4 +639,97 @@ function artists(arr){
     result.sort((a, b)=>b.followers.total - a.followers.total)
     result.length = 5
     console.log(result)
+}
+
+function initialSearch(){
+    let top = `
+    <section class="search--display">
+        <div class="search--items">
+            <div class="items active">All</div>
+            <div class="items">Artists</div>
+            <div class="items">Songs</div>
+            <div class="items">Playlists</div>
+            <div class="items">Albums</div>
+            <div class="items">Podcasts & Shows</div>
+        </div>
+    </section>
+    `
+    $("main").append(top)
+}
+function addArtistSongs(artist, songs){
+    songs.length = 4
+    let artistSong = `
+    <div class="songs--artist">
+    <div class="artist">
+        <h1>Top Result</h1>
+        <div class="artist--container">
+            <img src="${artist.images[2].url}" alt="">
+            <h1 class="name">${artist.name}</h1>
+            <p class="type">${capitalizeFirstLetter(artist.type)}</p>
+            <div onclick="handlePlay()" class="play">
+                <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="songs">
+        <h1>Songs</h1>
+        <div class="song--list">
+            ${songs.map((item, index) =>{
+                return `
+                    <div class="list--item">
+                        <div class="image--container">
+                            <img src="${item.album.images[2].url}" alt="">
+                            <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" class="play" alt="">
+                            <div class="cover"></div>
+                        </div>
+                        <div class="track--info">
+                            <p class="track--name">${item.name}</p>
+                            <div class="track--artist">
+                                ${item.explicit?`<div class="explicit"><p>E</p></div>`:""}
+                                <p class="name">${item.artists.map(itm=>`<span>${itm.name}</span>`).join(", ")}</p>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <i class="fa-regular fa-heart"></i>
+                            <p class="duration">${msToMinSec(item.duration_ms)}</p>
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </div>
+                    </div>
+                `
+            }).join("")}
+        </div>
+    </div>
+</div>
+    `
+
+    $("main .search--display").append(artistSong)
+}
+
+function addArtists(artists){
+    let artistList = `
+    <div class="artists row--list tm">
+        <h1 class="title">Artists</h1>
+        <div class="artists--list">
+        ${artists.map(item => {
+            return `
+                <div class="list--part">
+                    <div class="profile--container">
+                        <img src="${item.images[1].url}" alt="" class="profile--img">
+                        <div onclick="handlePlay()" class="play">
+                            <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                        </div>
+                    </div>
+                    <p class="name">${item.name}</p>
+                    <p class="type">${capitalizeFirstLetter(item.type)}</p>
+                </div>
+            `
+        }).join("")}
+        </div>
+    </div>
+    `
+    $("main .search--display").append(artistList)
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
