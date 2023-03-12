@@ -226,7 +226,7 @@
                 </div>
             </div>
             //done
-            
+
             <div class="artists row--list tm">
                 <h1 class="title">Artists</h1>
                 <div class="artists--list">
@@ -282,6 +282,9 @@
                     </div>
                 </div>
             </div>
+
+            //done
+
             <div class="albums row--list tm">
                 <h1 class="title">Albums</h1>
                 <div class="artists--list">
@@ -295,6 +298,8 @@
                         <p class="name">Justin Bieber</p>
                         <p class="type">Artist</p>
                     </div>
+                </div>
+            </div>
                     <div class="list--part">
                         <div class="profile--container">
                             <img src="./assets/images/music--cover.jpg" alt="" class="profile--img">

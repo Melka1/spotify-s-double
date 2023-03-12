@@ -441,7 +441,7 @@ async function data(id, item){
                 // console.log(data.playlists.items)
                 playlist.push({name:item.name, lists:data.playlists.items})
                 console.log(playlist)
-                // listDisplay(playlist)
+                listDisplay(playlist)
                 checkNavState()
         })
     return playlist
@@ -539,7 +539,7 @@ function goToSearch(){
         $("main .top--bar .page--control").after(`
         <div class="search--bar">
             <img src="./assets/images/icons8-search (2).svg" alt="">
-            <input type="text" placeholder="What do you want to listen to?">
+            <input id="search--input" type="text" placeholder="What do you want to listen to?">
         </div>
         `)
     }
@@ -552,6 +552,9 @@ function goToSearch(){
     } else {
         pages[now+1] = {name:"search",func:()=>appendCategories()}
     }
+
+    let searchBar = document.getElementById("search--input")
+    searchBar.addEventListener("keypress", (event) => handleSearchtext(event))
 
     getCategories(authOption1(datum))
 }
@@ -566,8 +569,6 @@ function appendCategories(){
         </div>
         `
     }).join("") 
-
-    
 
     $("main").append(`
     <section class="search--container">
@@ -599,7 +600,7 @@ function addElipsis(str){
     return str
 }
 
-// checkNavState()
+checkNavState()
 
 function addUserButtons(){
     $("main .top--bar .page--control").after(`
@@ -616,6 +617,9 @@ function controlNavState(){//check active navigation and change color to white
 
 }
 
+
+//all about search
+
 async function searchAll(param, name){
     await fetch(`https://api.spotify.com/v1/search?q=${name}&type=artist%2Ctrack%2Calbum%2Cplaylist%2Caudiobook%2Cshow%2Cepisode&limit=5`, param)
         .then(res=>res.json())
@@ -625,11 +629,17 @@ async function searchAll(param, name){
             initialSearch()
             addArtistSongs(searchList.artists.items[0], searchList.tracks.items)
             addArtists(searchList.artists.items)
+            addAlbums(searchList.albums.items)
+            addPlaylists(searchList.playlists.items)
+            addShows(searchList.shows.items)
+            addEpisodes(searchList.episodes.items)
+            addAudioBook(searchList.audiobooks.items)
+            $("main .search--display").append('<hr>')
         })
 }
 
-function literalSearch(){
-    searchAll(authOption1(datum), "ju")
+function literalSearch(text){
+    searchAll(authOption1(datum), text)
 }
 
 function artists(arr){
@@ -656,6 +666,7 @@ function initialSearch(){
     `
     $("main").append(top)
 }
+
 function addArtistSongs(artist, songs){
     songs.length = 4
     let artistSong = `
@@ -730,6 +741,146 @@ function addArtists(artists){
     $("main .search--display").append(artistList)
 }
 
+function addAlbums(albums){
+    let albumsList = `
+    <div class="albums row--list tm">
+        <h1 class="title">Albums</h1>
+        <div class="artists--list">
+        ${albums.map(item => {
+            return `
+                <div class="list--part">
+                    <div class="profile--container">
+                        <img src="${item.images[1].url}" alt="" class="profile--img">
+                        <div onclick="handlePlay()" class="play">
+                            <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                        </div>
+                    </div>
+                    <p class="name">${item.name}</p>
+                    <p class="type">${capitalizeFirstLetter(item.type)}</p>
+                </div>
+            `
+        }).join("")}
+        </div>
+    </div>
+    `
+    $("main .search--display").append(albumsList)
+}
+
+function addPlaylists(playlists){
+    let platlistList = `
+    <div class="albums row--list tm">
+        <h1 class="title">Playlists</h1>
+        <div class="artists--list">
+        ${playlists.map(item => {
+            return `
+                <div class="list--part">
+                    <div class="profile--container">
+                        <img src="${item.images[0].url}" alt="" class="profile--img">
+                        <div onclick="handlePlay()" class="play">
+                            <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                        </div>
+                    </div>
+                    <p class="name">${item.name}</p>
+                    <p class="type">${capitalizeFirstLetter(item.type)}</p>
+                </div>
+            `
+        }).join("")}
+        </div>
+    </div>
+    `
+    $("main .search--display").append(platlistList)
+}
+
+function addShows(shows){
+    let del = true;
+    let showList = `
+    <div class="shows row--list tm">
+        <h1 class="title">Shows</h1>
+        <div class="artists--list">
+        ${shows.map(item => {
+            del = item?false:true
+            return item?`
+                <div class="list--part">
+                    <div class="profile--container">
+                        <img src="${item.images[0].url}" alt="" class="profile--img">
+                        <div onclick="handlePlay()" class="play">
+                            <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                        </div>
+                    </div>
+                    <p class="name">${item.name}</p>
+                    <p class="type">${capitalizeFirstLetter(item.type)}</p>
+                </div>
+            `:''
+        }).join("")}
+        </div>
+    </div>
+    `
+    $("main .search--display").append(showList)
+    del?$("main .search--display .shows").remove():{}
+}
+
+function addEpisodes(episodes){
+    let del = true;
+    let episodesList = `
+    <div class="episodes row--list tm">
+        <h1 class="title">Episodes</h1>
+        <div class="artists--list">
+        ${episodes.map(item => {
+            del = item?false:true
+            return item?`
+                <div class="list--part">
+                    <div class="profile--container">
+                        <img src="${item.images[0].url}" alt="" class="profile--img">
+                        <div onclick="handlePlay()" class="play">
+                            <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                        </div>
+                    </div>
+                    <p class="name">${item.name}</p>
+                    <p class="type">${capitalizeFirstLetter(item.type)}</p>
+                </div>
+            `:''
+        }).join("")}
+        </div>
+    </div>
+    `
+    $("main .search--display").append(episodesList)
+    del?$("main .search--display .episodes").remove():{}
+}
+
+function addAudioBook(audiobook){
+    let del = true;
+    let audiobookList = `
+    <div class="audiobooks row--list tm">
+        <h1 class="title">Audiobooks</h1>
+        <div class="artists--list">
+        ${audiobook.map(item => {
+            del = item?false:true
+            return item?`
+                <div class="list--part">
+                    <img src="${item.images[0].url}" alt="" class="profile--img">
+                    <p class="name">${item.name}</p>
+                    <p class="type">${capitalizeFirstLetter(item.type)}</p>
+                </div>
+            `:''
+        }).join("")}
+        </div>
+    </div>
+    `
+    $("main .search--display").append(audiobookList)
+    del?$("main .search--display .audiobook").remove():{}
+}
+
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function handleSearchtext(event){
+    let searchText = $("main .top--bar .search--bar input").val()
+    console.log(searchText)
+    console.log(event.code)
+    if(event.code == "Enter"){
+        $("main .search--container").remove()
+        $("main .search--display").remove()
+        literalSearch(searchText)
+    }
 }
