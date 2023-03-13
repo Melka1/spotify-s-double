@@ -970,6 +970,7 @@ body {//z-index: 0;
                 img {
                     width: 120px;
                     border-radius: 50%;
+                    aspect-ratio: 1/1;
                 }
                 &:hover {
                     background-color: $hover-color;
@@ -1100,6 +1101,7 @@ body {//z-index: 0;
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             justify-content: space-between;
+            gap: 20px;
             .list--part {
                 background-color: #272626;
                 max-width: 215px;
@@ -1179,4 +1181,7 @@ body {//z-index: 0;
     .artists div img {
         border-radius: 50% !important;
     }
+}
+.ar {
+    aspect-ratio: 1/1;
 }

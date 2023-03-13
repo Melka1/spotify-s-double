@@ -958,6 +958,7 @@ body footer .footer a {
 .search--display .songs--artist .artist .artist--container img {
   width: 120px;
   border-radius: 50%;
+  aspect-ratio: 1/1;
 }
 .search--display .songs--artist .artist .artist--container:hover {
   background-color: rgba(128, 128, 128, 0.211);
@@ -1080,6 +1081,7 @@ body footer .footer a {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   justify-content: space-between;
+  gap: 20px;
 }
 .search--display .row--list .artists--list .list--part {
   background-color: #272626;
@@ -1155,4 +1157,8 @@ body footer .footer a {
 }
 .search--display .artists div img {
   border-radius: 50% !important;
+}
+
+.ar {
+  aspect-ratio: 1/1;
 }/*# sourceMappingURL=styles.css.map */

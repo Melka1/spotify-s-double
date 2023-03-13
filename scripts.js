@@ -19,14 +19,14 @@ let classes = {
 }
 
 let playlists = [
-    {name:"Focus", title:'focus'},
-    {name:"Spotify Playlists", title:'toplists'}
+    {name:"Focus", title:'focus', lists:[]},
+    {name:"Spotify Playlists", title:'toplists', lists:[]}
 ]//toplists, sleep
 
 function handleTime(){
     let now = new Date().getHours()
     console.log(now)
-    if(now>0 && now<6){
+    if(now>22 || now<4){
         playlists.push({name:"Sleep", title:'0JQ5DAqbMKFCuoRTxhYWow'})
     }
 }
@@ -393,6 +393,7 @@ function changeBackground(){
 
 function listDisplay(arr){
     viewPlay = true
+    
     $("main .top--bar").next().remove()
     let container = arr.map((item, index)=>{
         return `
@@ -535,7 +536,14 @@ return categories
 function goToSearch(){
     $("main").scrollTop(0)
 
-    if(pages[now].name != "search"){
+    if(!pages[now+1]||pages[now+1].name != "search"){
+        pages.push({name:"search",func:()=>appendCategories()})
+        now++;
+    } else {
+        pages[now+1] = {name:"search",func:()=>appendCategories()}
+    }
+
+    if(pages[now].name == "search"){
         $("main .top--bar .page--control").after(`
         <div class="search--bar">
             <img src="./assets/images/icons8-search (2).svg" alt="">
@@ -545,13 +553,6 @@ function goToSearch(){
     }
 
     $("main .top--bar").next().remove()
-
-    if(!pages[now+1]||pages[now+1].name != "search"){
-        pages.push({name:"search",func:()=>appendCategories()})
-        now++;
-    } else {
-        pages[now+1] = {name:"search",func:()=>appendCategories()}
-    }
 
     let searchBar = document.getElementById("search--input")
     searchBar.addEventListener("keypress", (event) => handleSearchtext(event))
@@ -674,7 +675,7 @@ function addArtistSongs(artist, songs){
     <div class="artist">
         <h1>Top Result</h1>
         <div class="artist--container">
-            <img src="${artist.images[2].url}" alt="">
+            <img class="ar" src="${artist.images[2].url}" alt="">
             <h1 class="name">${artist.name}</h1>
             <p class="type">${capitalizeFirstLetter(artist.type)}</p>
             <div onclick="handlePlay()" class="play">
@@ -867,7 +868,7 @@ function addAudioBook(audiobook){
     </div>
     `
     $("main .search--display").append(audiobookList)
-    del?$("main .search--display .audiobook").remove():{}
+    del?$("main .search--display .audiobooks").remove():{}
 }
 
 function capitalizeFirstLetter(string) {
