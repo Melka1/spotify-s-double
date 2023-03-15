@@ -25,26 +25,27 @@
                     <!-- <object data="./assets/images/home_FILL1_wght400_GRAD0_opsz48.svg" type=""></object> -->
                     <p>Home</p>
                 </li>
-                <li onclick="goToSearch()" class="gray">
+                <li onclick="goToSearch()" class="gray search">
                     <span class="material-symbols-outlined">
                         search
                     </span>
                     <p>Search</p>
                 </li>
-                <li class="gray">
+                <li class="gray library" onclick="handleLogin('library')">
                     <span class="material-symbols-outlined">
                         library_add
                     </span>
                     <p>Your Library</p>
+                    
                 </li>
                 <hr>
-                <li class="gray">
+                <li class="gray playlist" onclick="handleLogin('playlist')">
                     <span class="material-symbols-outlined">
                         add_box
                     </span>
                     <p>Create Playlist</p>
                 </li>
-                <li class="gray">
+                <li class="gray songs" onclick="handleLogin('songs')">
                     <span class="material-symbols-outlined like">
                         favorite
                     </span>

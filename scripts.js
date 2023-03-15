@@ -13,15 +13,18 @@ let playlist = []
 let categories = []
 let searchList;
 
-let classes = {
-    artists: ['songs--artist'],
-
+let loginPopup = {
+    playlist: ["Create a playlist", "Log in to create and share playlists."],
+    library: ["Enjoy your library", "Log in to see saved songs, podcasts, artists, and playlists in your Library."],
+    songs: ["Enjoy your Liked Songs", "Log in to see all the songs you've liked in one easy playlist."]
 }
+
+let nowPopup = 0
 
 let playlists = [
     {name:"Focus", title:'focus', lists:[]},
     {name:"Spotify Playlists", title:'toplists', lists:[]}
-]//toplists, sleep
+]//toplists, focus
 
 function handleTime(){
     let now = new Date().getHours()
@@ -537,10 +540,10 @@ function goToSearch(){
     $("main").scrollTop(0)
 
     if(!pages[now+1]||pages[now+1].name != "search"){
-        pages.push({name:"search",func:()=>appendCategories()})
+        pages.push({name:"search",func:()=>goToSearch()})
         now++;
     } else {
-        pages[now+1] = {name:"search",func:()=>appendCategories()}
+        pages[now+1] = {name:"search",func:()=>goToSearch()}
     }
 
     if(pages[now].name == "search"){
@@ -654,17 +657,18 @@ function artists(arr){
 
 function initialSearch(){
     let top = `
-    <section class="search--display">
-        <div class="search--items">
-            <div class="items active">All</div>
-            <div class="items">Artists</div>
-            <div class="items">Songs</div>
-            <div class="items">Playlists</div>
-            <div class="items">Albums</div>
-            <div class="items">Podcasts & Shows</div>
-        </div>
-    </section>
+        <section class="search--display">
+            <div class="search--items">
+                <div class="items active">All</div>
+                <div class="items">Artists</div>
+                <div class="items">Songs</div>
+                <div class="items">Playlists</div>
+                <div class="items">Albums</div>
+                <div class="items">Podcasts & Shows</div>
+            </div>
+        </section>
     `
+
     $("main").append(top)
 }
 
@@ -884,4 +888,29 @@ function handleSearchtext(event){
         $("main .search--display").remove()
         literalSearch(searchText)
     }
+}
+
+function handleLogin(str){
+    $(`aside .navigation .login--popup`).remove();
+    $(`aside .navigation .${str}`).after(`
+        <div class="login--popup">
+            <h1>${loginPopup[str][0]}</h1>
+            <p>${loginPopup[str][1]}</p>
+            <div class="buttons">
+                <div onclick="cancelLogin()" class="not--now">Not now</div>
+                <a href="./login.html" class="log--in">Log in</a>
+            </div>
+            <div class="square"></div>
+        </div>
+    `)
+    console.log($(`aside .navigation .${str}`).offset().top)
+    let left = $(`aside .navigation .${str}`).offset().left
+    let width = str=="songs"?$(`aside .navigation .${str}`).width()-30:$(`aside .navigation .${str} p`).width()
+    $(`aside .navigation .login--popup`).css('top', $(`aside .navigation .${str}`).offset().top-85)
+    $(`aside .navigation .login--popup`).css('left', width + left + 60)
+    $(`aside .navigation .login--popup`).css("transform", 'translateX(-10px)')
+}
+
+function cancelLogin(){
+    $(`aside .navigation .login--popup`).remove()
 }

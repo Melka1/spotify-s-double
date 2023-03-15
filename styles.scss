@@ -46,6 +46,71 @@ body {//z-index: 0;
             text-decoration: none;
         }
         .navigation {
+            position: relative;
+            .login--popup {
+                position: absolute;
+                z-index: 7;
+                background-color: #0d72ea;
+                color: white;
+                padding: 20px;
+                width: 320px;
+                border-radius: 10px;
+                transition: 0.2s ease-in;
+                h1 {
+                    margin-bottom: 15px;
+                    font-size: 1.2rem;
+                }
+                p{
+                    color: white;
+                    font-size: 0.8rem;
+                    margin-bottom: 25px;
+                    font-family: "custom-light";
+                    line-height: 1.2rem;
+                    letter-spacing: 1px;
+                }
+                .buttons {
+                    display: flex;
+                    flex-direction: row;
+                    width: 100%;
+                    gap: 20px;
+                    .not--now {
+                        margin-left: auto;
+                        padding: 7px 15px;
+                        background-color: transparent;
+                        border: none;
+                        outline: none;
+                        font-family: "custom-medium";
+                        font-size: 0.9rem;
+                        color: $gray-color;
+                        &:hover {
+                            color: white;
+                            transform: scale(1.05);
+                            cursor: pointer;
+                        }
+                    }
+                    .log--in {
+                        text-decoration: none;
+                        padding: 7px 15px;
+                        background-color: white;
+                        color: black;
+                        border-radius: 30px;
+                        font-family: "custom-medium";
+                        &:hover {
+                            transform: scale(1.1);
+                        }
+                    }
+                }
+                .square {
+                    width: 10px;
+                    height: 10px;
+                    background-color: #0d72ea;
+                    position: absolute;
+                    top: 15px;
+                    left: -5px;
+                    transform: rotate(45deg);
+                }
+            }
+            
             ul {
                 .home{ 
                     span, p {
@@ -1126,7 +1191,7 @@ body {//z-index: 0;
                         align-items: center;
                         justify-content: center;
                         opacity: 0;
-                        z-index: 6;
+                        z-index: 3;
                         transition: bottom 0.4s, opacity 0.3s ease-in !important;
                         img {
                             width: 40px;
@@ -1137,7 +1202,7 @@ body {//z-index: 0;
                             border: 1px solid rgb(13, 211, 13);
                             right: 9px;
                             bottom: 9px;
-                            cursor: initial;
+                            cursor: pointer;
                         }
                     }
                     img {
@@ -1185,3 +1250,5 @@ body {//z-index: 0;
 .ar {
     aspect-ratio: 1/1;
 }
+
+
