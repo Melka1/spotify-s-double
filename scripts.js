@@ -891,7 +891,10 @@ function handleSearchtext(event){
 }
 
 function handleLogin(str){
+    let classList = $(`aside .navigation .${str}`).next().attr("class");
+    if(classList =="login--popup")return
     $(`aside .navigation .login--popup`).remove();
+    console.log(classList)
     $(`aside .navigation .${str}`).after(`
         <div class="login--popup">
             <h1>${loginPopup[str][0]}</h1>
@@ -903,6 +906,7 @@ function handleLogin(str){
             <div class="square"></div>
         </div>
     `)
+
     console.log($(`aside .navigation .${str}`).offset().top)
     let left = $(`aside .navigation .${str}`).offset().left
     let width = str=="songs"?$(`aside .navigation .${str}`).width()-30:$(`aside .navigation .${str} p`).width()
