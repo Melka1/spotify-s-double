@@ -2,6 +2,14 @@ $("form").click(function(e){
     e.preventDefault();
 })
 
+document.addEventListener("click", (event)=>{
+    let clickCheck = 'clkd'+ clickedTarget
+
+    if(!event.target.classList.contains(clickCheck)){
+        $(`aside .navigation .login--popup`).remove();
+    }
+})
+
 window.addEventListener("resize", checkWidth)
 
 var client_id = '87ad29c3f0f74cc1b391baaeef63e811';
@@ -20,6 +28,8 @@ let loginPopup = {
 }
 
 let nowPopup = 0
+
+let clickedTarget = "";
 
 let playlists = [
     {name:"Focus", title:'focus', lists:[]},
@@ -532,7 +542,10 @@ async function getCategories(params){
         categories = data.categories.items
         console.log(categories)
         appendCategories()
-}).catch(err => console.log(err))
+}).catch(err => {
+    console.log(err)
+    getCategories(authOption1(datum))
+})
 return categories
 }
 
@@ -891,19 +904,21 @@ function handleSearchtext(event){
 }
 
 function handleLogin(str){
+    clickedTarget = str;
+
     let classList = $(`aside .navigation .${str}`).next().attr("class");
     if(classList =="login--popup")return
     $(`aside .navigation .login--popup`).remove();
     console.log(classList)
     $(`aside .navigation .${str}`).after(`
-        <div class="login--popup">
-            <h1>${loginPopup[str][0]}</h1>
-            <p>${loginPopup[str][1]}</p>
-            <div class="buttons">
+        <div class="login--popup ${'clkd'+str}">
+            <h1 class='${'clkd'+str}'>${loginPopup[str][0]}</h1>
+            <p class='${'clkd'+str}'>${loginPopup[str][1]}</p>
+            <div class="buttons ${'clkd'+str}">
                 <div onclick="cancelLogin()" class="not--now">Not now</div>
                 <a href="./login.html" class="log--in">Log in</a>
             </div>
-            <div class="square"></div>
+            <div class="square ${'clkd'+str}"></div>
         </div>
     `)
 
@@ -918,3 +933,4 @@ function handleLogin(str){
 function cancelLogin(){
     $(`aside .navigation .login--popup`).remove()
 }
+

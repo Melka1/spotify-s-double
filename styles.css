@@ -907,16 +907,16 @@ body footer .footer a {
   height: 1.4rem;
 }
 .search--bar input {
-  font-size: 1.2rem;
+  font-size: 1rem;
   border: none;
   margin-right: 3rem;
 }
 .search--bar input::-moz-placeholder {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #4f4e4e;
 }
 .search--bar input::placeholder {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #4f4e4e;
 }
 .search--bar input:focus {
