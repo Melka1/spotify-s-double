@@ -303,9 +303,9 @@ function checkNavState(){
 function handlePlay(conInd, listInd){
     let src;
     if(arguments.length == 1){
-        src = playlistLibrary[arguments[0]].url
+        src = playlistLibrary[arguments[0]].track.album.images[0].url
     } else {
-        src = musicLibrary[arguments[0]].list[arguments[1]].url
+        src = playlist[arguments[0]].lists[arguments[1]].images[0].url
     }
 
     conIndex = conInd
@@ -553,10 +553,10 @@ function goToSearch(){
     $("main").scrollTop(0)
 
     if(!pages[now+1]||pages[now+1].name != "search"){
-        pages.push({name:"search",func:()=>goToSearch()})
+        pages.push({name:"search", func:()=>goToSearch()})
         now++;
     } else {
-        pages[now+1] = {name:"search",func:()=>goToSearch()}
+        pages[now+1] = {name:"search", func:()=>goToSearch()}
     }
 
     if(pages[now].name == "search"){
@@ -634,7 +634,6 @@ function controlNavState(){//check active navigation and change color to white
 
 }
 
-
 //all about search
 
 async function searchAll(param, name){
@@ -672,12 +671,14 @@ function initialSearch(){
     let top = `
         <section class="search--display">
             <div class="search--items">
-                <div class="items active">All</div>
-                <div class="items">Artists</div>
-                <div class="items">Songs</div>
-                <div class="items">Playlists</div>
-                <div class="items">Albums</div>
-                <div class="items">Podcasts & Shows</div>
+                <div class="items active all">All</div>
+                <div class="items artists">Artists</div>
+                <div class="items songs">Songs</div>
+                <div class="items playlists">Playlists</div>
+                <div class="items albums">Albums</div>
+                <div class="items shows">Podcasts & Shows</div>
+                <div class="items episodes">Episodes</div>
+                <div class="items audiobooks">Audiobooks</div>
             </div>
         </section>
     `
@@ -735,15 +736,17 @@ function addArtistSongs(artist, songs){
 }
 
 function addArtists(artists){
+    let del = true;
     let artistList = `
     <div class="artists row--list tm">
         <h1 class="title">Artists</h1>
         <div class="artists--list">
         ${artists.map(item => {
-            return `
+            del = item?false:true
+            return item?`
                 <div class="list--part">
                     <div class="profile--container">
-                        <img src="${item.images[1].url}" alt="" class="profile--img">
+                        <img src="${item.images[1]?item.images[1].url:""}" alt="" class="profile--img">
                         <div onclick="handlePlay()" class="play">
                             <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
                         </div>
@@ -751,21 +754,24 @@ function addArtists(artists){
                     <p class="name">${item.name}</p>
                     <p class="type">${capitalizeFirstLetter(item.type)}</p>
                 </div>
-            `
+            `:''
         }).join("")}
         </div>
     </div>
     `
     $("main .search--display").append(artistList)
+    del?$("main .search--display .artists").remove():{}
 }
 
 function addAlbums(albums){
+    let del = true;
     let albumsList = `
     <div class="albums row--list tm">
         <h1 class="title">Albums</h1>
         <div class="artists--list">
         ${albums.map(item => {
-            return `
+            del = item?false:true
+            return item?`
                 <div class="list--part">
                     <div class="profile--container">
                         <img src="${item.images[1].url}" alt="" class="profile--img">
@@ -776,21 +782,24 @@ function addAlbums(albums){
                     <p class="name">${item.name}</p>
                     <p class="type">${capitalizeFirstLetter(item.type)}</p>
                 </div>
-            `
+            `:''
         }).join("")}
         </div>
     </div>
     `
     $("main .search--display").append(albumsList)
+    del?$("main .search--display .albums").remove():{}
 }
 
 function addPlaylists(playlists){
+    let del = true;
     let platlistList = `
-    <div class="albums row--list tm">
+    <div class="playlists row--list tm">
         <h1 class="title">Playlists</h1>
         <div class="artists--list">
         ${playlists.map(item => {
-            return `
+            del = item?false:true
+            return item?`
                 <div class="list--part">
                     <div class="profile--container">
                         <img src="${item.images[0].url}" alt="" class="profile--img">
@@ -801,12 +810,13 @@ function addPlaylists(playlists){
                     <p class="name">${item.name}</p>
                     <p class="type">${capitalizeFirstLetter(item.type)}</p>
                 </div>
-            `
+            `:''
         }).join("")}
         </div>
     </div>
     `
     $("main .search--display").append(platlistList)
+    del?$("main .search--display .playlists").remove():{}
 }
 
 function addShows(shows){
