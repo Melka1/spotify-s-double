@@ -789,7 +789,7 @@ function addAlbums(albums){
             return item?`
                 <div class="list--part">
                     <div class="profile--container">
-                        <img src="${item.images[1]?item.images[1].url:""}" alt="" class="profile--img">
+                        <img src="${item.images[1]?item.images[1].url:item.images[0].url}" alt="" class="profile--img">
                         <div onclick="handlePlay()" class="play">
                             <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
                         </div>
@@ -810,7 +810,35 @@ function addAlbums(albums){
 }
 
 function addTracks(tracks){
-
+    let del = true;
+    console.log(tracks)
+    let trackList = `
+    <div class="songs row--list tm">
+        <h1 class="title">Albums</h1>
+        <div class="artists--list">
+        ${tracks.map(item => {
+            del = item?false:true
+            return item?`
+                <div class="list--part">
+                    <div class="profile--container">
+                        <img src="${item.album.images[1]?item.album.images[1].url:item.album.images[0].url}" alt="" class="profile--img">
+                        <div onclick="handlePlay()" class="play">
+                            <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+                        </div>
+                    </div>
+                    <p class="name">${item.name}</p>
+                    <p class="type">${capitalizeFirstLetter(item.type)}</p>
+                </div>
+            `:''
+        }).join("")}
+        </div>
+    </div>
+    `
+    if(all){
+        $("main .search--display").append(trackList)
+        del?$("main .search--display .songs").remove():{}
+    }
+    return trackList
 }
 
 function addPlaylists(playlists){
@@ -824,7 +852,7 @@ function addPlaylists(playlists){
             return item?`
                 <div class="list--part">
                     <div class="profile--container">
-                        <img src="${item.images[1]?item.images[1].url:""}" alt="" class="profile--img">
+                        <img src="${item.images[1]?item.images[1].url:item.images[0].url}" alt="" class="profile--img">
                         <div onclick="handlePlay()" class="play">
                             <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
                         </div>
@@ -855,7 +883,7 @@ function addShows(shows){
             return item?`
                 <div class="list--part">
                     <div class="profile--container">
-                        <img src="${item.images[1]?item.images[1].url:""}" alt="" class="profile--img">
+                        <img src="${item.images[1]?item.images[1].url:item.images[0].url}" alt="" class="profile--img">
                         <div onclick="handlePlay()" class="play">
                             <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
                         </div>
@@ -886,7 +914,7 @@ function addEpisodes(episodes){
             return item?`
                 <div class="list--part">
                     <div class="profile--container">
-                        <img src="${item.images[1]?item.images[1].url:""}" alt="" class="profile--img">
+                        <img src="${item.images[1]?item.images[1].url:item.images[0].url}" alt="" class="profile--img">
                         <div onclick="handlePlay()" class="play">
                             <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
                         </div>
@@ -916,7 +944,7 @@ function addAudioBook(audiobook){
             del = item?false:true
             return item?`
                 <div class="list--part">
-                    <img src="${item.images[1]?item.images[1].url:""}" alt="" class="profile--img">
+                    <img src="${item.images[1]?item.images[1].url:item.images[0].url}" alt="" class="profile--img">
                     <p class="name">${item.name}</p>
                     <p class="type">${capitalizeFirstLetter(item.type)}</p>
                 </div>
@@ -988,6 +1016,7 @@ async function searchByType(type){
     if(type=='all'){
         all = true
         searchAll(authOption1(datum), searchText)
+        $("main").scrollTop(0)
         return
     }
     await fetch(`https://api.spotify.com/v1/search?q=${searchText}&type=${types[type][0]}&limit=30`, authOption1(datum))
@@ -1021,5 +1050,7 @@ async function searchByType(type){
             $('main .search--display').append('<hr>')
             $('main .search--display .search--items .items').removeClass("active")
             $(`main .search--display .${type}`).addClass("active")
+            $('main .search--display .row--list .title').remove()
+            $("main").scrollTop(0)
     })
 }
