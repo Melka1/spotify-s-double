@@ -16,11 +16,20 @@ var client_id = '87ad29c3f0f74cc1b391baaeef63e811';
 var client_secret = '2cbf3df5e0914f8baecede4294eb6d81';
 let accessToken;
 let datum;
-
+let types = {
+    artists:['artist','artists'],
+    songs:['track','tracks'],
+    albums:['album','albums'],
+    playlists:['playlist','playlists'],
+    shows:['show','shows'],
+    episodes:['episode','episodes'],
+    audiobooks:['audiobook', 'audiobooks']
+}
 let playlist = []
 let categories = []
 let searchList;
-
+let searchText;
+let all = true;
 let loginPopup = {
     playlist: ["Create a playlist", "Log in to create and share playlists."],
     library: ["Enjoy your library", "Log in to see saved songs, podcasts, artists, and playlists in your Library."],
@@ -642,7 +651,9 @@ async function searchAll(param, name){
         .then(data=> {
             searchList = data
             console.log(searchList)   
+            $('main .search--display').remove()
             initialSearch()
+            $("main .search--display .search--items .all").addClass("active")
             addArtistSongs(searchList.artists.items[0], searchList.tracks.items)
             addArtists(searchList.artists.items)
             addAlbums(searchList.albums.items)
@@ -671,14 +682,14 @@ function initialSearch(){
     let top = `
         <section class="search--display">
             <div class="search--items">
-                <div class="items active all">All</div>
-                <div class="items artists">Artists</div>
-                <div class="items songs">Songs</div>
-                <div class="items playlists">Playlists</div>
-                <div class="items albums">Albums</div>
-                <div class="items shows">Podcasts & Shows</div>
-                <div class="items episodes">Episodes</div>
-                <div class="items audiobooks">Audiobooks</div>
+                <div onclick="searchByType('all')" class="items all">All</div>
+                <div onclick="searchByType('artists')" class="items artists">Artists</div>
+                <div onclick="searchByType('songs')" class="items songs">Songs</div>
+                <div onclick="searchByType('playlists')" class="items playlists">Playlists</div>
+                <div onclick="searchByType('albums')" class="items albums">Albums</div>
+                <div onclick="searchByType('shows')" class="items shows">Podcasts & Shows</div>
+                <div onclick="searchByType('episodes')" class="items episodes">Episodes</div>
+                <div onclick="searchByType('audiobooks')" class="items audiobooks">Audiobooks</div>
             </div>
         </section>
     `
@@ -759,8 +770,12 @@ function addArtists(artists){
         </div>
     </div>
     `
-    $("main .search--display").append(artistList)
-    del?$("main .search--display .artists").remove():{}
+    if(all){
+        $("main .search--display").append(artistList)
+        del?$("main .search--display .artists").remove():{}
+    }
+    console.log(artistList)
+    return artistList
 }
 
 function addAlbums(albums){
@@ -774,7 +789,7 @@ function addAlbums(albums){
             return item?`
                 <div class="list--part">
                     <div class="profile--container">
-                        <img src="${item.images[1].url}" alt="" class="profile--img">
+                        <img src="${item.images[1]?item.images[1].url:""}" alt="" class="profile--img">
                         <div onclick="handlePlay()" class="play">
                             <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
                         </div>
@@ -787,8 +802,15 @@ function addAlbums(albums){
         </div>
     </div>
     `
-    $("main .search--display").append(albumsList)
-    del?$("main .search--display .albums").remove():{}
+    if(all){
+        $("main .search--display").append(albumsList)
+        del?$("main .search--display .albums").remove():{}
+    }
+    return albumsList
+}
+
+function addTracks(tracks){
+
 }
 
 function addPlaylists(playlists){
@@ -802,7 +824,7 @@ function addPlaylists(playlists){
             return item?`
                 <div class="list--part">
                     <div class="profile--container">
-                        <img src="${item.images[0].url}" alt="" class="profile--img">
+                        <img src="${item.images[1]?item.images[1].url:""}" alt="" class="profile--img">
                         <div onclick="handlePlay()" class="play">
                             <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
                         </div>
@@ -815,8 +837,11 @@ function addPlaylists(playlists){
         </div>
     </div>
     `
-    $("main .search--display").append(platlistList)
-    del?$("main .search--display .playlists").remove():{}
+    if(all){
+        $("main .search--display").append(platlistList)
+        del?$("main .search--display .playlists").remove():{}
+    }
+    return platlistList
 }
 
 function addShows(shows){
@@ -830,7 +855,7 @@ function addShows(shows){
             return item?`
                 <div class="list--part">
                     <div class="profile--container">
-                        <img src="${item.images[0].url}" alt="" class="profile--img">
+                        <img src="${item.images[1]?item.images[1].url:""}" alt="" class="profile--img">
                         <div onclick="handlePlay()" class="play">
                             <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
                         </div>
@@ -843,8 +868,11 @@ function addShows(shows){
         </div>
     </div>
     `
-    $("main .search--display").append(showList)
-    del?$("main .search--display .shows").remove():{}
+    if(all){
+        $("main .search--display").append(showList)
+        del?$("main .search--display .shows").remove():{}
+    }
+    return showList
 }
 
 function addEpisodes(episodes){
@@ -858,7 +886,7 @@ function addEpisodes(episodes){
             return item?`
                 <div class="list--part">
                     <div class="profile--container">
-                        <img src="${item.images[0].url}" alt="" class="profile--img">
+                        <img src="${item.images[1]?item.images[1].url:""}" alt="" class="profile--img">
                         <div onclick="handlePlay()" class="play">
                             <img src="./assets/images/play_arrow_FILL1_wght400_GRAD0_opsz48.svg" alt="">
                         </div>
@@ -871,8 +899,11 @@ function addEpisodes(episodes){
         </div>
     </div>
     `
-    $("main .search--display").append(episodesList)
-    del?$("main .search--display .episodes").remove():{}
+    if(all){
+        $("main .search--display").append(episodesList)
+        del?$("main .search--display .episodes").remove():{}
+    }
+    return episodesList
 }
 
 function addAudioBook(audiobook){
@@ -885,7 +916,7 @@ function addAudioBook(audiobook){
             del = item?false:true
             return item?`
                 <div class="list--part">
-                    <img src="${item.images[0].url}" alt="" class="profile--img">
+                    <img src="${item.images[1]?item.images[1].url:""}" alt="" class="profile--img">
                     <p class="name">${item.name}</p>
                     <p class="type">${capitalizeFirstLetter(item.type)}</p>
                 </div>
@@ -894,8 +925,11 @@ function addAudioBook(audiobook){
         </div>
     </div>
     `
-    $("main .search--display").append(audiobookList)
-    del?$("main .search--display .audiobooks").remove():{}
+    if(all){
+        $("main .search--display").append(audiobookList)
+        del?$("main .search--display .audiobooks").remove():{}
+    }
+    return audiobookList
 }
 
 function capitalizeFirstLetter(string) {
@@ -903,7 +937,7 @@ function capitalizeFirstLetter(string) {
 }
 
 function handleSearchtext(event){
-    let searchText = $("main .top--bar .search--bar input").val()
+    searchText = $("main .top--bar .search--bar input").val()
     console.log(searchText)
     console.log(event.code)
     if(event.code == "Enter"){
@@ -911,6 +945,9 @@ function handleSearchtext(event){
         $("main .search--display").remove()
         literalSearch(searchText)
     }
+    // $("main .search--container").remove()
+    // $("main .search--display").remove()
+    // literalSearch(searchText)
 }
 
 function handleLogin(str){
@@ -944,3 +981,45 @@ function cancelLogin(){
     $(`aside .navigation .login--popup`).remove()
 }
 
+async function searchByType(type){
+    let search;
+    all = false
+    let item;
+    if(type=='all'){
+        all = true
+        searchAll(authOption1(datum), searchText)
+        return
+    }
+    await fetch(`https://api.spotify.com/v1/search?q=${searchText}&type=${types[type][0]}&limit=30`, authOption1(datum))
+        .then(res=>res.json())
+        .then(data=> {
+            search = data[types[type][1]].items
+            console.log(search)
+            switch(type){
+                case 'artists':
+                    item = addArtists(search)
+                    break
+                case 'albums':
+                    item = addAlbums(search)
+                    break
+                case 'songs':
+                    item = addTracks(search)
+                    break
+                case 'playlists':
+                    item = addPlaylists(search)
+                    break
+                case 'episodes':
+                    item = addEpisodes(search)
+                    break
+                case 'audiobooks':
+                    item = addAudioBook(search)
+                    break
+            }
+            console.log(item)
+            $('main .search--display .search--items').nextAll().remove()
+            $('main .search--display .search--items').after(item)
+            $('main .search--display').append('<hr>')
+            $('main .search--display .search--items .items').removeClass("active")
+            $(`main .search--display .${type}`).addClass("active")
+    })
+}
